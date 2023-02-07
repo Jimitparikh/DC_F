@@ -5,6 +5,7 @@ import "./scss/varibles.scss";
 import "./scss/style.scss";
 import "./scss/common.scss";
 import "./scss/modal.scss";
+import "./scss/darkmode.scss";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
 import Category from "./pages/Category";
@@ -26,6 +27,7 @@ import AboutUs from "./pages/AboutUs";
 import Notification from "./pages/Notification";
 import UserDashboard from "./pages/UserDashboard";
 import AuthorsDashboard from "./pages/AuthorsDashboard";
+import ReadBook from "./pages/ReadBook";
 const App = () => {
   return (
     <>
@@ -52,6 +54,7 @@ const App = () => {
           <Route path="/affiliateAccountInfo" element={<AffiliateAccountInfo />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/authors-dashboard" element={<AuthorsDashboard />} />
+          <Route path="/read-book" element={<ReadBook />} />
           <Route path="/*" element={<Error />} />
         </Route>
       </Routes>

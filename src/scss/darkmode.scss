@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700;800&display=swap");
+@import "../scss/varibles.scss";
+.dark-mode{
+    .without-background{
+        .btn{
+            color: white;
+           }
+        .dropdown-menu{
+            background: #10102C;
+            box-shadow: 0px 6px 23px rgb(130 130 130 / 20%);
+            .item-selector,
+            .dropdown-item{
+                color: #8A8AB9;
+            }
+        }
+       
+    }
+    .read-book-section{
+        background: #0C0C1E;
+        .read-book-header{
+            background: #10102C;            
+        }
+        .read-book-body{
+            &::after{
+                background: linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0) 100%);                
+            }
+            .book-chapter-box{
+                ul{
+                    li{
+                        background: #10102C;
+                        border: 1px solid var(--white-color); 
+                        .lock-icon{
+                            background: rgba(0, 0, 0, 0.4);
+                        } 
+                        p{
+                            color: white;
+                        }      
+                        span{
+                            color: rgba(255, 255, 255, 0.5);
+                        }                
+                    }
+                }
+            }
+            .book-chapter-text{
+                ul{
+                    li{
+                        p{
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+        .read-book-footer{
+            .progress-detail{
+                p{
+                    color: white;
+                }
+            }
+        }
+        .sidebar-content,
+        .search-option-content,
+        .annotation-content{
+            background: #10102C;
+            .heading{
+                border-color: #3D3D4B;
+                p{
+                    color: white;
+                }
+                .light-grey{
+                    color: white !important;
+                }
+            }
+        }
+        .display-text-setting-sidebar{
+            p{
+                color: white !important;
+            }
+            .text-align-label{
+                background: #2D2D45 !important;
+                color: white !important;
+                &.active{
+                    background: #2F80ED !important;
+                }
+            }
+            .color-formate-label{
+                &:nth-child(1){
+                    border: 0 !important;
+                    background-color: white;
+                }
+                svg{
+                    font-size: 25px !important;
+                }
+            }
+        }
+        .search-option-sidebar{
+            .search-option-content{
+                .search-option-body{
+                    .header-search{
+                        .input-box{
+                            border: 1px solid rgba(255, 255, 255, 0.65);
+                            background: transparent;
+                        }
+                    }
+                    .search-result{
+                        .light-grey{
+                            color: #8A8AB9;
+                        }
+                    }
+                    ul{
+                        li{
+                            h5,
+                            p{
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .annotation-sidebar{
+            .annotation-content{
+                .annotation-body{
+                    .annotation-result{
+                        p{
+                            color: #8A8AB9;
+                        }
+                    }
+                    ul{
+                        li{
+                            .title{
+                               h2{
+                                color: white;                                
+                               }
+                            }
+                            p{
+                                color: #8A8AB9;
+                            }
+                            h4{
+                                color: rgba(255, 255, 255, 0.8);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.dark-mode{
+    .read-book-section .read-book-body::-webkit-scrollbar-thumb{
+        background-color: #2f80ed;
+    }
+}

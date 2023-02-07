@@ -16,7 +16,9 @@ import {
   BsChevronRight,
   BsDot,
   BsFileEarmarkMusic,
+  BsFileText,
   BsFillStarFill,
+  BsFilterLeft,
   BsInfoCircle,
   BsSearch,
   BsStarHalf,
@@ -52,6 +54,7 @@ import {
   MdOutlineReviews,
 } from "react-icons/md";
 import {
+  HiMenu,
   HiOutlineChatAlt,
   HiOutlineMail,
   HiOutlineTicket,
@@ -79,6 +82,8 @@ import visalogo from "../images/visa-logo.png";
 import mastercardlogo from "../images/mastercard-logo.png";
 import { RiBankLine } from "react-icons/ri";
 import userprofilefollwers from "../images/user-menu-profile.png";
+import addhere from "../images/add-here.png";
+import addhereactive from "../images/add-here-active.png";
 
 const AuthorsDashboard = () => {
   const [profileupload, setprofileupload] = useState(false);
@@ -97,15 +102,31 @@ const AuthorsDashboard = () => {
   const setsuccessreqaddclose = () => setsuccessreqadd(false);
   const setsuccessreqaddshow = () => setsuccessreqadd(true);
 
+  const [createbook, setcreatebook] = useState(false);
+  const setcreatebookclose = () => setcreatebook(false);
+  const setcreatebookshow = () => setcreatebook(true);
+
+  const [enterbookname, setenterbookname] = useState(false);
+  const setenterbooknameclose = () => setenterbookname(false);
+  const setenterbooknameshow = () => setenterbookname(true);
+
   const [isActive, setActive] = useState(false);
   const toggleClass = () => {
     setActive(!isActive);
   };
 
+  // const [isActivee, setActivee] = useState(false);
+  // const toggleClass = () => {
+  //   setActivee(!isActivee);
+  // };
+
   return (
     <>
       <section className="authors-dashboard-section">
-        <div className="authors-dashboard-header d-flex justify-content-between align-items-center">
+        <div className="authors-dashboard-header d-flex align-items-center">
+          <div className="column mobile-menu" onClick={toggleClass}>
+            <HiMenu />
+          </div>
           <div className="column">
             <a href="#" className="logo">
               <img src={logo} alt="Logo"></img>
@@ -131,12 +152,320 @@ const AuthorsDashboard = () => {
           </div>
         </div>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-          <div className="author-tabbing-wrapper d-flex">
+          <div
+            className={
+              isActive
+                ? "show author-tabbing-wrapper d-flex flex-wrap"
+                : "author-tabbing-wrapper d-flex flex-wrap"
+            }
+          >
             <div className="side-panel">
               <div className="create-book">
-                <button className="btn btn-green">
+                <button className="btn btn-green" onClick={setcreatebookshow}>
                   <BiAddToQueue className="fs-20 me-1" /> Create Book
                 </button>
+                <Modal
+                  show={createbook}
+                  onHide={setcreatebookclose}
+                  className="large-modal"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>
+                      Create new book
+                      <p className="fs-14 light-grey">
+                        In order to create a new book, you should first choose a
+                        book type from the list below.
+                      </p>
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <div className="create-new-book-content">
+                      <ul>
+                        <li>
+                          <div className="heading">
+                            <p>Paid Upload</p>
+                          </div>
+                          <div className="data">
+                            <div>
+                              <BsFileText />
+                            </div>
+                            <div className="data-title">
+                              <h5>E-books</h5>
+                              <p>
+                                Lorem ipsum is a dummy text and we can change
+                              </p>
+                            </div>
+                          </div>
+                        </li>
+                        <li className="paid">
+                          <div className="heading">
+                            <p>Paid Upload</p>
+                          </div>
+                          <div className="data">
+                            <div>
+                              <FaRegFileAudio />
+                            </div>
+                            <div className="data-title">
+                              <h5>Audio book</h5>
+                              <p>You have to pay 20% amount to Dreamcapcha</p>
+                            </div>
+                          </div>
+                        </li>
+                        <li className="paid">
+                          <div className="heading">
+                            <p>Paid Upload</p>
+                          </div>
+                          <div className="data">
+                            <div>
+                              <FaRegFileVideo />
+                            </div>
+                            <div className="data-title">
+                              <h5>Video book</h5>
+                              <p>You have to pay 30% amount to Dreamcapcha</p>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <div className="btn-wrap d-flex">
+                      <button className="btn btn-grey me-3">Cancle</button>
+                      <button
+                        className="btn btn-green"
+                        onClick={setenterbooknameshow}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </Modal.Footer>
+                </Modal>
+                <Modal
+                  show={enterbookname}
+                  onHide={setenterbooknameclose}
+                  className="large-modal"
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>
+                      Enter your book name
+                      <p className="fs-14 light-grey">
+                        Enter your book name and select category, you can change
+                        these info on main page
+                      </p>
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <div className="enter-book-name-modal">
+                      <div className="input-field-group">
+                        <div className="input-field-item">
+                          <label>Book Name</label>
+                          <input
+                            type="text"
+                            class="input-box"
+                            placeholder="Albert"
+                          ></input>
+                        </div>
+                        <div className="input-field-item">
+                          <label>Writing Formate</label>
+                          <Dropdown className="input-box without-background">
+                            <Dropdown.Toggle id="dropdown-basic">
+                              Chapter Wise <FaChevronDown />
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                              <Dropdown.Item href="#/action-1">
+                                Male
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-2">
+                                Female
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-3">
+                                Other
+                              </Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
+                      </div>
+                      <h5>Book category</h5>
+                      <div className="checkbox-group d-flex flex-wrap">
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck1"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck1"
+                          >
+                            Horror
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck2"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck2"
+                          >
+                            Love
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck3"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck3"
+                          >
+                            Action
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck4"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck4"
+                          >
+                            Adventure
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck1"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck1"
+                          >
+                            Horror
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck2"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck2"
+                          >
+                            Love
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck3"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck3"
+                          >
+                            Action
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck4"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck4"
+                          >
+                            Adventure
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck1"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck1"
+                          >
+                            Horror
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck2"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck2"
+                          >
+                            Love
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck3"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck3"
+                          >
+                            Action
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck4"
+                          ></input>
+                          <label
+                            className="form-check-label"
+                            for="defaultCheck4"
+                          >
+                            Adventure
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <div className="btn-wrap d-flex">
+                      <button className="btn btn-grey me-3">Previous</button>
+                      <button className="btn btn-green">Next</button>
+                    </div>
+                  </Modal.Footer>
+                </Modal>
               </div>
               <div className="tab-item-link">
                 <Nav variant="pills" className="flex-column">
@@ -281,7 +610,7 @@ const AuthorsDashboard = () => {
                         </li>
                       </ul>
                     </div>
-                    <div className="mini-header d-flex justify-content-between align-items-center">
+                    <div className="mini-header d-flex flex-wrap justify-content-between align-items-center">
                       <div className="data">
                         <p>Quick Stats</p>
                         <span className="light-grey">
@@ -420,7 +749,7 @@ const AuthorsDashboard = () => {
                         </Dropdown>
                         <div className="action">
                           <a href="#" title="Delete" className="delete">
-                            <MdOutlineDeleteOutline /> Remove
+                            <MdOutlineDeleteOutline /> <span>Remove</span>
                           </a>
                         </div>
                       </div>
@@ -439,7 +768,7 @@ const AuthorsDashboard = () => {
                         </tr>
                         <tr>
                           <td>
-                            <div className="book-details d-flex">
+                            <div className="book-details d-flex align-items-center">
                               <img src={bookcover} alt="Book Cover"></img>
                               <div className="book-data ms-3 pe-4">
                                 <p className="fs-18 mb-3 body-color">
@@ -473,7 +802,7 @@ const AuthorsDashboard = () => {
                         </tr>
                         <tr>
                           <td>
-                            <div className="book-details d-flex">
+                            <div className="book-details d-flex align-items-center">
                               <img src={bookcover} alt="Book Cover"></img>
                               <div className="book-data ms-3 pe-4">
                                 <p className="fs-18 mb-3 body-color">
@@ -507,7 +836,7 @@ const AuthorsDashboard = () => {
                         </tr>
                         <tr>
                           <td>
-                            <div className="book-details d-flex">
+                            <div className="book-details d-flex align-items-center">
                               <img src={bookcover} alt="Book Cover"></img>
                               <div className="book-data ms-3 pe-4">
                                 <p className="fs-18 mb-3 body-color">
@@ -587,7 +916,7 @@ const AuthorsDashboard = () => {
                       >
                         <Tab eventKey="Overview" title="Overview">
                           <div className="overview-content-data">
-                            <div className="d-flex">
+                            <div className="d-flex flex-wrap">
                               <div className="chart-column">
                                 <ul>
                                   <li>
@@ -650,9 +979,9 @@ const AuthorsDashboard = () => {
                         </Tab>
                         <Tab eventKey="Content" title="Content">
                           <div className="content-tab-data">
-                            <div className="d-flex">
+                            <div className="d-flex flex-wrap">
                               <div className="views-column">
-                                <div className="data-title d-flex align-items-center justify-content-between">
+                                <div className="data-title d-flex flex-wrap align-items-center justify-content-between">
                                   <div>
                                     <h6 className="fs-20">Views</h6>
                                     <p className="light-grey mt-2">
@@ -738,7 +1067,7 @@ const AuthorsDashboard = () => {
                         </tr>
                         <tr>
                           <td>
-                            <div className="book-details d-flex">
+                            <div className="book-details d-flex align-items-center">
                               <img src={bookcover} alt="Book Cover"></img>
                               <div className="book-data ms-3 pe-4">
                                 <p className="fs-18 mb-3 body-color">
@@ -762,7 +1091,7 @@ const AuthorsDashboard = () => {
                         </tr>
                         <tr>
                           <td>
-                            <div className="book-details d-flex">
+                            <div className="book-details d-flex align-items-center">
                               <img src={bookcover} alt="Book Cover"></img>
                               <div className="book-data ms-3 pe-4">
                                 <p className="fs-18 mb-3 body-color">
@@ -786,7 +1115,7 @@ const AuthorsDashboard = () => {
                         </tr>
                         <tr>
                           <td>
-                            <div className="book-details d-flex">
+                            <div className="book-details d-flex align-items-center">
                               <img src={bookcover} alt="Book Cover"></img>
                               <div className="book-data ms-3 pe-4">
                                 <p className="fs-18 mb-3 body-color">
@@ -1464,7 +1793,7 @@ const AuthorsDashboard = () => {
                     <div className="tab-content-heading">
                       <h2>Estimated Earning</h2>
                     </div>
-                    <div className="d-flex align-items-center justify-content-between">
+                    <div className="d-flex flex-wrap align-items-center justify-content-between">
                       <div className="data-info-list">
                         <ul>
                           <li>
@@ -2149,7 +2478,7 @@ const AuthorsDashboard = () => {
                       <h2>Community Wall</h2>
                     </div>
                     <div className="image-poll-banner">
-                      <div className="heading d-flex justify-content-between align-items-center">
+                      <div className="heading d-flex flex-wrap justify-content-between align-items-center">
                         <div className="d-flex align-items-center">
                           <div className="user-icon">
                             <svg
@@ -2426,7 +2755,7 @@ const AuthorsDashboard = () => {
                                     French novelist and Nobel Prize winner
                                     Rolland, a French novelist and Nobel Prize
                                     winner
-                                    <span>random</span> <span>#newpost</span>
+                                    <span> random</span> <span>#newpost</span>
                                   </p>
                                   <div className="post-image">
                                     <img
@@ -2458,7 +2787,10 @@ const AuthorsDashboard = () => {
                         </Tab>
                       </Tabs>
                       <Dropdown className="input-box without-background">
-                        <Dropdown.Toggle id="dropdown-basic">
+                        <Dropdown.Toggle
+                          id="dropdown-basic"
+                          className="d-flex justify-content-between"
+                        >
                           Newest first <FaChevronDown />
                         </Dropdown.Toggle>
 
@@ -2526,7 +2858,7 @@ const AuthorsDashboard = () => {
                           <Modal.Header closeButton>
                             <Modal.Title>Create a Coupon</Modal.Title>
                           </Modal.Header>
-                          <Modal.Body>
+                          <Modal.Body className="has-footer">
                             <div className="create-coupon-modal">
                               <div className="left-part">
                                 <div className="input-fields-wrapper">
@@ -2776,7 +3108,7 @@ const AuthorsDashboard = () => {
                                           <h2>$ 10 OFF</h2>
                                           <span>Enjoy the monsoon offer</span>
                                         </div>
-                                        <div className="d-flex align-items-center justify-content-between">
+                                        <div className="d-flex flex-wrap align-items-center justify-content-between">
                                           <p className="fs-14 fw-500 white-color">
                                             Code: SAVEMORE
                                           </p>
@@ -2818,7 +3150,7 @@ const AuthorsDashboard = () => {
                                           <h2>$ 10 OFF</h2>
                                           <span>Enjoy the monsoon offer</span>
                                         </div>
-                                        <div className="d-flex align-items-center justify-content-between">
+                                        <div className="d-flex flex-wrap align-items-center justify-content-between">
                                           <p className="fs-14 fw-500 white-color">
                                             Code: SAVEMORE
                                           </p>
@@ -2863,15 +3195,1770 @@ const AuthorsDashboard = () => {
                     </div>
                   </div>
                 </Tab.Pane>
+                <Tab.Pane eventKey="dummy">
+                  <div className="coupon-table">
+                    <div className="transcation-summary">
+                      <div className="tab-content-heading d-flex justify-content-between align-items-center">
+                        <h2 className="fs-20">Transaction Summary</h2>
+                        <div className="right-side d-flex">
+                          <div className="header-search">
+                            <input
+                              className="input-box"
+                              placeholder="Search..."
+                            ></input>
+                            <BsSearch />
+                          </div>
+                          <Dropdown className="input-box without-background me-0">
+                            <Dropdown.Toggle id="dropdown-basic">
+                              This Month <FaChevronDown />
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                              <Dropdown.Item href="#/action-1">
+                                Today
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-2">
+                                Yesterday
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-3">
+                                Last 30 Days
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">
+                                Last 1 Week
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">
+                                Last 1 Year
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">
+                                Life Time
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">
+                                Custome Date Range
+                              </Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
+                      </div>
+                      <div className="table-responsive">
+                        <table className="transcation-summary-table">
+                          <tr>
+                            <th>Type</th>
+                            <th>Date & Time</th>
+                            <th>Payment Detils</th>
+                            <th>Payment Mehod</th>
+                            <th>Amount</th>
+                            <th>Balance</th>
+                            <th>Action</th>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p className="label red-view">Debit</p>
+                            </td>
+                            <td>Aug 28,2022 , 2:30PM</td>
+                            <td>Book Purchased</td>
+                            <td>Wallet</td>
+                            <td>
+                              <p className="danger-color">-$10</p>
+                            </td>
+                            <td>$300</td>
+                            <td>
+                              <div className="action">
+                                <a href="#" title="Edit" className="edit">
+                                  <MdOutlineModeEditOutline />
+                                </a>
+                                <a href="#" title="Delete" className="delete">
+                                  <MdOutlineDeleteOutline />
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p className="label green-view">Cebit</p>
+                            </td>
+                            <td>Aug 28,2022 , 2:30PM</td>
+                            <td>Book Purchased</td>
+                            <td>Wallet</td>
+                            <td>
+                              <p className="green-color">+$10</p>
+                            </td>
+                            <td>$300</td>
+                            <td>
+                              <div className="action">
+                                <a href="#" title="Edit" className="edit">
+                                  <MdOutlineModeEditOutline />
+                                </a>
+                                <a href="#" title="Delete" className="delete">
+                                  <MdOutlineDeleteOutline />
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                      <p className="text-end">Pagination comes here</p>
+                    </div>
+                  </div>
+                </Tab.Pane>
+                <Tab.Pane eventKey="tenth">
+                  <div className="advertisment-tab-content">
+                    <div className="tab-content-heading d-flex justify-content-between align-items-center">
+                      <h2>Advertisment</h2>
+                      <div className="right-side d-flex">
+                        <div className="action">
+                          <button
+                            className="btn btn-green"
+                            onClick={setcreateaddshow}
+                          >
+                            <AiOutlinePlus className="fs-20 me-2" /> Crete
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="advertisment-data">
+                      <div className="column">
+                        <div className="data-info-list">
+                          <ul>
+                            <li>
+                              <h4>Total Advertisments</h4>
+                              <p>50</p>
+                              <a href="#" className="d-flex align-items-center">
+                                vs Last month{" "}
+                                <p className="green-color">
+                                  <HiArrowTrendingUp className="me-1" />
+                                  +10%
+                                </p>
+                              </a>
+                            </li>
+                            <li>
+                              <h4>Requested Advertisment</h4>
+                              <p>02</p>
+                              <a href="#">
+                                View All Requested{" "}
+                                <MdOutlineArrowForwardIos className="ms-1" />
+                              </a>
+                            </li>
+                            <li>
+                              <h4>Rejected Advertisment</h4>
+                              <p>01</p>
+                              <a href="#">
+                                View All Rejected{" "}
+                                <MdOutlineArrowForwardIos className="ms-1" />
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="column">
+                        <div className="data-info-list">
+                          <ul>
+                            <li>
+                              <h4>Total Impression</h4>
+                              <p>5.20k</p>
+                              <a href="#" className="d-flex align-items-center">
+                                vs Last month{" "}
+                                <p className="green-color">
+                                  <HiArrowTrendingUp className="me-1" />
+                                  +10%
+                                </p>
+                              </a>
+                            </li>
+                            <li>
+                              <h4>Money Spent</h4>
+                              <p>$450.57</p>
+                              <a href="#" className="d-flex align-items-center">
+                                vs Last month{" "}
+                                <p className="danger-color">
+                                  <HiArrowTrendingDown className="me-1" />
+                                  -10%
+                                </p>
+                              </a>
+                            </li>
+                            <li>
+                              <h4>Money Earned</h4>
+                              <p>$600.50</p>
+                              <a href="#" className="d-flex align-items-center">
+                                vs Last month{" "}
+                                <p className="green-color">
+                                  <HiArrowTrendingUp className="me-1" />
+                                  +20%
+                                </p>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="transcation-summary">
+                      <div className="tab-content-heading d-flex justify-content-between align-items-center">
+                        <h2 className="fs-20">
+                          All Advertisment{" "}
+                          <span className="light-grey">(50)</span>
+                        </h2>
+                        <div className="right-side d-flex">
+                          <div className="header-search">
+                            <input
+                              className="input-box"
+                              placeholder="Search..."
+                            ></input>
+                            <BsSearch />
+                          </div>
+                          <Dropdown className="input-box without-background me-0">
+                            <Dropdown.Toggle id="dropdown-basic">
+                              This Month <FaChevronDown />
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                              <Dropdown.Item href="#/action-1">
+                                Today
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-2">
+                                Yesterday
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-3">
+                                Last 30 Days
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">
+                                Last 1 Week
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">
+                                Last 1 Year
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">
+                                Life Time
+                              </Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">
+                                Custome Date Range
+                              </Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
+                      </div>
+                      <div className="table-responsive">
+                        <table className="transcation-summary-table">
+                          <tr>
+                            <th>Ad Id</th>
+                            <th>Featured Book</th>
+                            <th>Ad Placement</th>
+                            <th>Request date</th>
+                            <th>Ad Duration</th>
+                            <th>Started</th>
+                            <th>Ends</th>
+                            <th>Amount Spent</th>
+                            <th>Impressions</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                          <tr>
+                            <td>
+                              <a
+                                href="#"
+                                className="info-state text-decoration-underline"
+                              >
+                                1441514
+                              </a>
+                            </td>
+                            <td>Man & Superman</td>
+                            <td>Featured Book</td>
+                            <td>Oct 12, 2022</td>
+                            <td>24:00 Hours</td>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>--</td>
+                            <td>0</td>
+                            <td>
+                              <p className="label red-view">Requested</p>
+                            </td>
+                            <td>
+                              <div className="action">
+                                <a href="#" title="Edit" className="edit">
+                                  <MdOutlineModeEditOutline />
+                                </a>
+                                <a href="#" title="Delete" className="delete">
+                                  <MdOutlineDeleteOutline />
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <a
+                                href="#"
+                                className="info-state text-decoration-underline"
+                              >
+                                1441514
+                              </a>
+                            </td>
+                            <td>Man & Superman</td>
+                            <td>Featured Book</td>
+                            <td>Oct 12, 2022</td>
+                            <td>24:00 Hours</td>
+                            <td>Oct 11, 2022</td>
+                            <td>
+                              <span className="info-state fw-500">
+                                24:23:45
+                              </span>
+                              Left
+                            </td>
+                            <td className="fw-500">$ 73.50</td>
+                            <td>1.5k</td>
+                            <td>
+                              <p className="label green-view">Requested</p>
+                            </td>
+                            <td>
+                              <div className="action">
+                                <a href="#" title="Edit" className="edit">
+                                  <MdOutlineModeEditOutline />
+                                </a>
+                                <a href="#" title="Delete" className="delete">
+                                  <MdOutlineDeleteOutline />
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <a
+                                href="#"
+                                className="info-state text-decoration-underline"
+                              >
+                                1441514
+                              </a>
+                            </td>
+                            <td>Man & Superman</td>
+                            <td>Featured Book</td>
+                            <td>Oct 12, 2022</td>
+                            <td>24:00 Hours</td>
+                            <td>Oct 11, 2022</td>
+                            <td>
+                              <span className="info-state fw-500">
+                                24:23:45
+                              </span>
+                              Left
+                            </td>
+                            <td className="fw-500">$ 73.50</td>
+                            <td>1.5k</td>
+                            <td>
+                              <p className="label yellow-view">Requested</p>
+                            </td>
+                            <td>
+                              <div className="action">
+                                <a
+                                  href="#"
+                                  title="Edit"
+                                  className="edit"
+                                  onClick={toggleClass}
+                                >
+                                  <AiOutlineEye />
+                                </a>
+                                <a
+                                  href="#"
+                                  title="Delete"
+                                  className="edit ms-2"
+                                >
+                                  <MdOutlineContentCopy />
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                      <p className="text-end">Pagination comes here</p>
+                    </div>
+                    <Modal
+                      show={createad}
+                      onHide={setcreateadclose}
+                      className="extra-large-modal"
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title>Create Advertisement</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body className="has-footer">
+                        <div className="create-add-modal">
+                          <div className="heading">
+                            <h5 className="fs-18 fw-500 mb-1">Ad Placement</h5>
+                            <p className="fs-14 light-grey">
+                              Choose a website place where you’d like to show
+                              your ad.
+                            </p>
+                          </div>
+                          <div className="radio-button-group checkbox-group">
+                            <div class="form-check selected">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="addplace1"
+                                checked
+                              ></input>
+                              <label class="form-check-label" for="addplace1">
+                                <div className="add-place-design">
+                                  <img
+                                    src={addplace1}
+                                    alt="Image"
+                                    className="banner"
+                                  ></img>
+                                  <div className="data text-center mt-3">
+                                    <h5 className="fw-normal fs-16 body-color">
+                                      Featured Books Section
+                                    </h5>
+                                    <p className="fs-14 light-grey">
+                                      Starts from{" "}
+                                      <span className="fw-500 primary-color">
+                                        $4.9/hours
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="addplace2"
+                              ></input>
+                              <label class="form-check-label" for="addplace2">
+                                <div className="add-place-design">
+                                  <img
+                                    src={addplace1}
+                                    alt="Image"
+                                    className="banner"
+                                  ></img>
+                                  <div className="data text-center mt-3">
+                                    <h5 className="fw-normal fs-16 body-color">
+                                      Banner Ad
+                                    </h5>
+                                    <p className="fs-14 light-grey">
+                                      Starts from{" "}
+                                      <span className="fw-500 primary-color">
+                                        $1.9/hours
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="addplace3"
+                              ></input>
+                              <label class="form-check-label" for="addplace3">
+                                <div className="add-place-design">
+                                  <img
+                                    src={addplace1}
+                                    alt="Image"
+                                    className="banner"
+                                  ></img>
+                                  <div className="data text-center mt-3">
+                                    <h5 className="fw-normal fs-16 body-color">
+                                      Top Selling Books
+                                    </h5>
+                                    <p className="fs-14 light-grey">
+                                      Starts from{" "}
+                                      <span className="fw-500 primary-color">
+                                        $4.9/hours
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="flexRadioDefault"
+                                id="addplace4"
+                              ></input>
+                              <label class="form-check-label" for="addplace4">
+                                <div className="add-place-design">
+                                  <img
+                                    src={addplace1}
+                                    alt="Image"
+                                    className="banner"
+                                  ></img>
+                                  <div className="data text-center mt-3">
+                                    <h5 className="fw-normal fs-16 body-color">
+                                      Exclusive/Limited Offers
+                                    </h5>
+                                    <p className="fs-14 light-grey">
+                                      Starts from{" "}
+                                      <span className="fw-500 primary-color">
+                                        $4.9/hours
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </label>
+                            </div>
+                          </div>
+                          {/* First radio button content START */}
+                          <div className="add-modal-content">
+                            <Tabs
+                              defaultActiveKey="Basic"
+                              transition={false}
+                              id="fill-tab-example"
+                            >
+                              <Tab eventKey="Basic" title="Basic">
+                                <div className="basic-tab-content">
+                                  <div className="heading">
+                                    <p className="fs-18 fw-500">
+                                      No of slots (4)
+                                    </p>
+                                    <span className="fs-14 light-grey">
+                                      Select your campaign spot below
+                                    </span>
+                                  </div>
+                                  <div className="dropdown-input-fields">
+                                    <div className="dropdown-input">
+                                      <Dropdown className="input-box without-background me-0">
+                                        <Dropdown.Toggle id="dropdown-basic">
+                                          Select your book <FaChevronDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1">
+                                            Today
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2">
+                                            Yesterday
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3">
+                                            Last 30 Days
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Last 1 Week
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Last 1 Year
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Life Time
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Custome Date Range
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                      <p className="label">Slot 1</p>
+                                    </div>
+                                    <div className="dropdown-input">
+                                      <Dropdown className="input-box without-background me-0">
+                                        <Dropdown.Toggle id="dropdown-basic">
+                                          Select your book <FaChevronDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1">
+                                            Today
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2">
+                                            Yesterday
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3">
+                                            Last 30 Days
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Last 1 Week
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Last 1 Year
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Life Time
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Custome Date Range
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                      <p className="label">Slot 2</p>
+                                    </div>
+                                    <div className="dropdown-input">
+                                      <Dropdown className="input-box without-background me-0">
+                                        <Dropdown.Toggle id="dropdown-basic">
+                                          Select your book <FaChevronDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1">
+                                            Today
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2">
+                                            Yesterday
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3">
+                                            Last 30 Days
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Last 1 Week
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Last 1 Year
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Life Time
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Custome Date Range
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                      <p className="label">Slot 3</p>
+                                    </div>
+                                    <div className="dropdown-input">
+                                      <Dropdown className="input-box without-background me-0">
+                                        <Dropdown.Toggle id="dropdown-basic">
+                                          Select your book <FaChevronDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1">
+                                            Today
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2">
+                                            Yesterday
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3">
+                                            Last 30 Days
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Last 1 Week
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Last 1 Year
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Life Time
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-1">
+                                            Custome Date Range
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                      <p className="label">Slot 4</p>
+                                    </div>
+                                  </div>
+                                  <div className="data-info-list">
+                                    <ul>
+                                      <li>
+                                        <div className="heading">
+                                          <p className="fs-18 fw-500">
+                                            Ad duration & Charges
+                                          </p>
+                                          <span className="fs-14 light-grey">
+                                            Select your campaign duration and
+                                            budget
+                                          </span>
+                                        </div>
+                                        <div className="d-flex align-items-center">
+                                          <p className="fs-20 fw-500 text-nowrap">
+                                            $4.9 / Hours
+                                          </p>
+                                          <div className="position-relative ms-4">
+                                            <input
+                                              className="input-box"
+                                              placeholder="00"
+                                            ></input>
+                                            <label className="hours-label">
+                                              Hours
+                                            </label>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div className="heading">
+                                          <p className="fs-18 fw-500">
+                                            Disscount Price{" "}
+                                            <span className="fw-normal light-grey">
+                                              (optional)
+                                            </span>
+                                          </p>
+                                          <span className="fs-14 light-grey">
+                                            Enter the disscount price if you are
+                                            wanna sell this book at disscount
+                                            price.
+                                          </span>
+                                        </div>
+                                        <div className="input-field-wrapper d-flex">
+                                          <div className="input-item me-4 d-flex flex-column">
+                                            <label>Current Price</label>
+                                            <input
+                                              className="input-box"
+                                              placeholder="$35.00"
+                                            ></input>
+                                          </div>
+                                          <div className="input-item d-flex flex-column">
+                                            <label>Disscount Price</label>
+                                            <input
+                                              className="input-box"
+                                              placeholder="$0.00"
+                                            ></input>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </Tab>
+                              <Tab eventKey="Premium" title="Premium">
+                                Same as basic
+                              </Tab>
+                            </Tabs>
+                          </div>
+                          {/* First radio button content END */}
+                          <hr></hr>
+                          {/* Second Radion button contemt START */}
+                          <div className="add-modal-content banner-add-content">
+                            <div className="dropdown-input-fields">
+                              <div className="dropdown-input">
+                                <Dropdown className="input-box without-background me-0">
+                                  <Dropdown.Toggle
+                                    id="dropdown-basic"
+                                    className="d-flex justify-content-between"
+                                  >
+                                    Select your book <FaChevronDown />
+                                  </Dropdown.Toggle>
+
+                                  <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">
+                                      Today
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">
+                                      Yesterday
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      Last 30 Days
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Last 1 Week
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Last 1 Year
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Life Time
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Custome Date Range
+                                    </Dropdown.Item>
+                                  </Dropdown.Menu>
+                                </Dropdown>
+                                <p className="label">Slot 1</p>
+                              </div>
+                            </div>
+                            <div className="data-info-list">
+                              <ul>
+                                <li>
+                                  <div className="heading">
+                                    <p className="fs-18 fw-500">
+                                      Ad duration & Charges
+                                    </p>
+                                    <span className="fs-14 light-grey">
+                                      Select your campaign duration and budget
+                                    </span>
+                                  </div>
+                                  <div className="d-flex align-items-center">
+                                    <p className="fs-20 fw-500 text-nowrap">
+                                      $4.9 / Hours
+                                    </p>
+                                    <div className="position-relative ms-4">
+                                      <input
+                                        className="input-box"
+                                        placeholder="00"
+                                      ></input>
+                                      <label className="hours-label">
+                                        Hours
+                                      </label>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div className="heading">
+                                    <p className="fs-18 fw-500">
+                                      Disscount Price{" "}
+                                      <span className="fw-normal light-grey">
+                                        (optional)
+                                      </span>
+                                    </p>
+                                    <span className="fs-14 light-grey">
+                                      Enter the disscount price if you are wanna
+                                      sell this book at disscount price.
+                                    </span>
+                                  </div>
+                                  <div className="input-field-wrapper d-flex">
+                                    <div className="input-item me-4 d-flex flex-column">
+                                      <label>Current Price</label>
+                                      <input
+                                        className="input-box"
+                                        placeholder="$35.00"
+                                      ></input>
+                                    </div>
+                                    <div className="input-item d-flex flex-column">
+                                      <label>Disscount Price</label>
+                                      <input
+                                        className="input-box"
+                                        placeholder="$0.00"
+                                      ></input>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="add-description mt-4 pt-2">
+                            <label>Ad Description</label>
+                            <input
+                              className="input-box"
+                              placeholder="Eg: Enjoy the Monsoon offer"
+                            ></input>
+                            <p className="d-flex justify-content-end light-grey mt-1">
+                              <span>0/24</span>
+                            </p>
+                          </div>
+                          {/* Second Radion button contemt END */}
+                          <hr></hr>
+                          {/* Fourth radio button content START */}
+                          <div className="add-modal-content offer-baner">
+                            <div className="heading">
+                              <p className="fs-18 fw-500">No of slots (4)</p>
+                              <span className="fs-14 light-grey">
+                                Select your campaign spot below
+                              </span>
+                            </div>
+                            <div className="dropdown-input-fields">
+                              <div className="dropdown-input">
+                                <Dropdown className="input-box without-background me-0">
+                                  <Dropdown.Toggle
+                                    id="dropdown-basic"
+                                    className="d-flex justify-content-between"
+                                  >
+                                    Select your book <FaChevronDown />
+                                  </Dropdown.Toggle>
+
+                                  <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">
+                                      Today
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">
+                                      Yesterday
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      Last 30 Days
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Last 1 Week
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Last 1 Year
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Life Time
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Custome Date Range
+                                    </Dropdown.Item>
+                                  </Dropdown.Menu>
+                                </Dropdown>
+                                <p className="label">Slot 1</p>
+                              </div>
+                              <div className="dropdown-input">
+                                <Dropdown className="input-box without-background me-0">
+                                  <Dropdown.Toggle
+                                    id="dropdown-basic"
+                                    className="d-flex justify-content-between"
+                                  >
+                                    Select your book <FaChevronDown />
+                                  </Dropdown.Toggle>
+
+                                  <Dropdown.Menu>
+                                    <Dropdown.Item href="#/action-1">
+                                      Today
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">
+                                      Yesterday
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-3">
+                                      Last 30 Days
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Last 1 Week
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Last 1 Year
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Life Time
+                                    </Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">
+                                      Custome Date Range
+                                    </Dropdown.Item>
+                                  </Dropdown.Menu>
+                                </Dropdown>
+                                <p className="label">Slot 2</p>
+                              </div>
+                            </div>
+                            <div className="data-info-list">
+                              <ul>
+                                <li>
+                                  <div className="heading">
+                                    <p className="fs-18 fw-500">
+                                      Ad duration & Charges
+                                    </p>
+                                    <span className="fs-14 light-grey">
+                                      Select your campaign duration and budget
+                                    </span>
+                                  </div>
+                                  <div className="d-flex align-items-center">
+                                    <p className="fs-20 fw-500 text-nowrap">
+                                      $4.9 / Hours
+                                    </p>
+                                    <div className="position-relative ms-4">
+                                      <input
+                                        className="input-box"
+                                        placeholder="00"
+                                      ></input>
+                                      <label className="hours-label">
+                                        Hours
+                                      </label>
+                                    </div>
+                                  </div>
+                                </li>
+                                <li>
+                                  <div className="heading">
+                                    <p className="fs-18 fw-500">
+                                      Disscount Price{" "}
+                                      <span className="fw-normal light-grey">
+                                        (optional)
+                                      </span>
+                                    </p>
+                                    <span className="fs-14 light-grey">
+                                      Enter the disscount price if you are wanna
+                                      sell this book at disscount price.
+                                    </span>
+                                  </div>
+                                  <div className="input-field-wrapper d-flex">
+                                    <div className="input-item me-4 d-flex flex-column">
+                                      <label>Current Price</label>
+                                      <input
+                                        className="input-box"
+                                        placeholder="$35.00"
+                                      ></input>
+                                    </div>
+                                    <div className="input-item d-flex flex-column">
+                                      <label>Disscount Price</label>
+                                      <input
+                                        className="input-box"
+                                        placeholder="$0.00"
+                                      ></input>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="add-description mt-4 pt-2">
+                            <label>Ad Description</label>
+                            <input
+                              className="input-box"
+                              placeholder="Eg: Enjoy the Monsoon offer"
+                            ></input>
+                            <p className="d-flex justify-content-end light-grey mt-1">
+                              <span>0/24</span>
+                            </p>
+                          </div>
+                          {/* Fourth radio button content END */}
+                        </div>
+                      </Modal.Body>
+                      <Modal.Footer className="d-flex justify-content-between">
+                        <p className="fw-500 fs-18 d-flex">
+                          Chargable Amount :{" "}
+                          <span className="primary-color fs-4 ms-1">$59</span>
+                        </p>
+                        <div className="btn-wrap d-flex">
+                          <button
+                            className="btn btn-grey me-3"
+                            onClick={setcreateadclose}
+                          >
+                            Cancle
+                          </button>
+                          <button
+                            className="btn btn-green"
+                            onClick={setsuccessreqaddshow}
+                          >
+                            Request for Ad
+                          </button>
+                        </div>
+                      </Modal.Footer>
+                    </Modal>
+                    <Modal show={successreqadd} onHide={setsuccessreqaddclose}>
+                      <Modal.Header
+                        closeButton
+                        className="border-0"
+                      ></Modal.Header>
+                      <Modal.Body>
+                        <div className="success-request-add-modal">
+                          <BsCheck2Circle />
+                          <h2>Successfully Requested for Ad</h2>
+                          <p>
+                            Your advertisment request is successfully sended to
+                            the admin. admin will publish your ad over website
+                            if there is spot is available otherwise you’ll get
+                            back your money within 7 working days
+                          </p>
+                          <div className="btn-wrap">
+                            <button className="btn btn-secondary me-2">
+                              Edit Details
+                            </button>
+                            <button className="btn btn-dark-blue">
+                              Okay, got it
+                            </button>
+                          </div>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
+                  </div>
+                </Tab.Pane>
+                <Tab.Pane eventKey="eleventh">
+                  <div className="profile-tab-content">
+                    <div className="tab-content-heading d-flex justify-content-between align-items-center">
+                      <h2>Profile & Setting</h2>
+                      <div className="right-side d-flex">
+                        <div className="header-search">
+                          <input
+                            className="input-box"
+                            placeholder="Search..."
+                          ></input>
+                          <BsSearch />
+                        </div>
+                      </div>
+                    </div>
+                    <Tab.Container
+                      id="left-tabs-example"
+                      defaultActiveKey="first"
+                    >
+                      <div className="d-flex flex-wrap justify-content-between">
+                        <div className="profile-inner-item-link">
+                          <Nav variant="pills" className="flex-column">
+                            <Nav.Item>
+                              <Nav.Link eventKey="first">
+                                <p>Personal Information</p>
+                              </Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                              <Nav.Link eventKey="second">
+                                <p>My Following</p>
+                              </Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                              <Nav.Link eventKey="third">
+                                <p>Bank Details</p>
+                              </Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                              <Nav.Link eventKey="fourth">
+                                <p>Password</p>
+                              </Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                              <Nav.Link eventKey="fifth">
+                                <p>Email & Notification</p>
+                              </Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item></Nav.Item>
+                          </Nav>
+                        </div>
+                        <div className="profile-inner-item-content">
+                          <Tab.Content>
+                            <Tab.Pane eventKey="first">
+                              <div className="personal-information-tab">
+                                <div className="banner">
+                                  <AiOutlineCamera />
+                                  <p>
+                                    For the best results on all devices, use an
+                                    image that's at least 1250 x 172 pixels and
+                                    6 MB or less.{" "}
+                                  </p>
+                                </div>
+                                <div className="profille-details-input-fields">
+                                  <div className="user-image">
+                                    <img
+                                      src={userdashboardprofile}
+                                      alt="Profile"
+                                    ></img>
+                                    <div className="edit-icon">
+                                      <MdOutlineModeEditOutline />
+                                    </div>
+                                  </div>
+                                  <div className="input-field-group">
+                                    <div className="input-field-item">
+                                      <label>First Name</label>
+                                      <input
+                                        type="text"
+                                        className="input-box"
+                                        placeholder="Albert"
+                                      ></input>
+                                    </div>
+                                    <div className="input-field-item">
+                                      <label>Last Name</label>
+                                      <input
+                                        type="text"
+                                        className="input-box"
+                                        placeholder="Flores"
+                                      ></input>
+                                    </div>
+
+                                    <div className="input-field-item">
+                                      <label>Author Type</label>
+                                      <Dropdown className="input-box without-background">
+                                        <Dropdown.Toggle id="dropdown-basic">
+                                          Comic & Horror Writer{" "}
+                                          <FaChevronDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1">
+                                            Male
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2">
+                                            Female
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3">
+                                            Other
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                    </div>
+                                    <div className="input-field-item">
+                                      <label>Book Language</label>
+                                      <Dropdown className="input-box without-background">
+                                        <Dropdown.Toggle id="dropdown-basic">
+                                          English <FaChevronDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1">
+                                            Male
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2">
+                                            Female
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3">
+                                            Other
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                    </div>
+                                    <div className="input-field-item">
+                                      <label>Email</label>
+                                      <input
+                                        type="date"
+                                        className="input-box"
+                                        placeholder="albertf10@gmail.com"
+                                      ></input>
+                                    </div>
+                                    <div className="input-field-item">
+                                      <label>Mobile Number</label>
+                                      <input
+                                        type="number"
+                                        className="input-box"
+                                        placeholder="6487145612"
+                                      ></input>
+                                    </div>
+                                    <div className="input-field-item">
+                                      <label>Gender</label>
+                                      <Dropdown className="input-box without-background">
+                                        <Dropdown.Toggle id="dropdown-basic">
+                                          Male
+                                          <FaChevronDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1">
+                                            Male
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2">
+                                            Female
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3">
+                                            Other
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                    </div>
+                                    <div className="input-field-item">
+                                      <label>Date of Birth</label>
+                                      <input
+                                        type="date"
+                                        className="input-box"
+                                        placeholder="Oct 10, 1992"
+                                      ></input>
+                                    </div>
+                                    <div className="input-field-item">
+                                      <label>Country</label>
+                                      <Dropdown className="input-box without-background">
+                                        <Dropdown.Toggle id="dropdown-basic">
+                                          Canada <FaChevronDown />
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu>
+                                          <Dropdown.Item href="#/action-1">
+                                            Male
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-2">
+                                            Female
+                                          </Dropdown.Item>
+                                          <Dropdown.Item href="#/action-3">
+                                            Other
+                                          </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                      </Dropdown>
+                                    </div>
+                                    <div className="input-field-item w-100">
+                                      <label>Your Bio</label>
+                                      <textarea
+                                        className="input-box"
+                                        placeholder="Add short bio about you..."
+                                      ></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="second">
+                              <div className="follwers-tab-content">
+                                <div className="follwers-banner">
+                                  <ul>
+                                    <li>
+                                      <span>Followers</span>
+                                      <h2>500</h2>
+                                      <p>
+                                        vs Last month <HiArrowTrendingUp />{" "}
+                                        <span className="fw-500 white-color">
+                                          +10%
+                                        </span>
+                                      </p>
+                                    </li>
+                                    <li>
+                                      <span>Following</span>
+                                      <h2>500</h2>
+                                      <p>
+                                        vs Last month <HiArrowTrendingDown />{" "}
+                                        <span className="fw-500 white-color">
+                                          -20%
+                                        </span>
+                                      </p>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="followers-tabbing">
+                                  <Tabs
+                                    defaultActiveKey="Followers"
+                                    transition={false}
+                                    id="fill-tab-example"
+                                  >
+                                    <Tab eventKey="Followers" title="Followers">
+                                      <div className="followers-tab-content">
+                                        <ul>
+                                          <li>
+                                            <div className="user-image">
+                                              <img
+                                                src={userprofilefollwers}
+                                                alt="Profile"
+                                              ></img>
+                                            </div>
+                                            <div className="user-data">
+                                              <h5>Savannah Nguyen</h5>
+                                              <p>
+                                                <IoLocationOutline />
+                                                Minsk, Belarus
+                                              </p>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div className="user-image">
+                                              <img
+                                                src={userprofilefollwers}
+                                                alt="Profile"
+                                              ></img>
+                                            </div>
+                                            <div className="user-data">
+                                              <h5>Savannah Nguyen</h5>
+                                              <p>
+                                                <IoLocationOutline />
+                                                Minsk, Belarus
+                                              </p>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div className="user-image">
+                                              <img
+                                                src={userprofilefollwers}
+                                                alt="Profile"
+                                              ></img>
+                                            </div>
+                                            <div className="user-data">
+                                              <h5>Savannah Nguyen</h5>
+                                              <p>
+                                                <IoLocationOutline />
+                                                Minsk, Belarus
+                                              </p>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </Tab>
+                                    <Tab eventKey="Following" title="Following">
+                                      <div className="followers-tab-content">
+                                        <div className="my-followings-content">
+                                          <ul>
+                                            <li>
+                                              <div className="user-image">
+                                                <img
+                                                  src={userprofile}
+                                                  alt="Profile"
+                                                ></img>
+                                              </div>
+                                              <div className="user-data">
+                                                <h5>Savannah Nguyen</h5>
+                                                <p>
+                                                  Comic & Horror Book Writer
+                                                </p>
+                                                <div className="action">
+                                                  <a href="#">View Profile</a>
+                                                  <a href="#">View all Books</a>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <div className="user-image">
+                                                <img
+                                                  src={userprofile}
+                                                  alt="Profile"
+                                                ></img>
+                                              </div>
+                                              <div className="user-data">
+                                                <h5>Savannah Nguyen</h5>
+                                                <p>
+                                                  Comic & Horror Book Writer
+                                                </p>
+                                                <div className="action">
+                                                  <a href="#">View Profile</a>
+                                                  <a href="#">View all Books</a>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <div className="user-image">
+                                                <img
+                                                  src={userprofile}
+                                                  alt="Profile"
+                                                ></img>
+                                              </div>
+                                              <div className="user-data">
+                                                <h5>Savannah Nguyen</h5>
+                                                <p>
+                                                  Comic & Horror Book Writer
+                                                </p>
+                                                <div className="action">
+                                                  <a href="#">View Profile</a>
+                                                  <a href="#">View all Books</a>
+                                                </div>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <div className="user-image">
+                                                <img
+                                                  src={userprofile}
+                                                  alt="Profile"
+                                                ></img>
+                                              </div>
+                                              <div className="user-data">
+                                                <h5>Savannah Nguyen</h5>
+                                                <p>
+                                                  Comic & Horror Book Writer
+                                                </p>
+                                                <div className="action">
+                                                  <a href="#">View Profile</a>
+                                                  <a href="#">View all Books</a>
+                                                </div>
+                                              </div>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </Tab>
+                                  </Tabs>
+                                  <Dropdown className="input-box without-background">
+                                    <Dropdown.Toggle
+                                      id="dropdown-basic"
+                                      className="d-flex justify-content-between"
+                                    >
+                                      Newest first <FaChevronDown />
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                      <Dropdown.Item href="#/action-1">
+                                        Newest first
+                                      </Dropdown.Item>
+                                      <Dropdown.Item href="#/action-2">
+                                        Oldest First
+                                      </Dropdown.Item>
+                                      <Dropdown.Item href="#/action-3">
+                                        Most Liked
+                                      </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                  </Dropdown>
+                                </div>
+                              </div>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="third">
+                              <div className="bank-details-tab">
+                                <div className="heading d-flex flex-wrap justify-content-between align-items-center">
+                                  <h6 className="fs-20 fw-500">
+                                    Your Bank Accounts
+                                  </h6>
+                                  <div className="btn-wrap">
+                                    <button className="btn btn-green">
+                                      <AiOutlinePlus className="me-2" />
+                                      Add New Card
+                                    </button>
+                                  </div>
+                                </div>
+                                <div className="transcation-summary">
+                                  <div className="table-responsive">
+                                    <table className="transcation-summary-table">
+                                      <tr>
+                                        <th>Bank</th>
+                                        <th>Account Number</th>
+                                        <th>Bank Holder Name</th>
+                                        <th>CPF/CNJ</th>
+                                        <th>Bank Type</th>
+                                        <th>Action</th>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <img
+                                            src={visalogo}
+                                            alt="Visa Logo"
+                                          ></img>
+                                        </td>
+                                        <td>344******234</td>
+                                        <td>Luke Paul</td>
+                                        <td>RBC0000007</td>
+                                        <td>
+                                          <p className="label">Primary</p>
+                                        </td>
+                                        <td>
+                                          <div className="action">
+                                            <a
+                                              href="#"
+                                              title="Edit"
+                                              className="edit"
+                                            >
+                                              <MdOutlineModeEditOutline />
+                                            </a>
+                                            <a
+                                              href="#"
+                                              title="Edit"
+                                              className="edit repeat-arrow ms-2 disabled"
+                                            >
+                                              <BsArrowRepeat />
+                                            </a>
+                                            <a
+                                              href="#"
+                                              title="Delete"
+                                              className="delete ms-2"
+                                            >
+                                              <MdOutlineDeleteOutline />
+                                            </a>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <img
+                                            src={mastercardlogo}
+                                            alt="Visa Logo"
+                                          ></img>
+                                        </td>
+                                        <td>344******234</td>
+                                        <td>Luke Paul</td>
+                                        <td>RBC0000007</td>
+                                        <td>
+                                          <p className="label secondary">
+                                            Secondary
+                                          </p>
+                                        </td>
+                                        <td>
+                                          <div className="action">
+                                            <a
+                                              href="#"
+                                              title="Edit"
+                                              className="edit"
+                                            >
+                                              <MdOutlineModeEditOutline />
+                                            </a>
+                                            <a
+                                              title="Edit"
+                                              className="edit ms-2 repeat-arrow"
+                                              onClick={setsuccessreqaddshow}
+                                            >
+                                              <BsArrowRepeat />
+                                            </a>
+                                            <a
+                                              href="#"
+                                              title="Delete"
+                                              className="delete ms-2"
+                                            >
+                                              <MdOutlineDeleteOutline />
+                                            </a>
+                                            <Modal
+                                              show={successreqadd}
+                                              onHide={setsuccessreqaddclose}
+                                            >
+                                              <Modal.Header
+                                                closeButton
+                                                className="border-0"
+                                              ></Modal.Header>
+                                              <Modal.Body>
+                                                <div className="success-request-add-modal">
+                                                  <RiBankLine />
+
+                                                  <h2>
+                                                    Want to Make this bank
+                                                    Primary?
+                                                  </h2>
+                                                  <p>
+                                                    By compleating this process
+                                                    your Bank Ac No.
+                                                    344******234 will be your
+                                                    primary Bank Account and
+                                                    you’ll be start reciving
+                                                    payment on this bank confirm
+                                                    it if you want to make it
+                                                    Primary
+                                                  </p>
+                                                  <div className="btn-wrap">
+                                                    <button className="btn btn-secondary me-2">
+                                                      Cancel
+                                                    </button>
+                                                    <button className="btn btn-dark-blue">
+                                                      Yes, Confirm
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                              </Modal.Body>
+                                            </Modal>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <img
+                                            src={visalogo}
+                                            alt="Visa Logo"
+                                          ></img>
+                                        </td>
+                                        <td>344******234</td>
+                                        <td>Luke Paul</td>
+                                        <td>RBC0000007</td>
+                                        <td>
+                                          <p className="label">Primary</p>
+                                        </td>
+                                        <td>
+                                          <div className="action">
+                                            <a
+                                              href="#"
+                                              title="Edit"
+                                              className="edit"
+                                            >
+                                              <MdOutlineModeEditOutline />
+                                            </a>
+                                            <a
+                                              href="#"
+                                              title="Edit"
+                                              className="edit ms-2 repeat-arrow"
+                                            >
+                                              <BsArrowRepeat />
+                                            </a>
+                                            <a
+                                              href="#"
+                                              title="Delete"
+                                              className="delete ms-2"
+                                            >
+                                              <MdOutlineDeleteOutline />
+                                            </a>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="fourth">
+                              <div className="update-password-tab">
+                                <h6>
+                                  <AiOutlineLock />
+                                  Update Password
+                                </h6>
+                                <div className="input-field-group">
+                                  <div className="input-item w-100">
+                                    <label>Old Password</label>
+                                    <input
+                                      type="password"
+                                      className="input-box"
+                                    ></input>
+                                  </div>
+                                  <div className="input-item">
+                                    <label>New Password</label>
+                                    <input
+                                      type="password"
+                                      className="input-box"
+                                    ></input>
+                                  </div>
+                                  <div className="input-item">
+                                    <label>Re-enter New Password</label>
+                                    <input
+                                      type="password"
+                                      className="input-box"
+                                    ></input>
+                                  </div>
+                                </div>
+                                <div className="btn-wrap d-flex align-items-center">
+                                  <button className="btn btn-primary">
+                                    Update Password Now
+                                  </button>
+                                  <a href="#" className="info-state ms-4">
+                                    Did you forgot your password?
+                                  </a>
+                                </div>
+                              </div>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="fifth">
+                              <div className="profile-setting-tab">
+                                <div className="email-setting">
+                                  <h2 className="title">
+                                    <HiOutlineMail />
+                                    Emails Setting
+                                  </h2>
+                                  <ul>
+                                    <li>
+                                      <Form>
+                                        <Form.Check
+                                          type="switch"
+                                          id="custom-switch"
+                                          label="Reminder Emails"
+                                        />
+                                      </Form>
+                                      <p>
+                                        Get notification you may have missed.
+                                      </p>
+                                    </li>
+                                    <li>
+                                      <Form>
+                                        <Form.Check
+                                          type="switch"
+                                          id="custom-switch"
+                                          label="News Emails"
+                                        />
+                                      </Form>
+                                      <p>
+                                        Learn about the new features and
+                                        Dreamcapcha’s related News
+                                      </p>
+                                    </li>
+                                    <li>
+                                      <Form>
+                                        <Form.Check
+                                          type="switch"
+                                          id="custom-switch"
+                                          label="Opinion Emails"
+                                        />
+                                      </Form>
+                                      <p>
+                                        Give Feedback on Dreamcapcha’s New
+                                        Features.
+                                      </p>
+                                    </li>
+                                    <li>
+                                      <Form>
+                                        <Form.Check
+                                          type="switch"
+                                          id="custom-switch"
+                                          label="Product Emails"
+                                        />
+                                      </Form>
+                                      <p>Get tips on Dreamcapcha tools</p>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="general-setting">
+                                  <h2 className="title">
+                                    <MdOutlineNotificationsActive />
+                                    General Notification Setting
+                                  </h2>
+                                  <ul>
+                                    <li>
+                                      <Form>
+                                        <Form.Check
+                                          type="switch"
+                                          id="custom-switch"
+                                          label="Like"
+                                        />
+                                      </Form>
+                                      <p>
+                                        Get notification when someone like your
+                                        book & comments
+                                      </p>
+                                    </li>
+                                    <li>
+                                      <Form>
+                                        <Form.Check
+                                          type="switch"
+                                          id="custom-switch"
+                                          label="Reviews"
+                                        />
+                                      </Form>
+                                      <p>
+                                        Get notification when someone Give
+                                        Feedback on your books
+                                      </p>
+                                    </li>
+                                    <li className="mb-0">
+                                      <Form>
+                                        <Form.Check
+                                          type="switch"
+                                          id="custom-switch"
+                                          label="Reminders"
+                                        />
+                                      </Form>
+                                      <p>
+                                        You have notifiactions you haven’t seen
+                                        and othersimilar notifications.
+                                      </p>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </Tab.Pane>
+                          </Tab.Content>
+                        </div>
+                      </div>
+                    </Tab.Container>
+                  </div>
+                </Tab.Pane>
               </Tab.Content>
             </div>
           </div>
         </Tab.Container>
-        <div
-          className={
-            isActive ? "show add-details-side-popup" : "add-details-side-popup"
-          }
-        >
+        <div className="add-details-side-popup">
           <div className="add-details-side-popup-wrapper">
             <div className="heading d-flex justify-content-between align-items-center">
               <p className="fs-20">
@@ -2911,13 +4998,44 @@ const AuthorsDashboard = () => {
                 </div>
               </div>
               <div className="add-place-postion">
-                <div className="heading">
+                <div className="heading p-0 border-0">
                   <h2 className="fs-16 fw-500">Ad Placement</h2>
                   <p className="fs-14 light-grey">
                     Your ad appear’s on this place of website
                   </p>
+                  <div className="add-here">
+                    <div className="left-part">
+                      <a href="#">
+                        <img src={addhereactive} alt="add here image"/>
+                        <p className="add-here-text">Your Ad here</p>
+                      </a>
+                    </div>
+                    <div className="right-part">
+                      <ul>
+                        <li>
+                          <a href="#">
+                          <img src={addhere} alt="add here image"/>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                          <img src={addhere} alt="add here image"/>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                          <img src={addhere} alt="add here image"/>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                          <img src={addhere} alt="add here image"/>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                Need to discuss this add to placment
               </div>
               <div className="add-labels-list">
                 <ul>
@@ -2936,16 +5054,16 @@ const AuthorsDashboard = () => {
                     </div>
                   </li>
                   <li>
-                    <div className="d-flex justify-content-between">
-                      <div className="me-2">
+                    <div className="d-flex justify-content-between flex-wrap">
+                      <div className="me-2 mb-2">
                         <p className="mb-3">Request date</p>
                         <p className="label">Oct 09, 2022</p>
                       </div>
-                      <div className="me-2">
+                      <div className="me-2 mb-2">
                         <p className="mb-3">Start Date</p>
                         <p className="label">Charges: $ 60.77 </p>
                       </div>
-                      <div>
+                      <div className="mb-2">
                         <p className="mb-3">End Date</p>
                         <p className="label">Charges: $ 60.77 </p>
                       </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import homebook from '../images/Home-Book.png';
 import astronut from '../images/astronut.png';
 import bookhomepage from '../images/book-home-page.jpg';
@@ -16,6 +18,11 @@ import { BsFillStarFill, BsCart3, BsStarHalf, BsStopwatch, BsChevronDown} from "
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 const Home = ()=>{
+  const notify = () => {
+    toast.success("Success Notification !", {
+      position: toast.POSITION.TOP_CENTER
+    });
+}
   return (
     <>
         <section className="main-section">
@@ -100,10 +107,11 @@ const Home = ()=>{
                         </p>
                       </div> */}
                       <div className="btn-wrap">
-                        <button className="btn btn-add-to-cart">
+                        <button className="btn btn-add-to-cart"  onClick={notify}>
                          <BsCart3 />
                           Add to cart
                         </button>
+                        <ToastContainer />
                       </div>
                     </div>
                   </div>
@@ -245,7 +253,7 @@ const Home = ()=>{
                         </p>
                       </div>
                       <div className="btn-wrap">
-                        <button className="btn btn-green">
+                        <button className="btn btn-green btn-add-to-cart">
                          <BsCart3 />
                           Add to cart
                         </button>
