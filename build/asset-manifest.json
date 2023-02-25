@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.392e4724.css",
+    "main.js": "/static/js/main.57346322.js",
+    "static/media/dummy-video.mp4": "/static/media/dummy-video.6a518edcaf4c6383cdf7.mp4",
+    "static/media/vide-background.jpg": "/static/media/vide-background.60bd570d5a9793c1b463.jpg",
+    "static/media/trending-book-cover.png": "/static/media/trending-book-cover.14a4ca6a4f8746b6ef45.png",
+    "static/media/offer-books.png": "/static/media/offer-books.99997aae223a61ede4e6.png",
+    "static/media/coupon-bg.png": "/static/media/coupon-bg.ba8d428a2d173f45cf97.png",
+    "static/media/coupon-bg-primary.png": "/static/media/coupon-bg-primary.979cc95ba3fb757c973c.png",
+    "static/media/slider-book.png": "/static/media/slider-book.914fcd6e7cb4fe7e67d1.png",
+    "static/media/books-download.png": "/static/media/books-download.b2856f0f9593a7c3a36e.png",
+    "static/media/ruppies.png": "/static/media/ruppies.17a81b795adf75f1e113.png",
+    "static/media/publish-book-author.png": "/static/media/publish-book-author.1cf585ebcc1bd6b0e1b3.png",
+    "static/media/author-detail-bg.jpg": "/static/media/author-detail-bg.855abf09aeb82f243a1b.jpg",
+    "static/media/user-profile-large.png": "/static/media/user-profile-large.5a13ef7d811b40d3af2f.png",
+    "static/media/new-trending-background.png": "/static/media/new-trending-background.8d30915394aac9c83735.png",
+    "static/media/astronut.png": "/static/media/astronut.f8cfb905825d23d9195b.png",
+    "static/media/Home-Book.png": "/static/media/Home-Book.1f4f1ff817ae4404d195.png",
+    "static/media/book-home-page.jpg": "/static/media/book-home-page.580651b73740a279895e.jpg",
+    "static/media/contact-us.png": "/static/media/contact-us.17a37fc4780003514e94.png",
+    "static/media/ebook-cover.png": "/static/media/ebook-cover.202da52339598f8ebf4f.png",
+    "static/media/book-list-1.png": "/static/media/book-list-1.e55677189c46ded55570.png",
+    "static/media/new-trending-book.png": "/static/media/new-trending-book.af0ea0d0d76a53ca21c7.png",
+    "static/media/authors-background.png": "/static/media/authors-background.6d26035a9fc5252bb7b6.png",
+    "static/media/logo.svg": "/static/media/logo.ab5ca073694214461029fda405ef4c91.svg",
+    "static/media/logo-white.svg": "/static/media/logo-white.18a1cf6e2828c0f3af3a5cb1e66d6698.svg",
+    "static/media/author-profile.png": "/static/media/author-profile.e201277f6af1fdcceee3.png",
+    "static/media/book-cover-cartpage.png": "/static/media/book-cover-cartpage.220a6a72590e092f7c87.png",
+    "static/media/user-dashboard-profile.png": "/static/media/user-dashboard-profile.0789b9bcf4903bb258ac.png",
+    "static/media/horror.png": "/static/media/horror.0968e5c5f2ea28477b58.png",
+    "static/media/404.svg": "/static/media/404.07fefdc4f29686041eecf9b48e1728c8.svg",
+    "index.html": "/index.html",
+    "main.392e4724.css.map": "/static/css/main.392e4724.css.map",
+    "main.57346322.js.map": "/static/js/main.57346322.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.392e4724.css",
+    "static/js/main.57346322.js"
+  ]
+}
