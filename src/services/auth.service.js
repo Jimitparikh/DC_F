@@ -22,7 +22,6 @@ const login = (formValue) => {
 
 
 const verifyotp = (formValue) => {
-    console.log(formValue, "<===in service");
     return axios
         .post(API_URL + "verifyOtp", 
             formValue

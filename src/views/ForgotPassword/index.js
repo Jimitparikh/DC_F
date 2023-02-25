@@ -30,10 +30,8 @@ const ForgotPassword = () => {
     }
 
     const verifyotp = async () => {
-        console.log(readerID,OTP,"in verify")
         setLoading(true);
         const data = await AuthService.verifyotp({readerID, OTP})
-        console.log(data, "otp response")
         if(data.success){
             navigate("/");
         }

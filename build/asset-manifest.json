@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.392e4724.css",
-    "main.js": "/static/js/main.57346322.js",
+    "main.js": "/static/js/main.c5388cfd.js",
     "static/media/dummy-video.mp4": "/static/media/dummy-video.6a518edcaf4c6383cdf7.mp4",
     "static/media/vide-background.jpg": "/static/media/vide-background.60bd570d5a9793c1b463.jpg",
     "static/media/trending-book-cover.png": "/static/media/trending-book-cover.14a4ca6a4f8746b6ef45.png",
@@ -32,10 +32,10 @@
     "static/media/404.svg": "/static/media/404.07fefdc4f29686041eecf9b48e1728c8.svg",
     "index.html": "/index.html",
     "main.392e4724.css.map": "/static/css/main.392e4724.css.map",
-    "main.57346322.js.map": "/static/js/main.57346322.js.map"
+    "main.c5388cfd.js.map": "/static/js/main.c5388cfd.js.map"
   },
   "entrypoints": [
     "static/css/main.392e4724.css",
-    "static/js/main.57346322.js"
+    "static/js/main.c5388cfd.js"
   ]
 }
