@@ -25,7 +25,7 @@ const Header = () => {
   const { isLoggedIn , user } = useSelector((state) => state.auth);
   const [isActive, setActive] = useState(false);
   const toggleClass = () => {
-    setActive(isActive = !isActive);
+    setActive(!isActive);
   };
 
   const logouthandler =  ()=> {
@@ -75,7 +75,7 @@ const Header = () => {
                 </button>
               </div>
             </div>
-            <div className='column humberger-menu' onClick={toggleClass}>
+            <div className='column humberger-menu' onClick={()=> toggleClass()}>
               <BiMenuAltRight />
             </div>
             <div className="column d-flex align-items-center">
@@ -159,8 +159,8 @@ const Header = () => {
         <div className={isActive ? 'show header-bottom' : "header-bottom"}>
           <div className="container">
             <ul className="navbar-item d-flex">
-              <div className='close-menu'>
-                <BsXLg />
+              <div className='close-menu' onClick={()=> toggleClass()}>
+                <BsXLg  />
               </div>
               <li>
                 <a href="#" className="white-color">All Books</a>
