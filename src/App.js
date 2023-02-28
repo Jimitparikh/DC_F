@@ -28,6 +28,8 @@ import Notification from "./pages/Notification";
 import UserDashboard from "./pages/UserDashboard";
 import AuthorsDashboard from "./pages/AuthorsDashboard";
 import ReadBook from "./pages/ReadBook";
+import BookPublicProcess from "./pages/BookPublishProcess";
+import BookPublishProcess from "./pages/BookPublishProcess";
 const App = () => {
   return (
     <>
@@ -55,6 +57,7 @@ const App = () => {
           <Route path="/notification" element={<Notification />} />
           <Route path="/authors-dashboard" element={<AuthorsDashboard />} />
           <Route path="/read-book" element={<ReadBook />} />
+          <Route path="/book-publish-process" element={<BookPublishProcess />} />
           <Route path="/*" element={<Error />} />
         </Route>
       </Routes>

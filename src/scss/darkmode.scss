@@ -145,6 +145,35 @@
             }
         }
     }
+    .modal-content{
+        background: #10102C;
+        border: 1px solid #FFFFFF;
+        border-radius: 8px;
+        .modal-header{
+            .btn-close{
+                
+            }
+        }
+        .success-request-add-modal{
+            h2{
+                color: white;
+            }
+            p{
+                color: rgba(255, 255, 255, 0.5);
+            }
+            svg{
+                color: #EBBC2E;
+            }
+            .btn-secondary{
+                border: 1px solid rgba(153, 86, 224, 0.4);
+                background-color: transparent;
+                color: white;
+                svg{
+                    color: white;
+                }
+            }
+        }        
+    }
 }
 
 

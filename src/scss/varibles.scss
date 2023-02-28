@@ -32,6 +32,10 @@
   .info-state{
     color: #2F80ED;
   }
+  .disabled{
+    opacity: .6;
+    cursor: not-allowed;
+  }
   .fs-14{
     font-size: 14px !important;
     line-height: 24px !important;

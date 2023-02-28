@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
+import Modal from "react-bootstrap/Modal";
 import {
   AiFillCheckCircle,
   AiOutlineAlignLeft,
@@ -11,17 +12,21 @@ import {
   AiOutlineMinusCircle,
   AiOutlinePlusCircle,
 } from "react-icons/ai";
-import { BiExpand, BiFileFind, BiTask } from "react-icons/bi";
+import { BiExpand, BiFileFind, BiMenuAltRight, BiTask } from "react-icons/bi";
 import { MdClose, MdHdrAuto, MdMenuBook, MdTextFields } from "react-icons/md";
 import readbook from "../images/read-book.png";
 import { CiSquarePlus, CiSquareMinus } from "react-icons/gi";
-import { BsJustify, BsSearch, BsThreeDotsVertical } from "react-icons/bs";
+import { BsCart3, BsCheck2Circle, BsJustify, BsSearch, BsThreeDotsVertical } from "react-icons/bs";
 import { FiFileText } from "react-icons/fi";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa";
 import { RiCheckboxBlankFill } from "react-icons/ri";
+import { HiMenu } from "react-icons/hi";
 
 const ReadBook = () => {
+  const [successreqadd, setsuccessreqadd] = useState(false);
+  const setsuccessreqaddclose = () => setsuccessreqadd(false);
+  const setsuccessreqaddshow = () => setsuccessreqadd(true);
   return (
     <>
       <section className="read-book-section">
@@ -61,6 +66,43 @@ const ReadBook = () => {
                 </a>
               </li>
             </ul>
+            <div className="mobile-menu">
+              <Form>
+                
+                <Form.Check type="switch" id="custom-switch"/>
+              </Form>
+              <Dropdown className="without-background" align="end">
+                <Dropdown.Toggle
+                  id="dropdown-basic"
+                  className="d-flex justify-content-between"
+                >
+                  <HiMenu />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">
+                  <p className="item-selector">
+                    <BiExpand /> Expand
+                  </p>
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">
+                  <p className="item-selector">
+                    <BiFileFind /> Search Text
+                  </p>
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">
+                  <p className="item-selector">
+                    <MdTextFields /> Text Style
+                  </p>
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">
+                  <p className="item-selector">
+                    <BiTask /> Annotation
+                  </p>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
           </div>
         </div>
         <div className="read-book-body">
@@ -70,13 +112,36 @@ const ReadBook = () => {
                 <p>The cask of amontilado</p>
                 <span>Chap 1 - page 10</span>
               </li>
-              <li className="locked">
+              <li className="locked" onClick={setsuccessreqaddshow}>
                 <p>The cask of amontilado</p>
                 <span>Chap 1 - page 10</span>
                 <div className="lock-icon">
                   <AiOutlineLock />
                 </div>
               </li>
+              <Modal show={successreqadd} onHide={setsuccessreqaddclose}>
+                      <Modal.Header
+                        closeButton
+                        className="border-0"
+                      ></Modal.Header>
+                      <Modal.Body>
+                        <div className="success-request-add-modal">
+                        <BsCart3 />
+                          <h2>Want to buy this book?</h2>
+                          <p>
+                          If you wantetd to continue reading this book wihout any interruption then you have to buy this book.
+                          </p>
+                          <div className="btn-wrap">
+                            <button className="btn btn-secondary me-2 d-inline-flex align-items-center">
+                            <BsCart3 className="fs-6 me-2"/>Add to Cart
+                            </button>
+                            <button className="btn btn-dark-blue">
+                            Yes, buy now
+                            </button>
+                          </div>
+                        </div>
+                      </Modal.Body>
+                    </Modal>
               <li className="locked">
                 <p>The cask of amontilado</p>
                 <span>Chap 1 - page 10</span>
@@ -230,7 +295,7 @@ const ReadBook = () => {
                 </li>
                 <li>
                   <p className="title">Text Justify</p>
-                  <div className="d-flex d-flex justify-content-between align-items-center">
+                  <div className="d-flex flex-wrap justify-content-between align-items-center">
                     <a href="#" className="text-align-label active">
                       <AiOutlineAlignLeft />
                       left
@@ -247,7 +312,7 @@ const ReadBook = () => {
                 </li>
                 <li>
                   <p className="title">Page Layout</p>
-                  <div className="d-flex d-flex justify-content-between align-items-center">
+                  <div className="d-flex flex-wrap justify-content-between align-items-center">
                     <a href="#" className="text-align-label">
                       <MdHdrAuto />
                       Auto
@@ -355,7 +420,7 @@ const ReadBook = () => {
             </div>
           </div>
         </div>
-        <div className="annotation-sidebar show">
+        <div className="annotation-sidebar">
           <div className="annotation-content">
             <div className="heading d-flex justify-content-between align-items-center">
               <p className="fs-20 fw-500">Annotation</p>
