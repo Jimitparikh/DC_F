@@ -2789,6 +2789,9 @@ header {
     flex-wrap: wrap;
     @include min-1024 {
       flex-wrap: nowrap;
+      min-height: calc(117vh + 5px);
+    }
+    @include min-1920{
       min-height: 100vh;
     }
     .left-part {
@@ -2818,9 +2821,9 @@ header {
           margin: 40px auto 0 auto;
         }
         @include min-1200 {
-          margin-top: 80px;
+          margin-top: 150px;
         }
-        @include min-1600 {
+        @include min-1920{
           margin-top: 130px;
         }
         h2 {
@@ -3135,10 +3138,16 @@ header {
   }
   &.forgot-password-page {
     .login-page-content-wrapper {
-      min-height: 100vh;
+      min-height: calc(117vh + 5px);
+      @include min-1920{
+        min-height: 100vh;
+      }
       .left-part {
         .login-page-content {
           @include min-1024 {
+            margin-top: 150px;
+          }
+          @include min-1920{
             margin-top: 130px;
           }
           h2 {
@@ -4716,13 +4725,15 @@ header {
       @include min-992 {
         padding: 40px;
         width: 350px;
-        min-height: calc(100vh - 108px);
+        min-height: calc(117vh - 105px)
       }
       @include min-1200 {
         padding: 64px 0 64px 80px;
         width: 425px;
       }
-
+      @include min-1920{
+        min-height: calc(100vh - 108px);
+      }
       .nav-pills {
         .nav-item {
           margin-bottom: 32px;
@@ -4790,9 +4801,12 @@ header {
             max-height: calc(100vh - 430px);
           }
           @include min-1200 {
-            max-height: calc(100vh - 420px);
+            max-height: calc(117vh - 415px);
             padding-right: 30px;
             overflow: auto;
+            @include min-1920{
+              max-height: calc(100vh - 420px);
+            }
             &:after {
               content: "";
               position: absolute;
@@ -9401,12 +9415,12 @@ header {
     @include min-1024 {
       padding: 0px 40px 0 40px;
       margin: 40px 40px 0 0;
-      height: calc(100vh - 190px);
+      height: calc(117vh - 190px);
       overflow: auto;
       @include min-1200 {
         padding: 0px 40px 0 80px;
         margin: 40px 80px 0 0;
-        height: calc(100vh - 210px);
+        height: calc(117vh - 210px);
       }
       @include min-1600 {
         padding: 0px 40px 0 140px;
@@ -9415,6 +9429,7 @@ header {
       @include min-1920 {
         padding: 0px 40px 0 190px;
         margin: 40px 150px 0 0;
+        height: calc(100vh - 210px);
       }
     }
     &::after {
