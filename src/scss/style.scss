@@ -86,7 +86,48 @@
     }
   }
 }
-
+/* Book Offer Banner design */
+.book-offer-banner-design{
+  margin: 40px 0;
+  @include min-768 {
+    margin: 80px 0;
+  }
+  @include min-1024 {
+    margin: 100px 0;
+  }
+  @include min-1200 {
+    margin: 120px 0;
+  }
+  .slider-data{
+    cursor: pointer;
+    img{
+      width: 100%;
+    }
+  }
+  .carousel-indicators {
+    display: block;
+    margin: 0;
+    bottom: -60px;
+    text-align: center;
+    button {
+      padding: 0;
+      margin: 0 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 0;
+      background-color: var(--primary-color);
+      &.active{
+        width: 35px;
+        border-radius: 10px;
+      }
+    }
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+}
 /* featured-books-section CSS start here */
 .featured-books-section {
   margin: 40px 0;
@@ -264,6 +305,10 @@
           .add-cart-book-data {
             margin-left: 0;
             width: 100%;
+            .btn.btn-green{
+              padding: 14px 28px;
+              font-size: 16px;              
+            }
           }
         }
         li {
@@ -1787,6 +1832,19 @@ header {
             @include min-1600 {
               width: 25%;
             }
+          }
+        }
+      }
+      .pagination-wrapper{
+        @include mobile{
+          margin-top: 0;
+        }
+        .pagination-list{
+          .btn{
+            @include mobile{
+              font-size: 10px;
+            padding: 10px 17px;
+            }            
           }
         }
       }
@@ -5337,6 +5395,7 @@ header {
       }
       .icon {
         position: relative;
+        cursor: pointer;
         @include min-992 {
           margin-right: 25px;
         }
@@ -8103,6 +8162,10 @@ header {
                   line-height: 22px;
                   padding: 1px 10px;
                   margin-top: 2px;
+                  &.pending{
+                    color: #D49649;
+                    background: #FFF6E9;                    
+                  }
                 }
               }
               a {
@@ -10073,6 +10136,191 @@ header {
       font-weight: 600;
       text-decoration: underline;
       cursor: pointer;
+    }
+  }
+}
+.affiliate-dashboard{
+  .authors-dashboard-header{
+    background-color: #353794;
+    .column{
+      .icon{
+        background: #43459F;
+      }
+    }
+  }
+  .author-tabbing-wrapper{
+    .side-panel{
+      background-color: #303185;
+      min-height: calc(100vh + 30px);
+      .create-book{
+        background-color: #303185;
+        border-bottom: 1px solid #484AA6;
+        .btn.btn-green{
+          background: #FFFFFF;
+          color: #303185;
+          padding: 16px 22px;
+          font-size: 16px;
+          svg{
+            margin-right: 4px;
+            font-size: 22px;
+            position: relative;
+            top: -1px;
+          }
+          &:hover{
+            background: transparent;
+            color: white;
+            border-color: white;
+          }
+        }
+      }
+    }
+    .author-tabbing-content{
+      .chart-data{
+        ul{
+          li{
+            padding: 20px 14px;
+            @include min-1440{
+              width: calc(25% - 40px);
+              margin: 0 20px;
+            }
+            .icon{
+              margin-right: 16px;
+            }
+            h5{
+              font-size: 32px;
+              line-height: 40px;
+              margin-top: 2px; 
+              margin-bottom: 16px;             
+            }
+          }
+        }
+      }
+      .data-chat{
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;  
+        margin-top: 66px;      
+      }
+      .wallet-tab-content{
+        .wallet-items{
+          .column{
+            margin: 0;
+            @include min-1340{
+              width: calc(100% - 320px);
+            }
+          }
+          .data-info-list{
+            li{
+              @include min-1200{
+                width: 33.33%;
+              }
+            }
+          }
+          .current-balance {
+            padding: 24px;
+            background: #8131d9;
+            border: 1px solid #8131d9;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 24px;
+            @include min-1340{
+              width: 300px;
+              margin-top: 0;
+            }
+            .heading {
+              color: white;
+            }
+            h2 {
+              font-weight: 400;
+              font-size: 48px;
+              line-height: 42px;
+              margin-top: 34px;
+              color: white;
+            }
+          }
+        }
+      }
+      .bank-details-tab{
+        .transcation-summary{
+          margin-top: 44px;
+        }
+      }
+      .notification-tab-content{
+        .profile-setting-tab {
+          margin-top: 64px;
+          @include tablet{
+            margin-top: 34px;
+          }
+          .email-setting{
+            @include min-1340{
+              margin-bottom: 30px;
+            }
+          }
+          .title {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 30px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            svg {
+              margin-right: 8px;
+              font-size: 24px;
+            }
+          }
+          ul {
+            display: flex;
+            flex-wrap: wrap;
+            @include min-1340{
+              margin: 0 -20px;
+            }
+            li {
+              width: 100%;
+              margin-bottom: 34px;
+              @include min-768{
+                width: 50%;
+              }
+              @include min-1340 {
+                width: calc(33.33% - 40px);
+                margin: 0 20px;
+                margin-bottom: 44px;
+              }
+              .form-switch {
+                .form-check-label {
+                  font-weight: 500;
+                  margin-left: 16px;
+                }
+              }
+              p {
+                font-size: 14px;
+                line-height: 21px;
+                margin-top: 14px;
+                color: #666666;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .pagination-wrapper{
+    .pagination-list{
+      .btn-next{
+        background-color: #303185;
+        &:hover{
+          background-color: transparent;
+          border-color: #303185;
+          color: #303185;
+        }
+      }
+      ul{
+        li{
+          &.active{
+            a{
+              background-color: #303185;
+            }
+          }
+        }
+      }
     }
   }
 }

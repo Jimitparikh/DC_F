@@ -473,6 +473,31 @@ const Category = () => {
                         </diiv>
                     </div>
                 </section>
+                <div className="pagination-wrapper">
+                  <div className="pagination-content d-flex align-items-center justify-content-between flex-wrap">
+                    <div className="pagination-number">
+                      <p>Showing 1 to 5 of 20 entries</p>
+                    </div>
+                    <div className="pagination-list">
+                      <button className="btn btn-prev">Prev</button>
+                      <ul>
+                        <li className="active">
+                          <a href="#">1</a>
+                        </li>
+                        <li>
+                          <a href="#">2</a>
+                        </li>
+                        <li>
+                          <a href="#">3</a>
+                        </li>
+                        <li>
+                          <a href="#">4</a>
+                        </li>
+                      </ul>
+                      <button className="btn btn-next">Next</button>
+                    </div>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
