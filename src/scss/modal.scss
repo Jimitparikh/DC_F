@@ -1225,3 +1225,126 @@
     }
   }
 }
+.create-affiliate-link-popup{
+  .btn-secondary{
+    padding: 19px 32px;
+    min-width: 170px;
+    margin-left: 20px;
+  }
+  .input-field-item{
+    margin-bottom: 30px;
+    .input-box{
+      min-height: 56px;
+    }
+  }
+  .header-search {
+    width: 100%;
+    position: relative;
+    margin-bottom: 60px;
+    input {
+      padding-left: 50px;
+      min-height: 56px;
+    }
+    svg {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+  }
+  .transcation-summary {
+    margin-top: 60px;
+    .heading {
+      margin-bottom: 34px;
+      h6 {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 36px;
+      }
+      .without-background {
+        max-width: 210px;
+      }
+    }
+    .table-responsive {
+      border: 1px solid #cfcfcf;
+      border-radius: 4px;
+      .transcation-summary-table {
+        tr {
+          th {
+            background: #f5f5f5;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            padding: 17px 24px;
+            white-space: nowrap;
+            &:first-child {
+              border-radius: 4px 0 0 0;
+            }
+            &:last-child {
+              border-radius: 0 4px 0 0;
+            }
+          }
+          td {
+            padding: 17px 24px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            color: #666666;
+            border-bottom: 1px solid #cfcfcf;
+            .label {
+              font-size: 12px;
+              line-height: 15px;
+              border-radius: 100px;
+              max-width: fit-content;
+              padding: 4px 15px;
+              &.red-view {
+                color: #d0021b;
+                background-color: #edbfc5;
+              }
+              &.green-view {
+                color: #0a9707;
+                background-color: rgba(10, 151, 7, 0.23);
+              }
+            }
+            .action {
+              display: flex;
+              a {
+                min-width: 34px;
+                min-height: 34px;
+                border: 1px solid #cfcfcf;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg {
+                  font-size: 20px;
+                  color: var(--body-color);
+                }
+                &.edit {
+                  &:hover {
+                    border-color: var(--body-color);
+                    transition: all 0.3s ease-in;
+                  }
+                }
+                &.delete {
+                  margin-left: 8px;
+                  svg {
+                    color: #ed3a3a;
+                  }
+                  &:hover {
+                    border-color: #ed3a3a;
+                    transition: all 0.3s ease-in;
+                  }
+                }
+              }
+            }
+          }
+          &:last-child {
+            td {
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

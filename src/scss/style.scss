@@ -87,7 +87,7 @@
   }
 }
 /* Book Offer Banner design */
-.book-offer-banner-design{
+.book-offer-banner-design {
   margin: 40px 0;
   @include min-768 {
     margin: 80px 0;
@@ -98,9 +98,9 @@
   @include min-1200 {
     margin: 120px 0;
   }
-  .slider-data{
+  .slider-data {
     cursor: pointer;
-    img{
+    img {
       width: 100%;
     }
   }
@@ -117,7 +117,7 @@
       border-radius: 50%;
       border: 0;
       background-color: var(--primary-color);
-      &.active{
+      &.active {
         width: 35px;
         border-radius: 10px;
       }
@@ -305,9 +305,9 @@
           .add-cart-book-data {
             margin-left: 0;
             width: 100%;
-            .btn.btn-green{
+            .btn.btn-green {
               padding: 14px 28px;
-              font-size: 16px;              
+              font-size: 16px;
             }
           }
         }
@@ -1709,6 +1709,9 @@ header {
         @include mobile {
           width: 320px;
           height: auto;
+          background: white;
+        z-index: 9;
+        box-shadow: 0px 6px 15px #00000033;
         }
         .filter-header {
           .filter-header-wrapper {
@@ -1728,15 +1731,12 @@ header {
       @include mobile {
         position: absolute;
         left: 0;
-        background: white;
-        border: 0;
-        z-index: 9;
-        box-shadow: 0px 6px 15px #00000033;
         min-height: auto;
         border-radius: 4px;
         padding: 10px 20px;
         width: 70px;
         height: 100%;
+        border: 0;
       }
       .filter-header {
         padding-right: 24px;
@@ -1807,7 +1807,7 @@ header {
       @include mobile {
         width: 100%;
         padding-left: 0;
-        margin-left: 70px;
+        margin-left: 00px;
       }
       .books-listing-header {
         h2 {
@@ -1815,6 +1815,9 @@ header {
           font-size: 32px;
           line-height: 45px;
           margin-bottom: 14px;
+          @include mobile{
+            padding-left: 50px;
+          }
         }
         .filter-label-list {
           margin-top: 25px;
@@ -1835,16 +1838,16 @@ header {
           }
         }
       }
-      .pagination-wrapper{
-        @include mobile{
+      .pagination-wrapper {
+        @include mobile {
           margin-top: 0;
         }
-        .pagination-list{
-          .btn{
-            @include mobile{
+        .pagination-list {
+          .btn {
+            @include mobile {
               font-size: 10px;
-            padding: 10px 17px;
-            }            
+              padding: 10px 17px;
+            }
           }
         }
       }
@@ -2849,7 +2852,7 @@ header {
       flex-wrap: nowrap;
       min-height: calc(117vh + 5px);
     }
-    @include min-1920{
+    @include min-1920 {
       min-height: 100vh;
     }
     .left-part {
@@ -2881,7 +2884,7 @@ header {
         @include min-1200 {
           margin-top: 150px;
         }
-        @include min-1920{
+        @include min-1920 {
           margin-top: 130px;
         }
         h2 {
@@ -3197,7 +3200,7 @@ header {
   &.forgot-password-page {
     .login-page-content-wrapper {
       min-height: calc(117vh + 5px);
-      @include min-1920{
+      @include min-1920 {
         min-height: 100vh;
       }
       .left-part {
@@ -3205,7 +3208,7 @@ header {
           @include min-1024 {
             margin-top: 150px;
           }
-          @include min-1920{
+          @include min-1920 {
             margin-top: 130px;
           }
           h2 {
@@ -4783,13 +4786,13 @@ header {
       @include min-992 {
         padding: 40px;
         width: 350px;
-        min-height: calc(117vh - 105px)
+        min-height: calc(117vh - 105px);
       }
       @include min-1200 {
         padding: 64px 0 64px 80px;
         width: 425px;
       }
-      @include min-1920{
+      @include min-1920 {
         min-height: calc(100vh - 108px);
       }
       .nav-pills {
@@ -4862,7 +4865,7 @@ header {
             max-height: calc(117vh - 415px);
             padding-right: 30px;
             overflow: auto;
-            @include min-1920{
+            @include min-1920 {
               max-height: calc(100vh - 420px);
             }
             &:after {
@@ -8162,9 +8165,9 @@ header {
                   line-height: 22px;
                   padding: 1px 10px;
                   margin-top: 2px;
-                  &.pending{
-                    color: #D49649;
-                    background: #FFF6E9;                    
+                  &.pending {
+                    color: #d49649;
+                    background: #fff6e9;
                   }
                 }
               }
@@ -10139,34 +10142,34 @@ header {
     }
   }
 }
-.affiliate-dashboard{
-  .authors-dashboard-header{
+.affiliate-dashboard {
+  .authors-dashboard-header {
     background-color: #353794;
-    .column{
-      .icon{
-        background: #43459F;
+    .column {
+      .icon {
+        background: #43459f;
       }
     }
   }
-  .author-tabbing-wrapper{
-    .side-panel{
+  .author-tabbing-wrapper {
+    .side-panel {
       background-color: #303185;
       min-height: calc(100vh + 30px);
-      .create-book{
+      .create-book {
         background-color: #303185;
-        border-bottom: 1px solid #484AA6;
-        .btn.btn-green{
-          background: #FFFFFF;
+        border-bottom: 1px solid #484aa6;
+        .btn.btn-green {
+          background: #ffffff;
           color: #303185;
           padding: 16px 22px;
           font-size: 16px;
-          svg{
+          svg {
             margin-right: 4px;
             font-size: 22px;
             position: relative;
             top: -1px;
           }
-          &:hover{
+          &:hover {
             background: transparent;
             color: white;
             border-color: white;
@@ -10174,43 +10177,43 @@ header {
         }
       }
     }
-    .author-tabbing-content{
-      .chart-data{
-        ul{
-          li{
+    .author-tabbing-content {
+      .chart-data {
+        ul {
+          li {
             padding: 20px 14px;
-            @include min-1440{
+            @include min-1440 {
               width: calc(25% - 40px);
               margin: 0 20px;
             }
-            .icon{
+            .icon {
               margin-right: 16px;
             }
-            h5{
+            h5 {
               font-size: 32px;
               line-height: 40px;
-              margin-top: 2px; 
-              margin-bottom: 16px;             
+              margin-top: 2px;
+              margin-bottom: 16px;
             }
           }
         }
       }
-      .data-chat{
+      .data-chat {
         border: 1px solid #e3e3e3;
-        border-radius: 8px;  
-        margin-top: 66px;      
+        border-radius: 8px;
+        margin-top: 66px;
       }
-      .wallet-tab-content{
-        .wallet-items{
-          .column{
+      .wallet-tab-content {
+        .wallet-items {
+          .column {
             margin: 0;
-            @include min-1340{
+            @include min-1340 {
               width: calc(100% - 320px);
             }
           }
-          .data-info-list{
-            li{
-              @include min-1200{
+          .data-info-list {
+            li {
+              @include min-1200 {
                 width: 33.33%;
               }
             }
@@ -10222,7 +10225,7 @@ header {
             border-radius: 8px;
             width: 100%;
             margin-top: 24px;
-            @include min-1340{
+            @include min-1340 {
               width: 300px;
               margin-top: 0;
             }
@@ -10239,19 +10242,19 @@ header {
           }
         }
       }
-      .bank-details-tab{
-        .transcation-summary{
+      .bank-details-tab {
+        .transcation-summary {
           margin-top: 44px;
         }
       }
-      .notification-tab-content{
+      .notification-tab-content {
         .profile-setting-tab {
           margin-top: 64px;
-          @include tablet{
+          @include tablet {
             margin-top: 34px;
           }
-          .email-setting{
-            @include min-1340{
+          .email-setting {
+            @include min-1340 {
               margin-bottom: 30px;
             }
           }
@@ -10270,13 +10273,13 @@ header {
           ul {
             display: flex;
             flex-wrap: wrap;
-            @include min-1340{
+            @include min-1340 {
               margin: 0 -20px;
             }
             li {
               width: 100%;
               margin-bottom: 34px;
-              @include min-768{
+              @include min-768 {
                 width: 50%;
               }
               @include min-1340 {
@@ -10300,22 +10303,66 @@ header {
           }
         }
       }
+      .profile-setting-tab-content {
+        .input-field-group {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 30px;
+          .input-field-item {
+            width: 100%;
+            margin-bottom: 24px;
+            @include min-1200 {
+              width: calc(50% - 20px);
+            }
+            p.light-grey{
+             @include min-1200{
+              margin-top: 30px;
+              max-width: 450px;
+             }
+            }
+            .input-box {
+              border: 1px solid #c5c7d0;
+              min-height: 48px;
+              color: var(--body-color);
+              &::placeholder {
+                color: var(--body-color);
+              }
+              .btn {
+                color: var(--body-color);
+              }
+            }
+            textarea {
+              min-height: 100px !important;
+            }
+            label {
+              line-height: 24px;
+              margin-bottom: 12px;
+              span {
+                color: #ed3a3a;
+                font-size: 17px;
+              }
+            }
+          }
+        }
+      }
     }
   }
-  .pagination-wrapper{
-    .pagination-list{
-      .btn-next{
+  .pagination-wrapper {
+    .pagination-list {
+      .btn-next {
         background-color: #303185;
-        &:hover{
+        &:hover {
           background-color: transparent;
           border-color: #303185;
           color: #303185;
         }
       }
-      ul{
-        li{
-          &.active{
-            a{
+      ul {
+        li {
+          &.active {
+            a {
               background-color: #303185;
             }
           }

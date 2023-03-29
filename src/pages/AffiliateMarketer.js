@@ -91,11 +91,17 @@ const AuthorsDashboard = () => {
   const toggleClass = () => {
     setActive(!isActive);
   };
+  const [withdrawmoney, setwithdrawmoney] = useState(false);
+  const setwithdrawmoneyclose = () => setwithdrawmoney(false);
+  const setwithdrawmoneyshow = () => setwithdrawmoney(true);
 
-  // const [isActivee, setActivee] = useState(false);
-  // const toggleClass = () => {
-  //   setActivee(!isActivee);
-  // };
+  const [createaffiliatelink, setcreateaffiliatelink] = useState(false);
+  const setcreateaffiliatelinkclose = () => setcreateaffiliatelink(false);
+  const setcreateaffiliatelinkshow = () => setcreateaffiliatelink(true);
+
+  const [pricingpopup, setpricingpopup] = useState(false);
+  const setpricingpopupclose = () => setpricingpopup(false);
+  const setpricingpopupshow = () => setpricingpopup(true);
 
   return (
     <>
@@ -129,10 +135,121 @@ const AuthorsDashboard = () => {
           >
             <div className="side-panel">
               <div className="create-book">
-                <button className="btn btn-green">
+                <button
+                  className="btn btn-green"
+                  onClick={setcreateaffiliatelinkshow}
+                >
                   <BsLink /> Create Book Link
                 </button>
               </div>
+              <Modal
+                show={createaffiliatelink}
+                onHide={setcreateaffiliatelinkclose}
+                className="large-modal"
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Create Affiliate Link</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="has-footer">
+                  <div className="create-affiliate-link-popup">
+                    <div className="input-field-item">
+                      <label>First Name</label>
+                      <input
+                        type="text"
+                        className="input-box"
+                        placeholder="Albert"
+                      ></input>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                      <div className="header-search">
+                        <input
+                          className="input-box"
+                          placeholder="Search book name or author name"
+                        ></input>
+                        <BsSearch />
+                      </div>
+                      <div className="btn-wrap">
+                        <div className="btn btn-secondary">Search</div>
+                      </div>
+                    </div>
+                    <p className="fs-18 mb-4 fw-600">Campaign Type</p>
+                    <div className="checkbox-group d-flex">
+                      <div className="form-check me-4 pe-1 mb-0">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          value=""
+                          id="defaultCheck1"
+                        ></input>
+                        <label className="form-check-label" for="defaultCheck1">
+                          Lead Generation
+                        </label>
+                      </div>
+                      <div className="form-check me-4 pe-1 mb-0">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          value=""
+                          id="defaultCheck2"
+                        ></input>
+                        <label className="form-check-label" for="defaultCheck2">
+                          Lead Conversion
+                        </label>
+                      </div>
+                    </div>
+                    <div className="transcation-summary">
+                      <div className="d-flex justify-content-between align-items-center mb-4">
+                      <p className="fs-18 mb-3 fw-600">Campaign Links</p>
+                      <div className="btn-wrap">
+                        <div className="btn btn-secondary">Add Link</div>
+                      </div>
+                      </div>
+                      <div className="table-responsive">
+                        <table className="transcation-summary-table">
+                          <tr>
+                            <th>Link Name</th>
+                            <th>Link</th>
+                            <th>Action</th>
+                          </tr>
+                          <tr>       
+                            <td>Genral Link</td>
+                            <td>https://affiliate.dc/mahtma-gandhi-bis0asd-asdfsaf-asfsafsaf</td>
+                            <td>
+                              <div className="action">
+                                <a href="#" title="Copy" className="edit">
+                                  <MdOutlineContentCopy />
+                                </a>
+                                <a href="#" title="Delete" className="delete">
+                                  <MdOutlineDeleteOutline />
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>       
+                            <td>Genral Link</td>
+                            <td>https://affiliate.dc/mahtma-gandhi-bis0asd-asdfsaf-asfsafsaf</td>
+                            <td>
+                              <div className="action">
+                                <a href="#" title="Copy" className="edit">
+                                  <MdOutlineContentCopy />
+                                </a>
+                                <a href="#" title="Delete" className="delete">
+                                  <MdOutlineDeleteOutline />
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <div className="btn-wrap">
+                    <button className="btn btn-green">Done</button>
+                  </div>
+                </Modal.Footer>
+              </Modal>
               <div className="tab-item-link">
                 <Nav variant="pills" className="flex-column">
                   <Nav.Item>
@@ -673,10 +790,23 @@ const AuthorsDashboard = () => {
                       <h2>My Wallet</h2>
                       <div className="right-side d-flex">
                         <div className="action">
-                          <button className="btn btn-green">
+                          <button
+                            className="btn btn-green"
+                            onClick={setwithdrawmoneyshow}
+                          >
                             <AiOutlineBank className="fs-20 me-2" /> Transfer to
                             Bank
                           </button>
+                          <Modal
+                            show={withdrawmoney}
+                            onHide={setwithdrawmoneyclose}
+                            className="large-modal"
+                          >
+                            <Modal.Header closeButton>
+                              <Modal.Title>Withdraw Money</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body></Modal.Body>
+                          </Modal>
                         </div>
                       </div>
                     </div>
@@ -1254,10 +1384,23 @@ const AuthorsDashboard = () => {
                       <h2>Manage Payment Options</h2>
                       <div className="right-side d-flex">
                         <div className="action">
-                          <button className="btn btn-green">
+                          <button
+                            className="btn btn-green"
+                            onClick={setpricingpopupshow}
+                          >
                             <AiOutlinePlus className="fs-20 me-2" /> Add New
                             Bank Account
                           </button>
+                          <Modal
+                            show={pricingpopup}
+                            onHide={setpricingpopupclose}
+                            className="large-modal"
+                          >
+                            <Modal.Header closeButton>
+                              <Modal.Title>Pricing</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body></Modal.Body>
+                          </Modal>
                         </div>
                       </div>
                     </div>
@@ -1476,6 +1619,155 @@ const AuthorsDashboard = () => {
                           </li>
                         </ul>
                       </div>
+                    </div>
+                  </div>
+                </Tab.Pane>
+                <Tab.Pane eventKey="sixth">
+                  <div className="profile-setting-tab-content">
+                    <div className="tab-content-heading d-flex justify-content-between align-items-center">
+                      <h2>Update Account Information</h2>
+                    </div>
+                    <div className="input-field-group">
+                      <div className="input-field-item">
+                        <label>First Name</label>
+                        <input
+                          type="text"
+                          className="input-box"
+                          placeholder="Albert"
+                        ></input>
+                      </div>
+                      <div className="input-field-item">
+                        <p className="light-grey fs-14">
+                          Enter the name exactly as it appears on the bank
+                          account that is being used for payment.
+                        </p>
+                      </div>
+                      <div className="input-field-item">
+                        <label>Last Name</label>
+                        <input
+                          type="text"
+                          className="input-box"
+                          placeholder="Flores"
+                        ></input>
+                      </div>
+
+                      <div className="input-field-item">
+                        <label>Author Type</label>
+                        <Dropdown className="input-box without-background">
+                          <Dropdown.Toggle id="dropdown-basic">
+                            Comic & Horror Writer <FaChevronDown />
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">
+                              Male
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">
+                              Female
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              Other
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
+                      <div className="input-field-item">
+                        <label>Book Language</label>
+                        <Dropdown className="input-box without-background">
+                          <Dropdown.Toggle id="dropdown-basic">
+                            English <FaChevronDown />
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">
+                              Male
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">
+                              Female
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              Other
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
+                      <div className="input-field-item">
+                        <label>Email</label>
+                        <input
+                          type="date"
+                          className="input-box"
+                          placeholder="albertf10@gmail.com"
+                        ></input>
+                      </div>
+                      <div className="input-field-item">
+                        <label>Mobile Number</label>
+                        <input
+                          type="number"
+                          className="input-box"
+                          placeholder="6487145612"
+                        ></input>
+                      </div>
+                      <div className="input-field-item">
+                        <label>Gender</label>
+                        <Dropdown className="input-box without-background">
+                          <Dropdown.Toggle id="dropdown-basic">
+                            Male
+                            <FaChevronDown />
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">
+                              Male
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">
+                              Female
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              Other
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
+                      <div className="input-field-item">
+                        <label>Date of Birth</label>
+                        <input
+                          type="date"
+                          className="input-box"
+                          placeholder="Oct 10, 1992"
+                        ></input>
+                      </div>
+                      <div className="input-field-item">
+                        <label>Country</label>
+                        <Dropdown className="input-box without-background">
+                          <Dropdown.Toggle id="dropdown-basic">
+                            Canada <FaChevronDown />
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">
+                              Male
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">
+                              Female
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              Other
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
+                      <div className="input-field-item w-100">
+                        <label>Your Bio</label>
+                        <textarea
+                          className="input-box"
+                          placeholder="Add short bio about you..."
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div className="btn-wrap mt-3">
+                      <button className="btn btn-primary">
+                        Update Profile
+                      </button>
                     </div>
                   </div>
                 </Tab.Pane>
