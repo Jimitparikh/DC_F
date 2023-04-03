@@ -14,7 +14,7 @@ const AboutUs = () => {
             <div className="video">
               <video src={video} controls="controls" autoplay="true" />
             </div>
-            <a class="video-play-button" href="#">
+            <a className="video-play-button" href="#">
               <span>
                 <BsFillPlayFill />
               </span>

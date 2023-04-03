@@ -1,141 +1,147 @@
 :root {
-    --primary-color: #8131d9;
-    --body-color: #222222;
-    --white-color: #ffffff;
-    --green-color: #33b469;
-    --light-grey: #666666;
-    --dark-blue: #353794;
-    --border-color: #cfcfcf;
-    --font-family: "Lexend", sans-serif;
-  }
-  .white-color {
-    color: var(--white-color) !important;
-  }
-  .primary-color {
-    color: var(--primary-color) !important;
-  }
-  .green-color {
-    color: var(--green-color) !important;
-  }
-  .light-grey {
-    color: var(--light-grey);
-  }
-  .dark-blue {
-    color: var(--dark-blue);
-  }
-  .danger-color{
-    color: #ED3A3A !important;
-  }
-  .body-color{
-    color: var(--body-color) !important;
-  }
-  .info-state{
-    color: #2F80ED;
-  }
-  .fs-14{
-    font-size: 14px !important;
-    line-height: 24px !important;
-  }
-  .fs-16{
-    font-size: 16px !important;
-    line-height: 26px !important;
-  }
-  .fs-18 {
-    font-size: 18px !important;
-    line-height: 27px !important;
-  }
-  .fs-20 {
-    font-size: 20px !important;
-    line-height: 27px !important;
-  }
-  .fw-500 {
-    font-weight: 500;
-  }
-
+  --primary-color: #8131d9;
+  --body-color: #222222;
+  --white-color: #ffffff;
+  --green-color: #33b469;
+  --light-grey: #666666;
+  --dark-blue: #353794;
+  --border-color: #cfcfcf;
+  --font-family: "Lexend", sans-serif;
+}
+.white-color {
+  color: var(--white-color) !important;
+}
+.primary-color {
+  color: var(--primary-color) !important;
+}
+.green-color {
+  color: var(--green-color) !important;
+}
+.light-grey {
+  color: var(--light-grey);
+}
+.dark-blue {
+  color: var(--dark-blue);
+}
+.danger-color{
+  color: #ED3A3A !important;
+}
+.body-color{
+  color: var(--body-color) !important;
+}
+.info-state{
+  color: #2F80ED;
+}
+.disabled{
+  opacity: .6;
+  cursor: not-allowed;
+}
+.fs-14{
+  font-size: 14px !important;
+  line-height: 24px !important;
+}
+.fs-16{
+  font-size: 16px !important;
+  line-height: 26px !important;
+}
+.fs-18 {
+  font-size: 18px !important;
+  line-height: 27px !important;
+}
+.fs-20 {
+  font-size: 20px !important;
+  line-height: 27px !important;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.fw-600{
+  font-weight: 600;
+}
 
 /* Mobile */
-  @mixin mobile {
-    @media (min-width: 0px) and (max-width: 767px) {
-        @content;
-    }
+@mixin mobile {
+  @media (min-width: 0px) and (max-width: 767px) {
+      @content;
+  }
 }
 
 
 /* Tablet */
 @mixin tablet {
-  @media (min-width: 0px) and (max-width: 992px) {
-      @content;
-  }
+@media (min-width: 0px) and (max-width: 992px) {
+    @content;
+}
 }
 
 
 /* Small devices (landscape phones, 576px and up) */
 @mixin min-576 {
-    @media (min-width: 576px) {
-        @content;
-    }
+  @media (min-width: 576px) {
+      @content;
+  }
 }
 
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @mixin min-768 {
-    @media (min-width: 768px) {
-        @content;
-    }
+  @media (min-width: 768px) {
+      @content;
+  }
 }
 
 
 /* Large devices (desktops, 992px and up) */
 @mixin min-992 {
-    @media (min-width: 992px) {
-        @content;
-    }
+  @media (min-width: 992px) {
+      @content;
+  }
 }
 
 
 @mixin min-1024 {
-    @media (min-width: 1024px) {
-        @content;
-    }
+  @media (min-width: 1024px) {
+      @content;
+  }
 }
 
 
 /* Extra large devices (large desktops, 1200px and up) */
 @mixin min-1200 {
-    @media (min-width: 1200px) {
-        @content;
-    }
+  @media (min-width: 1200px) {
+      @content;
+  }
 }
 
 // small laptop screen 
 @mixin min-1340 {
-    @media (min-width: 1340px) {
-        @content;
-    }
+  @media (min-width: 1340px) {
+      @content;
+  }
 }
 
 
 /* desktop devices (large desktops, 1200px and up) */
 @mixin min-1440 {
-    @media (min-width: 1440px) {
-        @content;
-    }
-}
-
-@mixin min-1600 {
-    @media (min-width: 1600px) {
-        @content;
-    }
-}
-
-@mixin min-1800 {
-  @media (min-width: 1800px) {
+  @media (min-width: 1440px) {
       @content;
   }
 }
 
+@mixin min-1600 {
+  @media (min-width: 1600px) {
+      @content;
+  }
+}
+
+@mixin min-1800 {
+@media (min-width: 1800px) {
+    @content;
+}
+}
+
 @mixin min-1920 {
-    @media (min-width: 1920px) {
-        @content;
-    }
+  @media (min-width: 1920px) {
+      @content;
+  }
 }

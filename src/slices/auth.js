@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import { loginReader } from "../services/AuthService";
+ 
 import AuthService from "../services/auth.service";
 
 const user = JSON.parse(localStorage.getItem("user"));
@@ -27,9 +28,10 @@ export const login = createAsyncThunk(
     "auth/login",
     async (formValue, thunkAPI) => {
         try {
-            const data = await AuthService.login(formValue);
-            if(!data.success) throw ({message: data.message})
-            return {user: data.reader};
+            const resp = await loginReader(formValue);
+            // console.log(resp.data.reader, "in Slice")
+            if(!resp.data.success) throw ({message: resp.data.message})
+            return {user: resp.data.reader};
         } catch (error) {
             const message =
                 (error.response &&

@@ -519,7 +519,7 @@ const AuthorDetailPage = ()=>{
                             </ul>
                             <div className="btn-wrap">
                             <button className="btn btn-primary">Write a book</button>
-                            <a href="#" class="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
+                            <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
                             </div>
                         </div>
                         </li>
@@ -545,7 +545,7 @@ const AuthorDetailPage = ()=>{
                             </ul>
                             <div className="btn-wrap">
                             <button className="btn btn-primary">Write a book</button>
-                            <a href="#" class="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
+                            <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
                             </div>
                         </div>
                         </li>
@@ -571,7 +571,7 @@ const AuthorDetailPage = ()=>{
                             </ul>
                             <div className="btn-wrap">
                             <button className="btn btn-primary">Write a book</button>
-                            <a href="#" class="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
+                            <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
                             </div>
                         </div>
                         </li>
@@ -597,7 +597,7 @@ const AuthorDetailPage = ()=>{
                             </ul>
                             <div className="btn-wrap">
                             <button className="btn btn-primary">Write a book</button>
-                            <a href="#" class="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
+                            <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
                             </div>
                         </div>
                         </li>

@@ -20,7 +20,7 @@ const Cart = () => {
             <h1>
               My cart<span>(10)</span>
             </h1>
-            <p class="fa-18 light-grey">
+            <p className="fa-18 light-grey">
               Lorem ipsum is a dummy text we can change it any time
             </p>
           </div>
@@ -32,7 +32,7 @@ const Cart = () => {
                     <img src={BookCoverCart} alt="image"></img>
                     <div className="heading-title">
                       <h2>Dream psychology</h2>
-                      <p class="light-grey">Sigmund Freud </p>
+                      <p className="light-grey">Sigmund Freud </p>
                       <div className="book-label">
                         <div className="label-item">
                           <BsFileText className="body-color" /> ebook

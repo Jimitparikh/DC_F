@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.392e4724.css",
-    "main.js": "/static/js/main.c5388cfd.js",
+    "main.css": "/static/css/main.3a47fe12.css",
+    "main.js": "/static/js/main.f7a78398.js",
     "static/media/dummy-video.mp4": "/static/media/dummy-video.6a518edcaf4c6383cdf7.mp4",
     "static/media/vide-background.jpg": "/static/media/vide-background.60bd570d5a9793c1b463.jpg",
     "static/media/trending-book-cover.png": "/static/media/trending-book-cover.14a4ca6a4f8746b6ef45.png",
@@ -25,17 +25,19 @@
     "static/media/authors-background.png": "/static/media/authors-background.6d26035a9fc5252bb7b6.png",
     "static/media/logo.svg": "/static/media/logo.ab5ca073694214461029fda405ef4c91.svg",
     "static/media/logo-white.svg": "/static/media/logo-white.18a1cf6e2828c0f3af3a5cb1e66d6698.svg",
+    "static/media/book-offer-image-1.webp": "/static/media/book-offer-image-1.8fdc89724a98bf1306e7.webp",
     "static/media/author-profile.png": "/static/media/author-profile.e201277f6af1fdcceee3.png",
+    "static/media/book-offer-image-2.webp": "/static/media/book-offer-image-2.84b6d848fc5f18204b0f.webp",
     "static/media/book-cover-cartpage.png": "/static/media/book-cover-cartpage.220a6a72590e092f7c87.png",
     "static/media/user-dashboard-profile.png": "/static/media/user-dashboard-profile.0789b9bcf4903bb258ac.png",
     "static/media/horror.png": "/static/media/horror.0968e5c5f2ea28477b58.png",
     "static/media/404.svg": "/static/media/404.07fefdc4f29686041eecf9b48e1728c8.svg",
     "index.html": "/index.html",
-    "main.392e4724.css.map": "/static/css/main.392e4724.css.map",
-    "main.c5388cfd.js.map": "/static/js/main.c5388cfd.js.map"
+    "main.3a47fe12.css.map": "/static/css/main.3a47fe12.css.map",
+    "main.f7a78398.js.map": "/static/js/main.f7a78398.js.map"
   },
   "entrypoints": [
-    "static/css/main.392e4724.css",
-    "static/js/main.c5388cfd.js"
+    "static/css/main.3a47fe12.css",
+    "static/js/main.f7a78398.js"
   ]
 }

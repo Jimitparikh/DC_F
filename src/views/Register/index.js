@@ -13,12 +13,42 @@ import { Button } from 'react-bootstrap';
 import { FaChevronDown } from "react-icons/fa";
 import LoginDescription from '../../components/LoginDescription';
 import csc from "country-state-city";
+import { useGoogleLogin, GoogleLogin } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
 
 const Register = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
     
+    const responseGoogle = (response) => {
+        console.log(response);
+        const socialID = response.clientId;
+        const token = response.credential;
+         const userObject = jwt_decode(response.credential);
+         console.log(userObject);
+
+         dispatch(register({ firstName:userObject.given_name, lastName : userObject.family_name  , email : userObject.email, socialID  , token}))
+            .unwrap()
+            .then(() => {
+                navigate("/");
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+        }
+         //  localStorage.setItem('user', JSON.stringify(userObject));
+        //   const { name, sub, picture } = userObject;
+        //   const doc = {
+        //         _id: sub,
+        //         _type: 'user',
+        //         userName: name,
+        //         image: picture,
+        //       };
+            //   client.createIfNotExists(doc).then(() => {
+            //         navigate('/', { replace: true });
+            //       });
+                 
 
     const initialValues = {
         firstName: "",
@@ -76,9 +106,21 @@ const Register = () => {
                                 <p className='small-desc fs-18 light-grey'>Join us as a reader </p>
                                 <div className='sign-in-option d-flex'>
                                     <div className='btn-wrap me-3'>
-                                        <a href='#'>
-                                            <FcGoogle /> Sign in with Google
-                                        </a>
+                                    <GoogleLogin
+                                            render={(renderProps) => (
+                                                <button
+                                                    type="button"
+                                                    className=""
+                                                    onClick={renderProps.onClick}
+                                                    disabled={renderProps.disabled}
+                                                >
+                                                    <FcGoogle className="" /> Sign in with google
+                                                </button>
+                                            )}
+                                            onSuccess={responseGoogle}
+                                            onFailure={responseGoogle}
+                                            cookiePolicy="single_host_origin"
+                                        />
                                     </div>
                                     <div className='btn-wrap'>
                                         <a href='#'>

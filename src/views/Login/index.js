@@ -9,7 +9,10 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { login } from "../../slices/auth";
 import LoginDescription from '../../components/LoginDescription';
-
+import { useGoogleLogin, GoogleLogin } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -31,10 +34,33 @@ const Login = () => {
         password: Yup.string().required("This field is required!"),
     });
 
+
+    const responseGoogle = (response) => {
+        console.log(response);
+        const socialID = response.clientId;
+         const userObject = jwt_decode(response.credential);
+         console.log(userObject);
+         dispatch(login({ email : userObject.email, socialID  }))
+         .unwrap()
+         .then((response) => {
+            if(response.success === false){
+                toast.info("Register User First!!!", {
+                    position: toast.POSITION.TOP_CENTER
+                  });
+                navigate("/register"); 
+            }
+           else {navigate("/");}
+         })
+         .catch(() => {
+             setLoading(false);
+         });
+     
+       }
+
     const handleLogin = (formValue) => {
         const { email, password } = formValue;
         setLoading(true);
-        dispatch(login({email, password}))
+        dispatch(login({ email, password }))
             .unwrap()
             .then(() => {
                 navigate("/");
@@ -45,6 +71,8 @@ const Login = () => {
     };
     return (
         <>
+           <ToastContainer
+      autoClose={5000} />
             <div className='login-page-section'>
                 <div className='container-fulid p-0'>
                     <div className='login-page-content-wrapper d-flex justify-content-between'>
@@ -58,9 +86,24 @@ const Login = () => {
                                 <h2>Login</h2>
                                 <div className='sign-in-option d-flex'>
                                     <div className='btn-wrap me-3'>
-                                        <a href='#'>
+                                    {/* <a onClick={() => Glogin()}>
                                             <FcGoogle /> Sign in with Google
-                                        </a>
+                                        </a> */}
+                                        <GoogleLogin
+                                            render={(renderProps) => (
+                                                <button
+                                                    type="button"
+                                                    className=""
+                                                    onClick={renderProps.onClick}
+                                                    disabled={renderProps.disabled}
+                                                >
+                                                    <FcGoogle className="" /> Sign in with google
+                                                </button>
+                                            )}
+                                            onSuccess={responseGoogle}
+                                            onFailure={responseGoogle}
+                                            cookiePolicy="single_host_origin"
+                                        />
                                     </div>
                                     <div className='btn-wrap'>
                                         <a href='#'>

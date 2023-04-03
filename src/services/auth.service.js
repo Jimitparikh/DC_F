@@ -1,7 +1,7 @@
 import axios from "axios";
-import { BaseURL } from "../configs/app.config";
+import { ReaderBaseURL } from "../configs/app.config";
 
-const API_URL = BaseURL + "reader/";
+const API_URL = ReaderBaseURL + "/reader/";
 
 const register = (formValue) => {
     return axios.post(API_URL + "createReader", formValue);

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link , useNavigate } from "react-router-dom";
+import React, {useEffect} from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button';
@@ -16,29 +16,44 @@ import userprofile from '../../images/user-menu-profile.png';
 import './index.css';
 import { logout } from "../../slices/auth";
 import Loader from '../Loader';
+import { get_Wishlist } from '../../views/Wishlist/store/dataSlice';
+import { get_Author } from '../../views/UserDashboard/Components/MyFollowing/store/dataSlice';
 
 
 const Header = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const { isLoggedIn , user } = useSelector((state) => state.auth);
-  const [isActive, setActive] = useState(false);
-  const toggleClass = () => {
-    setActive(!isActive);
+  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  const [isOpenHeader, setisOpenHeader] = useState(false);
+  const [isOpenCatDropdown, setisOpenCatDropdown] = useState(false);
+  const toggleHeader = () => {
+    setisOpenHeader(!isOpenHeader);
+  };
+  const toggleCatDropdown = () => {
+    setisOpenCatDropdown(!isOpenCatDropdown);
   };
 
-  const logouthandler =  ()=> {
+  const GetData = ()=> {
+   if(isLoggedIn){ 
+    dispatch(get_Wishlist({ readerID: user._id }))
+    dispatch(get_Author({readerID : user._id}))}
+  }
+
+  const logouthandler = () => {
     setLoading(true);
     dispatch(logout())
-    .unwrap()
-    .then(() => {
+      .unwrap()
+      .then(() => {
         navigate("/");
-    })
-    .catch(() => {
+      })
+      .catch(() => {
         setLoading(false);
-    });
+      });
   }
+  useEffect(() => {
+    GetData()
+  }, [ ])
 
   return (
     <>
@@ -75,99 +90,105 @@ const Header = () => {
                 </button>
               </div>
             </div>
-            <div className='column humberger-menu' onClick={()=> toggleClass()}>
+            <div className='column humberger-menu' onClick={() => toggleHeader()}>
               <BiMenuAltRight />
             </div>
             <div className="column d-flex align-items-center">
-              <div className="icon">
-                <IoBookOutline />
-                <span>My Books</span>
-              </div>
+              {isLoggedIn && user &&
                 <div className="icon">
-                  <BsHeart />
-              <Link to='/wishlist' className='link'>
-                  <span>Wishlist</span>
-              </Link>
+                  <IoBookOutline />
+                  <span>My Books</span>
                 </div>
+              }
+              {isLoggedIn && user &&
+                <div className="icon">
+                  <Link to='/wishlist' className='link'>
+                  <BsHeart />
+                    <span>Wishlist</span>
+                  </Link>
+                </div>}
               <div className="icon">
+                <Link to="/cart" className='link'>
                 <BsCart3 />
                 <span>My Cart</span>
+                </Link>
                 <p className="count-label">4</p>
               </div>
-              <div className="icon">
-                <BsBell />
-                <span>Notification</span>
-                <div className='notification-circle'></div>
-              </div>
+              {isLoggedIn && user &&
+                <div className="icon">
+                  <BsBell />
+                  <span>Notification</span>
+                  <div className='notification-circle'></div>
+                </div>}
               {/* Without Login user dropdown */}
-              { !isLoggedIn &&
+              {!isLoggedIn &&
                 <Dropdown as={ButtonGroup} className="primary" align="end">
-                <Link to="/register"> <Button>Register</Button></Link>
-                <Dropdown.Toggle split id="dropdown-split-basic">
-                  <BsChevronDown />
-                  <FaRegUser />
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Register as Author</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Register as Affliate</Dropdown.Item>
-                  <Dropdown.Item ><Link to="/login">Have Account? Login</Link></Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                  <Link to="/register"> <Button>Register</Button></Link>
+                  <Dropdown.Toggle split id="dropdown-split-basic">
+                    <BsChevronDown />
+                    <FaRegUser />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-1">Register as Author</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Register as Affliate</Dropdown.Item>
+                    <Dropdown.Item ><Link to="/login">Have Account? Login</Link></Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               }
-            
+
 
               {/* Login user dropdown */}
-              { isLoggedIn && user &&
+              {isLoggedIn && user &&
                 <Dropdown className="user-profile-dropdown" align="end">
-                <Dropdown.Toggle id="dropdown-basic">
-                  <FaRegUser />
-                </Dropdown.Toggle>
-                <p>Profile</p>
-                <Dropdown.Menu>
-                  <div className='profile-detail d-flex align-items-center'>
-                    <div className='user-image'>
-                      <img src={userprofile} alt="Profile"></img>
+                  <Dropdown.Toggle id="dropdown-basic">
+                    <FaRegUser />
+                  </Dropdown.Toggle>
+                  <p>Profile</p>
+                  <Dropdown.Menu>
+                    <div className='profile-detail d-flex align-items-center'>
+                      <div className='user-image'>
+                        <img src={userprofile} alt="Profile"></img>
+                      </div>
+                      <div className='user-name'>
+                        <h5>{user.firstName && user.firstName + " " + user.lastName}</h5>
+                        <p><IoLocationOutline />Minsk, Belarus</p>
+                      </div>
                     </div>
-                    <div className='user-name'>
-                      <h5>{ user.firstName && user.firstName + " " + user.lastName }</h5>
-                      <p><IoLocationOutline />Minsk, Belarus</p>
-                    </div>
-                  </div>
-                  <div className='line'></div>
-                  <Dropdown.Item href="#/action-2" className='active'>
-                    <MdOutlineSpaceDashboard /> <Link to='/user-dashboard'>My dashboard</Link> 
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    <MdOutlineAccountBalanceWallet />My Wallet
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    <MdOutlineGroup />My Following
-                  </Dropdown.Item>
-                  <div className='line'></div>
-                  <Dropdown.Item href="#/action-3">
-                    <FaRegEdit />Edit Profile
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <AiOutlinePoweroff /><a onClick={()=> {logouthandler()}} > Logout</a>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                    <div className='line'></div>
+                    <Dropdown.Item href="#/action-2" className='active'>
+                      <MdOutlineSpaceDashboard /> <Link className='link' to='/user-dashboard'>My dashboard</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      <MdOutlineAccountBalanceWallet /><Link className='link' to='/user-dashboard/MyWallet'>My Wallet</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      <MdOutlineGroup /><Link className='link' to='/user-dashboard/MyFollowing'>My Following</Link>
+                    </Dropdown.Item>
+                    <div className='line'></div>
+                    <Dropdown.Item href="#/action-3">
+                      <FaRegEdit /><Link className='link' to='/user-dashboard/ManageProfile'>Edit Profile</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <AiOutlinePoweroff /><a onClick={() => { logouthandler() }} > Logout</a>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               }
             </div>
           </div>
         </div>
-        <div className={isActive ? 'show header-bottom' : "header-bottom"}>
+        <div className={isOpenHeader ? 'show header-bottom' : "header-bottom"}>
           <div className="container">
             <ul className="navbar-item d-flex">
-              <div className='close-menu' onClick={()=> toggleClass()}>
-                <BsXLg  />
+              <div className='close-menu' onClick={() => toggleHeader()}>
+                <BsXLg />
               </div>
               <li>
-                <a href="#" className="white-color">All Books</a>
+                <Link to="/BookList" className="white-color">All Books</Link>
               </li>
               <li className="dd-menu-wrapper">
-                <a href="#" className="white-color dropdown-arrow">Category <BsChevronDown /></a>
-                <div className="dd-menu-content show-dropdown">
+                <a  className="white-color dropdown-arrow" onClick={toggleCatDropdown}>Category <BsChevronDown /></a>
+                <div className={isOpenCatDropdown ? "dd-menu-content show-dropdown " : "dd-menu-content dropdown"}>
                   <div className="dd-menu d-flex">
                     <div className="left-part d-flex flex-wrap">
                       <div className="column">
@@ -382,7 +403,7 @@ const Header = () => {
                 </div>
               </li>
               <li>
-                <a href="#" className="white-color">Authors</a>
+                <Link to="/authors" className="white-color">Authors</Link>
               </li>
               <li>
                 <a href="#" className="white-color">Bestsellers</a>
