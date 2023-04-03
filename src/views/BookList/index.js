@@ -12,7 +12,7 @@ const BookList = () => {
  
   return (
     <>
-      <Breadcrums />
+      <Breadcrums path="All Books" />
       <section className="book-category-section">
         <div className="container">
           <div className="book-category-content d-flex justify-content-between flex-wrap">

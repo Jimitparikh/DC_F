@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginReader } from "../services/AuthService";
- 
+import { loginReader, createReader, updateReader } from "../services/AuthService";
+
 import AuthService from "../services/auth.service";
 
 const user = JSON.parse(localStorage.getItem("user"));
 
 export const register = createAsyncThunk(
     "auth/register",
-    async (formValue , thunkAPI) => {
+    async (formValue, thunkAPI) => {
         try {
-            const {data} = await AuthService.register(formValue );
-            if(!data.success) throw ({message: data.message})
-            return {user: data.reader};
+            const { data } = await createReader(formValue);
+            if (!data.success) throw ({ message: data.message })
+            return { user: data.reader };
         } catch (error) {
             const message =
                 (error.response &&
@@ -30,8 +30,30 @@ export const login = createAsyncThunk(
         try {
             const resp = await loginReader(formValue);
             // console.log(resp.data.reader, "in Slice")
-            if(!resp.data.success) throw ({message: resp.data.message})
-            return {user: resp.data.reader};
+            if (!resp.data.success) {
+                throw ({ message: resp.data.message })
+            }
+            return { user: resp.data.reader };
+        } catch (error) {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue();
+        }
+    }
+);
+
+export const update = createAsyncThunk(
+    "auth/update",
+    async (formValue, thunkAPI) => {
+        try {
+            const resp = await updateReader(formValue);
+            // console.log(resp.data.reader, "in Slice")
+            if (!resp.data.success) throw ({ message: resp.data.message })
+            return { user: resp.data.reader };
         } catch (error) {
             const message =
                 (error.response &&
@@ -45,11 +67,11 @@ export const login = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk("auth/logout", async () => {
-    try{
+    try {
         await AuthService.logout();
     }
-    catch(error){
-        
+    catch (error) {
+
     }
 });
 
@@ -70,6 +92,9 @@ const authSlice = createSlice({
         },
         [login.fulfilled]: (state, action) => {
             state.isLoggedIn = true;
+            state.user = action.payload.user;
+        },
+        [update.fulfilled]: (state, action) => {
             state.user = action.payload.user;
         },
         [login.rejected]: (state, action) => {

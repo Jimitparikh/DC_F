@@ -35,7 +35,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from 'react-redux'
-import { get_Author } from "./store/dataSlice";
+import { get_Followings } from "./store/dataSlice";
 import userprofile from "../../../../images/user-menu-profile.png";
 import { injectReducer } from '../../../../store/index'
 import reducer from './store'
@@ -48,8 +48,8 @@ const MyFollowing = () => {
     const following = data.followingss ? data.followingss : []
     const count = data ? following.length : 0
     useEffect(() => {
-        dispatch(get_Author({readerID : user._id}))
-    },)
+        dispatch(get_Followings({readerID : user._id}))
+    },[])
     return (
         <div className="my-followings-tab-content">
             <h5 className="tab-title">

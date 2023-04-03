@@ -11,8 +11,6 @@ import { login } from "../../slices/auth";
 import LoginDescription from '../../components/LoginDescription';
 import { useGoogleLogin, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -42,14 +40,8 @@ const Login = () => {
          console.log(userObject);
          dispatch(login({ email : userObject.email, socialID  }))
          .unwrap()
-         .then((response) => {
-            if(response.success === false){
-                toast.info("Register User First!!!", {
-                    position: toast.POSITION.TOP_CENTER
-                  });
-                navigate("/register"); 
-            }
-           else {navigate("/");}
+         .then(() => {
+             navigate("/");
          })
          .catch(() => {
              setLoading(false);
@@ -71,8 +63,6 @@ const Login = () => {
     };
     return (
         <>
-           <ToastContainer
-      autoClose={5000} />
             <div className='login-page-section'>
                 <div className='container-fulid p-0'>
                     <div className='login-page-content-wrapper d-flex justify-content-between'>

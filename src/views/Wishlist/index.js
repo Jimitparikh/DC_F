@@ -75,7 +75,7 @@ const Wishlist = () => {
                       return <li key={index}>
                         <div className="add-to-cart-book-box d-flex overflow-hidden position-relative">
                           <div className="add-cart-book-image">
-                            <img src={trendingbookcover} alt="Book Cover" />
+                            <img src={book.imageUrl} alt="Book Cover" />
                           </div>
                           <div className="add-cart-book-data">
                             <div className="title">

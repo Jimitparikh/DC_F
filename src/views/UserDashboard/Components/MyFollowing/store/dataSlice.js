@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getFollowings, unFollowAuthor, followAuthor } from '../../../../../services/ReaderService';
 
-export const get_Author = createAsyncThunk('reader/getFollowings',async (data) => {
+export const get_Followings = createAsyncThunk('reader/getFollowings',async (data) => {
     const response = await getFollowings(data)
-    return response.data
+    console.log(response.data.follows[0],"in Get Followings");
+    return response.data.follows[0]
 })
 
 export const unfollow_Author = createAsyncThunk('reader/unFollowAuthor',async (data) => {
@@ -29,11 +30,11 @@ const dataSlice = createSlice({
         }
     },
     extraReducers: {
-        [get_Author.fulfilled]: (state, action) => {
+        [get_Followings.fulfilled]: (state, action) => {
             state.followings = action.payload
             state.loading = false
         },
-        [get_Author.pending]: (state) => {
+        [get_Followings.pending]: (state) => {
             state.loading = true
         },
     }

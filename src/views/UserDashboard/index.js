@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-bootstrap/Modal";
@@ -62,16 +62,20 @@ const UserDashboard = () => {
 
   const navigate = useNavigate();
   const stripePromise = loadStripe('pk_test_51MsNLWCKervKMBlRPGOpPQ5zTNP3ZGpjPKPqELnx5U3WDlGT9r0ac1zFLdcJW0SD7AEushae9m7uStOUHC615env00RIy9L0pW');
-  const { user } = useSelector((state) => state.auth);
+  const { user, isLoggedIn } = useSelector((state) => state.auth);
   const [profileupload, setprofileupload] = useState(false);
   const setprofileuploadclose = () => setprofileupload(false);
   const setprofileuploadshow = () => setprofileupload(true);
 
   const handleNavigate = (path) => navigate(path);
+  useEffect(() => {
+
+  }, [user])
 
   return (
     <>
-      <div className="user-dashboard-section">
+      { isLoggedIn && user &&
+        <div className="user-dashboard-section">
         <div className="container">
           <div className="user-dashoard-content">
             <Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -109,7 +113,7 @@ const UserDashboard = () => {
                       </Modal>
                     </div>
                     <div className="user-name">
-                      <h5>{user.firstName && user.firstName + " " + user.lastName}</h5>
+                      <h5>{user.firstName  && user.firstName + " " + user.lastName}</h5>
                       <p>
                         <IoLocationOutline />
                         Minsk, Belarus
@@ -125,7 +129,7 @@ const UserDashboard = () => {
                         </div>
                         <div className="data">
                           <p>Mobile Number</p>
-                          <span>{user.phone && user.phone}</span>
+                          <span>{ user.phone && user.phone}</span>
                         </div>
                       </li>
                       <li className="d-flex">
@@ -208,7 +212,7 @@ const UserDashboard = () => {
             </Tab.Container>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   );
 };

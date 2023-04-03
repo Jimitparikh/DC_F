@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../../images/logo.svg';
 import paymentvisa from '../../images/payment-visa.png'
 import { BsFacebook, BsTwitter, BsLinkedin } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 const Footer = ()=>{
   return (
@@ -41,13 +42,13 @@ const Footer = ()=>{
               <h4 className="column-title">Account</h4>
               <ul className="link-list">
                 <li>
-                  <a href="#">My Account</a>
+                  <Link to="/user-dashboard">My Account</Link>
                 </li>
                 <li>
-                  <a href="#">My Cart</a>
+                  <Link to="/cart">My Cart</Link>
                 </li>
                 <li>
-                  <a href="#">My Wishlist</a>
+                  <Link to="/wishlist">My Wishlist</Link>
                 </li>
                 <li>
                   <a href="#">Shopping Guide</a>
@@ -87,10 +88,10 @@ const Footer = ()=>{
               <h4 className="column-title">Sitemap</h4>
               <ul className="link-list">
                 <li>
-                  <a href="#">About us</a>
+                  <Link to="/about-us">About us</Link>
                 </li>
                 <li>
-                  <a href="#">All Books</a>
+                  <Link to="/bookList">All Books</Link>
                 </li>
                 <li>
                   <a href="#">All Categories</a>
@@ -109,7 +110,7 @@ const Footer = ()=>{
           </div>
           <div className="copy-right d-flex justify-content-between flex-wrap align-items-center">
             <p className="copy-right-text fs-18 light-grey">
-            ©2022 Dream capcha. All Right Reserved
+            ©2023 Dream capcha. All Right Reserved
             </p>
             <ul className="social-icon d-flex">
               <li className="ms-3 fs-20">

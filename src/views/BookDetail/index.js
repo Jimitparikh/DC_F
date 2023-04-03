@@ -78,7 +78,7 @@ const BookDetailPage = () => {
   }, [ ])
   return (
     <>
-      <Breadcrums />
+      <Breadcrums path="Book Details" />
       <ToastContainer
       autoClose={5000} />
       <section className="book-detail-section">

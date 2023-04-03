@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import {
@@ -7,84 +7,104 @@ import {
 import { FaChevronDown } from "react-icons/fa";
 import Dropdown from "react-bootstrap/Dropdown";
 import * as Yup from "yup";
+import { updateReader } from "../../../services/AuthService";
+import { update } from "../../../slices/auth";
 
 const ManageProfile = () => {
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const initialValues = {
-    firstName: user.firstName || "",
-    lastName: user.lastName || "",
-    email: user.email || "",
-    phone: user.phone || "",
-  };
+  const [loading, setLoading] = useState(false);
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone || "");
 
-  const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required("This field is required!"),
-    lastName: Yup.string().required("This field is required!"),
-    phone: Yup.string().required("This field is required!"),
-    email: Yup.string()
-      .email("This is not a valid email.")
-      .required("This field is required!"),
-    country: Yup.string().required("This field is required!"),
-    city: Yup.string().required("This field is required!")
-  });
+  // const initialValues = {
+  //   firstName: user.firstName || "",
+  //   lastName: user.lastName || "",
+  //   email: user.email || "",
+  //   phone: user.phone || "",
+  // };
+  // const initialValue = {
+  //   password : "",
+  //   confirmpassword: "",
+  // }
 
-  const handleUpdate = (formValue) => {
-    // const { firstName, lastName, email, phone, password } = formValue;
-    // setLoading(true);
-    // dispatch(register({ firstName, lastName, email, phone, password }))
-    //   .unwrap()
-    //   .then(() => {
-    //     navigate("/otp");
-    //   })
-    //   .catch(() => {
-    //     setLoading(false);
-    //   });
+  // const validationSchema = Yup.object().shape({
+  //   firstName: Yup.string().required("This field is required!"),
+  //   lastName: Yup.string().required("This field is required!"),
+  //   email: Yup.string()
+  //     .email("This is not a valid email.")
+  //     .required("This field is required!"),
+  //   country: Yup.string().required("This field is required!"),
+  //   city: Yup.string().required("This field is required!")
+  // });
+
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    dispatch(update({ firstName, lastName, email, phone, readerID: user._id }))
+      .then((response) => {
+        console.log(response);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   };
 
   const handleUpdatePassword = () => {
-    
-  }
 
+  }
+  useEffect(() => {
+
+  }, [setLoading])
   return (
     <div className="manage-profile-tab-content">
       <h5 className="tab-title">Manage Profile</h5>
       <div className="manage-profile-content">
         <div className="update-info">
-          <Formik
+          {/* <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleUpdate}
-          >
-            <Form>
-              <h6>Update Personal Info</h6>
-              <div className="input-field-group">
-                <Field type="text" name="firstName" className='input-box' placeholder='First Name' />
-                <ErrorMessage
+          > */}
+          <form onSubmit={handleUpdate}>
+            <h6>Update Personal Info</h6>
+            <div className="input-field-group">
+              <input type="text" value={firstName}
+                onChange={event => setFirstName(event.target.value)} name="firstName" className='input-box' placeholder='First Name' />
+              {/* <ErrorMessage
                   name="firstName"
                   component="div"
                   className="alert alert-danger"
-                />
-                <Field type="text" name="lastName" className='input-box' placeholder='Last Name' />
-                <ErrorMessage
+                /> */}
+              <input type="text"
+                value={lastName}
+                onChange={event => setLastName(event.target.value)} name="lastName" className='input-box' placeholder='Last Name' />
+              {/* <ErrorMessage
                   name="lastName"
                   component="div"
                   className="alert alert-danger"
-                />
-                <Field type="email" name="email" className='input-box' placeholder='Email' />
-                <ErrorMessage
+                /> */}
+              <input type="email"
+                value={email}
+                onChange={event => setEmail(event.target.value)} name="email" className='input-box' placeholder='Email' />
+              {/* <ErrorMessage
                   name="email"
                   component="div"
                   className="alert alert-danger"
-                />
-                <Field type="number" name="phone" className='input-box' placeholder='Mobile Number' />
-                <ErrorMessage
+                /> */}
+              <input type="number"
+                value={phone}
+                onChange={event => setPhone(event.target.value)} name="phone" className='input-box' placeholder='Mobile Number' />
+              {/* <ErrorMessage
                   name="phone"
                   component="div"
                   className="alert alert-danger"
-                />
-                {/* <Field
+                /> */}
+              {/* <Field
                 className="input-box without-background" 
                   component="select"
                   name="gender"
@@ -100,7 +120,7 @@ const ManageProfile = () => {
                   component="div"
                   className="alert alert-danger"
                 /> */}
-                {/* <Dropdown className="input-box without-background">
+              {/* <Dropdown className="input-box without-background">
                   <Dropdown.Toggle id="dropdown-basic">
                     Country <FaChevronDown />
                   </Dropdown.Toggle>
@@ -134,18 +154,20 @@ const ManageProfile = () => {
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown> */}
-              </div>
-              <div className="btn-wrap">
-                <button className="btn btn-primary">
-                  Update Now
-                </button>
-              </div>
-            </Form>
-          </Formik>
+            </div>
+            <div className="btn-wrap">
+              <button type="submit" className="btn btn-primary">
+                <span>Update Now &nbsp;</span> {loading && (
+                  <span className="spinner-border spinner-border-sm"></span>
+                )}
+              </button>
+            </div>
+          </form>
+          {/* </Formik> */}
         </div>
-        <div className="update-info">
+        {/* <div className="update-info">
           <Formik
-            initialValues={initialValues}
+            initialValues={initialValue}
             validationSchema={validationSchema}
             onSubmit={handleUpdatePassword}
           >
@@ -174,13 +196,13 @@ const ManageProfile = () => {
                 ></input>
               </div>
               <div className="btn-wrap">
-                <button className="btn btn-primary">
+                <button type="submit"  className="btn btn-primary">
                   Update Password Now
                 </button>
               </div>
             </Form>
           </Formik>
-        </div>
+        </div> */}
       </div>
     </div>
   )

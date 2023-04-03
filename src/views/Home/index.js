@@ -19,7 +19,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import bookofferbanner1 from "../../images/book-offer-image-1.webp";
 import bookofferbanner2 from "../../images/book-offer-image-2.webp";
 import { useSelector, useDispatch } from "react-redux";
-import { get_Author } from '../UserDashboard/Components/MyFollowing/store/dataSlice';
+import { get_Followings } from '../UserDashboard/Components/MyFollowing/store/dataSlice';
 import { get_Wishlist } from '../Wishlist/store/dataSlice';
 const Home = () => {
 
@@ -34,7 +34,7 @@ const Home = () => {
   const GetData = ()=> {
     if(isLoggedIn){ 
      dispatch(get_Wishlist({ readerID: user._id }))
-     dispatch(get_Author({readerID : user._id}))}
+     dispatch(get_Followings({readerID : user._id}))}
    }
 
    useEffect(() => {

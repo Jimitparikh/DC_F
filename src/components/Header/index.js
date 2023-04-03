@@ -17,7 +17,7 @@ import './index.css';
 import { logout } from "../../slices/auth";
 import Loader from '../Loader';
 import { get_Wishlist } from '../../views/Wishlist/store/dataSlice';
-import { get_Author } from '../../views/UserDashboard/Components/MyFollowing/store/dataSlice';
+import { get_Followings } from '../../views/UserDashboard/Components/MyFollowing/store/dataSlice';
 
 
 const Header = () => {
@@ -37,7 +37,7 @@ const Header = () => {
   const GetData = ()=> {
    if(isLoggedIn){ 
     dispatch(get_Wishlist({ readerID: user._id }))
-    dispatch(get_Author({readerID : user._id}))}
+    dispatch(get_Followings({readerID : user._id}))}
   }
 
   const logouthandler = () => {
@@ -96,8 +96,10 @@ const Header = () => {
             <div className="column d-flex align-items-center">
               {isLoggedIn && user &&
                 <div className="icon">
+                  <Link to="/user-dashboard/" className='link'>
                   <IoBookOutline />
                   <span>My Books</span>
+                  </Link>
                 </div>
               }
               {isLoggedIn && user &&
