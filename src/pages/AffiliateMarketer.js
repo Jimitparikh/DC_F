@@ -16,6 +16,7 @@ import {
   BsDot,
   BsFileEarmarkMusic,
   BsFileText,
+  BsFillCheckCircleFill,
   BsFillStarFill,
   BsFilterLeft,
   BsInfoCircle,
@@ -199,10 +200,10 @@ const AuthorsDashboard = () => {
                     </div>
                     <div className="transcation-summary">
                       <div className="d-flex justify-content-between align-items-center mb-4">
-                      <p className="fs-18 mb-3 fw-600">Campaign Links</p>
-                      <div className="btn-wrap">
-                        <div className="btn btn-secondary">Add Link</div>
-                      </div>
+                        <p className="fs-18 mb-3 fw-600">Campaign Links</p>
+                        <div className="btn-wrap">
+                          <div className="btn btn-secondary">Add Link</div>
+                        </div>
                       </div>
                       <div className="table-responsive">
                         <table className="transcation-summary-table">
@@ -211,9 +212,11 @@ const AuthorsDashboard = () => {
                             <th>Link</th>
                             <th>Action</th>
                           </tr>
-                          <tr>       
+                          <tr>
                             <td>Genral Link</td>
-                            <td>https://affiliate.dc/mahtma-gandhi-bis0asd-asdfsaf-asfsafsaf</td>
+                            <td>
+                              https://affiliate.dc/mahtma-gandhi-bis0asd-asdfsaf-asfsafsaf
+                            </td>
                             <td>
                               <div className="action">
                                 <a href="#" title="Copy" className="edit">
@@ -225,9 +228,11 @@ const AuthorsDashboard = () => {
                               </div>
                             </td>
                           </tr>
-                          <tr>       
+                          <tr>
                             <td>Genral Link</td>
-                            <td>https://affiliate.dc/mahtma-gandhi-bis0asd-asdfsaf-asfsafsaf</td>
+                            <td>
+                              https://affiliate.dc/mahtma-gandhi-bis0asd-asdfsaf-asfsafsaf
+                            </td>
                             <td>
                               <div className="action">
                                 <a href="#" title="Copy" className="edit">
@@ -805,7 +810,55 @@ const AuthorsDashboard = () => {
                             <Modal.Header closeButton>
                               <Modal.Title>Withdraw Money</Modal.Title>
                             </Modal.Header>
-                            <Modal.Body></Modal.Body>
+                            <Modal.Body>
+                              <div className="withdraw-money-modal">
+                                <div className="bank-list">
+                                  <div className="d-flex align-items-center">
+                                    <div className="icon">
+                                      <AiOutlineBank />
+                                    </div>
+                                    <div>
+                                      <p className="fs-18 mb-1 fw-500">
+                                        Nick Tyson
+                                      </p>
+                                      <span className="fs-16 light-grey">
+                                        2183XXXXXX001
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <a href="#" className="info-state">
+                                    Change
+                                  </a>
+                                </div>
+                                <div className="amount-details">
+                                  <p className="fs-18 mb-2 fw-500">Amount</p>
+                                  <span className="fs-16 light-grey">
+                                    How much would you like to withdraw?
+                                  </span>
+                                  <div className="amount-number">
+                                    <h2>$100.00</h2>
+                                    <p>
+                                      Available Balance:{" "}
+                                      <span className="light-grey">
+                                        $546.50
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="input-item">
+                                  <label>Payment Description (Optional)</label>
+                                  <textarea
+                                    className="input-box"
+                                    placeholder="Write description about this transaction..."
+                                  ></textarea>
+                                </div>
+                                <div className="btn-wrap w-100">
+                                  <button className="btn btn-primary w-100">
+                                    Withdraw
+                                  </button>
+                                </div>
+                              </div>
+                            </Modal.Body>
                           </Modal>
                         </div>
                       </div>
@@ -1396,10 +1449,132 @@ const AuthorsDashboard = () => {
                             onHide={setpricingpopupclose}
                             className="large-modal"
                           >
-                            <Modal.Header closeButton>
-                              <Modal.Title>Pricing</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body></Modal.Body>
+                            <Modal.Header
+                              closeButton
+                              className="border-0"
+                            ></Modal.Header>
+                            <Modal.Body>
+                              <div className="pricing-page-modal">
+                                <h1>Choose Your Plans</h1>
+                                <p className="desc">
+                                  Lorem ipsum is dummy he History of Tom Jones,
+                                  a Foundling by Henry Fielding
+                                </p>
+                                <div className="pricing-page-modal-tab">
+                                  <Tabs
+                                    defaultActiveKey="yearly"
+                                    transition={false}
+                                    id="fill-tab-example"
+                                  >
+                                    <Tab eventKey="yearly" title="Bill yearly /Save 10% total">
+                                      <div className="tab-content-data">
+                                        <ul>
+                                          <li>
+                                            <div className="heading">
+                                              <div className="title">
+                                                <span>Basic plan</span>
+                                              </div>
+                                              <h2>$10<span>per month</span></h2>
+                                              <p>Lorem ipsum is a dummy text</p>
+                                            </div>
+                                            <div className="feature-list">
+                                              <p>FEATURES</p>
+                                              <span>Everything in our free paln plus...</span>
+                                              <div className="feature-list-item">
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                              </div>
+                                              <div className="btn-wrap">
+                                              <button className="btn btn-primary">Get started</button>
+                                            </div>
+                                            </div>
+                                           
+                                          </li>
+                                          <li className="active">
+                                            <div className="heading">
+                                              <div className="title">
+                                                <span>Business plan</span>
+                                                <p>Popular</p>
+                                              </div>
+                                              <h2>$10<span>per month</span></h2>
+                                              <p>Lorem ipsum is a dummy text</p>
+                                            </div>
+                                            <div className="feature-list">
+                                              <p>FEATURES</p>
+                                              <span>Everything in our free paln plus...</span>
+                                              <div className="feature-list-item">
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                              </div>
+                                              <div className="btn-wrap">
+                                              <button className="btn btn-primary">Get started</button>
+                                            </div>
+                                            </div>
+                                           
+                                          </li>
+                                          <li>
+                                            <div className="heading">
+                                              <div className="title">
+                                                <span>Enterprise plan</span>
+                                              </div>
+                                              <h2>$10<span>per month</span></h2>
+                                              <p>Lorem ipsum is a dummy text</p>
+                                            </div>
+                                            <div className="feature-list">
+                                              <p>FEATURES</p>
+                                              <span>Everything in our free paln plus...</span>
+                                              <div className="feature-list-item">
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                                <div className="d-flex">
+                                                    <BsFillCheckCircleFill />
+                                                    <p>Lorem ipsum is dummy </p>
+                                                </div>
+                                              </div>
+                                              <div className="btn-wrap">
+                                              <button className="btn btn-primary">Get started</button>
+                                            </div>
+                                            </div>
+                                           
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </Tab>
+                                    <Tab eventKey="monthly" title="Bill monthly">
+                                    <div className="tab-content-data">
+                                        Tab content comes here
+                                        </div>
+                                    </Tab>
+                                  </Tabs>
+                                </div>
+                              </div>
+                            </Modal.Body>
                           </Modal>
                         </div>
                       </div>

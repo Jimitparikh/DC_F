@@ -126,7 +126,9 @@ header
   .summary
   ul::-webkit-scrollbar,
 .dropdown.without-background .dropdown-menu::-webkit-scrollbar,
-.read-book-section .read-book-body::-webkit-scrollbar {
+.read-book-section .read-book-body::-webkit-scrollbar,
+.author-detail-page-secton .author-details-page-content .author-details-info .right-part .author-detail-page-tabbing .customer-list::-webkit-scrollbar,
+.author-detail-page-secton .author-details-page-content .author-details-info .right-part .author-detail-page-tabbing .community-post-tab-content::-webkit-scrollbar{
   width: 6px;
   height: 6px;
   border-radius: 4px;
@@ -181,7 +183,9 @@ header
   .summary
   ul::-webkit-scrollbar-thumb,
 .dropdown.without-background .dropdown-menu::-webkit-scrollbar-thumb,
-.read-book-section .read-book-body::-webkit-scrollbar-thumb {
+.read-book-section .read-book-body::-webkit-scrollbar-thumb,
+.author-detail-page-secton .author-details-page-content .author-details-info .right-part .author-detail-page-tabbing .customer-list::-webkit-scrollbar-thumb,
+.author-detail-page-secton .author-details-page-content .author-details-info .right-part .author-detail-page-tabbing .community-post-tab-content::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: var(--primary-color);
 }
