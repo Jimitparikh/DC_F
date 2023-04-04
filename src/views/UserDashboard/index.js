@@ -1,5 +1,5 @@
-import React, { useState , useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "react-bootstrap/Modal";
 import Nav from "react-bootstrap/Nav";
@@ -50,7 +50,7 @@ import Loader from "../../components/Loader";
 import MyBooks from "./Components/MyBooks";
 import ReferandEarn from "./Components/ReferandEarn";
 import { Outlet } from "react-router-dom";
-import {loadStripe} from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import {
   CardElement,
   Elements,
@@ -74,145 +74,143 @@ const UserDashboard = () => {
 
   return (
     <>
-      { isLoggedIn && user &&
+      {isLoggedIn && user &&
         <div className="user-dashboard-section">
-        <div className="container">
-          <div className="user-dashoard-content">
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-              <div className="tab-items-wrapper d-flex flex-wrap">
-                <div className="left-side">
-                  <div className="profile-detail d-flex align-items-center">
-                    <div className="user-image">
-                      <img src={userdashboardprofile} alt="Profile"></img>
-                      <div className="edit-icon" onClick={setprofileuploadshow}>
-                        <MdOutlineModeEditOutline />
+          <div className="container">
+            <div className="user-dashoard-content">
+              <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+                <div className="tab-items-wrapper d-flex flex-wrap">
+                  <div className="left-side">
+                    <div className="profile-detail d-flex align-items-center">
+                      <div className="user-image">
+                        <img src={userdashboardprofile} alt="Profile"></img>
+                        <div className="edit-icon" onClick={setprofileuploadshow}>
+                          <MdOutlineModeEditOutline />
+                        </div>
+                        <Modal
+                          show={profileupload}
+                          onHide={setprofileuploadclose}
+                        >
+                          <Modal.Header closeButton>
+                            <Modal.Title>Update Profile</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>
+                            <div className="upload-file-content">
+                              <div className="upload-file">
+                                <BsUpload />
+                                <p>
+                                  Drag and drop files here or click to{" "}
+                                  <a href="#">upload.</a>
+                                </p>
+                              </div>
+                              <div className="btn-wrap">
+                                <button className="btn btn-primary">
+                                  Update
+                                </button>
+                              </div>
+                            </div>
+                          </Modal.Body>
+                        </Modal>
                       </div>
-                      <Modal
-                        show={profileupload}
-                        onHide={setprofileuploadclose}
-                      >
-                        <Modal.Header closeButton>
-                          <Modal.Title>Update Profile</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                          <div className="upload-file-content">
-                            <div className="upload-file">
-                              <BsUpload />
-                              <p>
-                                Drag and drop files here or click to{" "}
-                                <a href="#">upload.</a>
-                              </p>
-                            </div>
-                            <div className="btn-wrap">
-                              <button className="btn btn-primary">
-                                Update
-                              </button>
-                            </div>
+                      <div className="user-name">
+                        <h5>{user.firstName && user.firstName + " " + user.lastName}</h5>
+                        <p>
+                          <IoLocationOutline />
+                          Minsk, Belarus
+                        </p>
+                      </div>
+                    </div>
+                    <div className="personal-info">
+                      <h5>Personal Info</h5>
+                      <ul>
+                        <li className="d-flex">
+                          <div className="icon">
+                            <IoIosCall />
                           </div>
-                        </Modal.Body>
-                      </Modal>
+                          <div className="data">
+                            <p>Mobile Number</p>
+                            <span>{user.phone && user.phone}</span>
+                          </div>
+                        </li>
+                        <li className="d-flex">
+                          <div className="icon">
+                            <MdOutlineMail />
+                          </div>
+                          <div className="data">
+                            <p>Email</p>
+                            <span>{user.email && user.email}</span>
+                          </div>
+                        </li>
+                        <li className="d-flex">
+                          <div className="icon">
+                            <MdDateRange />
+                          </div>
+                          <div className="data">
+                            <p>Date of Birth</p>
+                            <span>12-August,2022</span>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
-                    <div className="user-name">
-                      <h5>{user.firstName  && user.firstName + " " + user.lastName}</h5>
-                      <p>
-                        <IoLocationOutline />
-                        Minsk, Belarus
-                      </p>
+                    <div className="tab-item-link">
+                      <Nav variant="pills" className="flex-column">
+                        <Nav.Item>
+                          <NavLink to="/user-dashboard"
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"} end>
+                            <p><AiOutlineBook />My Books</p>
+                          </NavLink>
+                        </Nav.Item>
+                        <Nav.Item>
+                          <NavLink to="/user-dashboard/MyFollowing"
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"} >
+                            <p><ImUsers /> My Following</p>
+                          </NavLink>
+                        </Nav.Item>
+                        <Nav.Item>
+                          <NavLink to="/user-dashboard/ManageProfile"
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"} >
+                            <p ><MdOutlineManageAccounts />Manage Profile</p>
+                          </NavLink>
+                        </Nav.Item>
+                        <Nav.Item>
+                          <NavLink to="/user-dashboard/MyWallet"
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"} >
+                            <p><MdOutlineAccountBalanceWallet />My Wallet</p>
+                          </NavLink>
+                        </Nav.Item>
+                        <Nav.Item>
+                          <NavLink to="/user-dashboard/ManagePaymentOption"
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"} >
+                            <p><FaUniversity />Manage Payment Options</p>
+                          </NavLink>
+                        </Nav.Item>
+                        <Nav.Item >
+                          <NavLink to="/user-dashboard/ReferandEarn"
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"} >
+                            <p><MdOutlineCardGiftcard />Refer & Earn</p>
+                          </NavLink>
+                        </Nav.Item>
+                      </Nav>
                     </div>
                   </div>
-                  <div className="personal-info">
-                    <h5>Personal Info</h5>
-                    <ul>
-                      <li className="d-flex">
-                        <div className="icon">
-                          <IoIosCall />
-                        </div>
-                        <div className="data">
-                          <p>Mobile Number</p>
-                          <span>{ user.phone && user.phone}</span>
-                        </div>
-                      </li>
-                      <li className="d-flex">
-                        <div className="icon">
-                          <MdOutlineMail />
-                        </div>
-                        <div className="data">
-                          <p>Email</p>
-                          <span>{user.email && user.email}</span>
-                        </div>
-                      </li>
-                      <li className="d-flex">
-                        <div className="icon">
-                          <MdDateRange />
-                        </div>
-                        <div className="data">
-                          <p>Date of Birth</p>
-                          <span>12-August,2022</span>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="tab-item-link">
-                    <Nav variant="pills" className="flex-column">
-                      <Nav.Item>
-                        <Nav.Link onClick={() => { handleNavigate('/user-dashboard/') }} eventKey="first">
-                          <AiOutlineBook />
-                          My Books
-                        </Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link onClick={() => { handleNavigate('/user-dashboard/MyFollowing') }} eventKey="second">
-                          <ImUsers />
-                          My Following
-                        </Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link onClick={() => { handleNavigate('/user-dashboard/ManageProfile') }} eventKey="third">
-                          <p>
-                            <MdOutlineManageAccounts />
-                            Manage Profile
-                          </p>
-                        </Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link onClick={() => { handleNavigate('/user-dashboard/MyWallet') }} eventKey="fourth">
-                          <p>
-                            <MdOutlineAccountBalanceWallet />
-                            My Wallet
-                          </p>
-                        </Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link onClick={() => { handleNavigate('/user-dashboard/ManagePaymentOption') }} eventKey="fifth">
-                          <p>
-                            <FaUniversity />
-                            Manage Payment Options
-                          </p>
-                        </Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item >
-                        <Nav.Link onClick={() => { handleNavigate('/user-dashboard/ReferandEarn') }} eventKey="sixth">
-                          <p>
-                            <MdOutlineCardGiftcard />
-                            Refer & Earn
-                          </p>
-                        </Nav.Link>
-                      </Nav.Item>
-                    </Nav>
+                  <div className="tab-item-content">
+                    <Tab.Content>
+                      <Elements stripe={stripePromise}>
+                        <Outlet />
+                      </Elements>
+                    </Tab.Content>
                   </div>
                 </div>
-                <div className="tab-item-content">
-                  <Tab.Content>
-                    <Elements stripe={stripePromise}>
-                      <Outlet />
-                    </Elements>
-                  </Tab.Content>
-                </div>
-              </div>
-            </Tab.Container>
+              </Tab.Container>
+            </div>
           </div>
-        </div>
-      </div>}
+        </div>}
     </>
   );
 };

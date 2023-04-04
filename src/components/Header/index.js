@@ -157,17 +157,17 @@ const Header = () => {
                       </div>
                     </div>
                     <div className='line'></div>
-                    <Dropdown.Item href="#/action-2" className='active'>
+                    <Dropdown.Item >
                       <MdOutlineSpaceDashboard /> <Link className='link' to='/user-dashboard'>My dashboard</Link>
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item >
                       <MdOutlineAccountBalanceWallet /><Link className='link' to='/user-dashboard/MyWallet'>My Wallet</Link>
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item >
                       <MdOutlineGroup /><Link className='link' to='/user-dashboard/MyFollowing'>My Following</Link>
                     </Dropdown.Item>
                     <div className='line'></div>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item >
                       <FaRegEdit /><Link className='link' to='/user-dashboard/ManageProfile'>Edit Profile</Link>
                     </Dropdown.Item>
                     <Dropdown.Item>

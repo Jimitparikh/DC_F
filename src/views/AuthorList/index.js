@@ -18,37 +18,37 @@ injectReducer('authorlist', reducer)
 
 const AuthorList = () => {
     const dispatch = useDispatch()
-    const { user , isLoggedIn } = useSelector((state) => state.auth);
+    const { user, isLoggedIn } = useSelector((state) => state.auth);
     const data = useSelector((state) => state.following.data.followings)
-    const follow = data.length ? data.following : []
+    // const follow = data.length ? data.following : []
     const { authorList, loading } = useSelector((state) => state.authorlist.data)
     const authors = authorList.authors
-    console.log(data.following," <><><><><>");
+    // console.log(data.following, " <><><><><>");
 
     const handelfollow = (data) => {
         // alert(data)
-        dispatch(follow_Author({ readerID: user._id, followID: data })).then((response) => {
+        dispatch(follow_Author({ readerID: user._id, followID: data.id })).then((response) => {
             console.log(response)
             if (response.payload.success == true) {
-                toast.success(response.payload.message, {
+                toast.success("Following " + data.name, {
                     position: toast.POSITION.TOP_CENTER
                 });
             }
-            dispatch(get_Followings({readerID: user._id}))
-            dispatch(get_authorList())
+            dispatch(get_Followings({ readerID: user._id }))
+            // dispatch(get_authorList())
         })
     }
 
     const handelunfollow = (data) => {
-        dispatch(unfollow_Author({ readerID: user._id, followID: data })).then((response) => {
+        dispatch(unfollow_Author({ readerID: user._id, followID: data.id })).then((response) => {
             console.log(response)
             if (response.payload.success == true) {
-                toast.success(response.payload.message, {
+                toast.success("Unfollowed " + data.name, {
                     position: toast.POSITION.TOP_CENTER
                 });
             }
-            dispatch(get_Followings({readerID: user._id}))
-            dispatch(get_authorList())
+            dispatch(get_Followings({ readerID: user._id }))
+            // dispatch(get_authorList())
         })
     }
 
@@ -103,20 +103,11 @@ const AuthorList = () => {
                                                                     </ul>
                                                                     <div className="btn-wrap">
                                                                         <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
-                                                                        {isLoggedIn && data.following.map((fauthor) => {
-                                                                            // if (follow.indexOf(author.authorID) !== -1) {
-                                                                            if (fauthor === author.authorID) {
-                                                                                return <button onClick={() => { handelunfollow(author.authorID) }} className="btn btn-primary">Following</button>
-                                                                            }
-                                                                            else {
-                                                                                return <button onClick={() => { handelfollow(author.authorID) }} className="btn btn-primary">Follow Now</button>
-                                                                            }
-                                                                        })
+                                                                        {
+                                                                            isLoggedIn ?  
+                                                                            data.following.includes(author.authorID) ? <button onClick={() => { handelunfollow({id:author.authorID, name: author.authorName}) }} className="btn btn-primary">Following</button> : <button onClick={() => { handelfollow({id:author.authorID, name: author.authorName}) }} className="btn btn-primary">Follow Now</button>
+                                                                            : <></>
                                                                         }
-                                                                        
-                                                                        {isLoggedIn && data.following.length === 0 && <button onClick={() => { handelfollow(author.authorID) }} className="btn btn-primary">Follow Now</button>}
-                                                                        
-
                                                                     </div>
                                                                 </div>
                                                             </li>

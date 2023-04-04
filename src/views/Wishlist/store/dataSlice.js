@@ -3,7 +3,7 @@ import { getWishlist , removeFromWishlist , addToWishlist } from "../../../servi
 
 export const get_Wishlist = createAsyncThunk('wishlist/getWishlist',async (data) => {
     const response = await getWishlist(data)
-    console.log(response.data,"<<<<<<<");
+    console.log(response.data.wishlist[0],"<<<<<<<");
     return response.data.wishlist[0]
 })
 
@@ -34,6 +34,8 @@ const dataSlice = createSlice({
     extraReducers: {
         [get_Wishlist.fulfilled]: (state, action) => {
             state.wishList = action.payload
+            state.wishlistedBookss = action.payload.wishlistedBookss
+            state.wishlistedBooks = action.payload.wishlistedBooks
             state.loading = false
         },
         [get_Wishlist.pending]: (state) => {

@@ -31,7 +31,7 @@ import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { get_Book } from "./store/dataSlice";
-import { add_Wishlist , remove_Wishlist , get_Wishlist } from "../Wishlist/store/dataSlice";
+import { add_Wishlist, remove_Wishlist, get_Wishlist } from "../Wishlist/store/dataSlice";
 import { injectReducer } from '../../store/index'
 import reducer from './store'
 injectReducer('book', reducer)
@@ -40,7 +40,7 @@ const BookDetailPage = () => {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
   const dispatch = useDispatch()
-  const { user , isLoggedIn } = useSelector((state) => state.auth);
+  const { user, isLoggedIn } = useSelector((state) => state.auth);
   const { wishList } = useSelector((state) => state.wishlist.data)
   const data = useSelector((state) => state.book.data.BookDetail)
   const loading = useSelector((state) => state.book.data.loading)
@@ -48,24 +48,24 @@ const BookDetailPage = () => {
   const wishlistIDs = wishList ? wishList.wishlistedBooks : [];
   const tags = bookDetail.tags ? bookDetail.tags : [];
 
-  const handeladdwishlist = (id) => {
-    dispatch(add_Wishlist({ bookID: id, readerID: user._id })).then((response) => {
+  const handeladdwishlist = (data) => {
+    dispatch(add_Wishlist({ bookID: data.id, readerID: user._id })).then((response) => {
       console.log(response)
       if (response.payload.success == true) {
-        toast.success(response.payload.message, {
+        toast.success(data.name + " Added to Wishlist!", {
           position: toast.POSITION.TOP_CENTER
         });
       }
       dispatch(get_Wishlist({ readerID: user._id }))
     })
-    
+
   }
 
-  const handelremovewishlist = (id) => {
-    dispatch(remove_Wishlist({ bookID: id, readerID: user._id })).then((response) => {
+  const handelremovewishlist = (data) => {
+    dispatch(remove_Wishlist({ bookID: data.id, readerID: user._id })).then((response) => {
       console.log(response)
       if (response.payload.success == true) {
-        toast.success(response.payload.message, {
+        toast.success(data.name+" Removed from Wishlist!", {
           position: toast.POSITION.TOP_CENTER
         });
         dispatch(get_Wishlist({ readerID: user._id }))
@@ -75,12 +75,12 @@ const BookDetailPage = () => {
 
   useEffect(() => {
     dispatch(get_Book({ bookID: id }))
-  }, [ ])
+  }, [])
   return (
     <>
       <Breadcrums path="Book Details" />
       <ToastContainer
-      autoClose={5000} />
+        autoClose={5000} />
       <section className="book-detail-section">
         {bookDetail && !loading &&
           <div className="container">
@@ -98,18 +98,19 @@ const BookDetailPage = () => {
                       <p>Trending on #1</p>
                     </div>
                     <div className="icon d-flex">
-                     {isLoggedIn && <div className="icon-border me-3">
-                        { isLoggedIn && wishlistIDs && wishlistIDs.length !== 0  && wishlistIDs.map((book, i) => {
-                          if (book === bookDetail._id) { return <BsHeartFill color="red" onClick={()=>{handelremovewishlist(bookDetail._id)}} /> }
-                          else {
-                            return <BsHeart  onClick={()=>{handeladdwishlist(bookDetail._id)}} />
-                          }
-                        })
-                        }
-                        {wishlistIDs.length === 0 &&
-                          <BsHeart  onClick={()=>{handeladdwishlist(bookDetail._id)}} />
-                          }
-                      </div>}
+                      {
+                        isLoggedIn ?
+                          wishlistIDs.includes(bookDetail._id)
+                          ?
+                          <div onClick={() => { handelremovewishlist({id:bookDetail._id,name: bookDetail.bookName}) }} className="icon-border me-3">
+                            <BsHeartFill color="red"  />
+                          </div>
+                          :
+                          <div onClick={() => { handeladdwishlist({id:bookDetail._id,name: bookDetail.bookName}) }} className="icon-border me-3">
+                            <BsHeart  />
+                          </div>
+                          : <></>
+                      }
                       <div className="icon-border">
                         <BsShare />
                       </div>
@@ -722,7 +723,7 @@ const BookDetailPage = () => {
             </div>
           </div>
         }
-        {loading && <Loader/>}
+        {loading && <Loader />}
       </section>
     </>
   );

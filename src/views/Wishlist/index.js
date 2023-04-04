@@ -16,8 +16,8 @@ injectReducer('wishlist', reducer)
 const Wishlist = () => {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.auth)
-  const { wishList, loading } = useSelector((state) => state.wishlist.data)
-  const books = wishList ? wishList.wishlistedBookss : []
+  const { loading , wishlistedBookss} = useSelector((state) => state.wishlist.data)
+  const books = wishlistedBookss
   const count = books.length ;
 
   const removeAllHandler = () => {

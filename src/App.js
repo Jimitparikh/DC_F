@@ -6,7 +6,7 @@ import { gapi } from 'gapi-script';
 function App() {
   useEffect(()=> {
     function start(){
-      gapi.client.init({
+      gapi.auth2.init({
         clientId : "1021250016588-dbm8d47js5vu8jkqgkok7gl9i2baa2qi.apps.googleusercontent.com",
         scope : ""
       })
