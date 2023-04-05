@@ -14,6 +14,7 @@ import reducer from './store'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../../components/Loader';
+import { NavLink } from 'react-router-dom';
 injectReducer('authorlist', reducer)
 
 const AuthorList = () => {
@@ -102,7 +103,7 @@ const AuthorList = () => {
                                                                         </li>
                                                                     </ul>
                                                                     <div className="btn-wrap">
-                                                                        <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
+                                                                        <NavLink to={"/author-detail"}  className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</NavLink>
                                                                         {
                                                                             isLoggedIn ?  
                                                                             data.following.includes(author.authorID) ? <button onClick={() => { handelunfollow({id:author.authorID, name: author.authorName}) }} className="btn btn-primary">Following</button> : <button onClick={() => { handelfollow({id:author.authorID, name: author.authorName}) }} className="btn btn-primary">Follow Now</button>

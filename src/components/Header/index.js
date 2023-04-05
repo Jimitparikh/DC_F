@@ -170,8 +170,8 @@ const Header = () => {
                     <Dropdown.Item >
                       <FaRegEdit /><Link className='link' to='/user-dashboard/ManageProfile'>Edit Profile</Link>
                     </Dropdown.Item>
-                    <Dropdown.Item>
-                      <AiOutlinePoweroff /><a onClick={() => { logouthandler() }} > Logout</a>
+                    <Dropdown.Item onClick={() => { logouthandler() }}> 
+                      <AiOutlinePoweroff /><a > Logout</a>
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

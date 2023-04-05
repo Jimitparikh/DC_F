@@ -39,6 +39,7 @@ import { get_Followings } from "./store/dataSlice";
 import userprofile from "../../../../images/user-menu-profile.png";
 import { injectReducer } from '../../../../store/index'
 import reducer from './store'
+import { Link } from "react-router-dom";
 injectReducer('following', reducer)
 
 const MyFollowing = () => {
@@ -66,7 +67,7 @@ const MyFollowing = () => {
                             <h5>{author.authorName}</h5>
                             <p>Comic & Horror Book Writer</p>
                             <div className="action">
-                                <a href="#">View Profile</a>
+                                <Link to="/author-detail">View Profile</Link>
                                 <a href="#">View all Books</a>
                             </div>
                         </div>
