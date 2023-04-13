@@ -295,6 +295,19 @@ input[type="number"] {
     color: #2f80ed;
   }
 }
+.input-box.form-select{
+  padding: 12px 14px;
+  box-shadow: none;
+  background-position: right 20px center;
+  background-size: 20px 16px;
+  &.label{
+    padding: 24px 14px;
+  }
+  &:focus{
+    box-shadow: none;
+    border-color: #c5c7d0;
+  }
+}
 form,
 table {
   margin: 0;

@@ -3716,35 +3716,12 @@ const AuthorsDashboard = () => {
                                   </div>
                                   <div className="dropdown-input-fields">
                                     <div className="dropdown-input">
-                                      <Dropdown className="input-box without-background me-0">
-                                        <Dropdown.Toggle id="dropdown-basic">
-                                          Select your book <FaChevronDown />
-                                        </Dropdown.Toggle>
-
-                                        <Dropdown.Menu>
-                                          <Dropdown.Item href="#/action-1">
-                                            Today
-                                          </Dropdown.Item>
-                                          <Dropdown.Item href="#/action-2">
-                                            Yesterday
-                                          </Dropdown.Item>
-                                          <Dropdown.Item href="#/action-3">
-                                            Last 30 Days
-                                          </Dropdown.Item>
-                                          <Dropdown.Item href="#/action-1">
-                                            Last 1 Week
-                                          </Dropdown.Item>
-                                          <Dropdown.Item href="#/action-1">
-                                            Last 1 Year
-                                          </Dropdown.Item>
-                                          <Dropdown.Item href="#/action-1">
-                                            Life Time
-                                          </Dropdown.Item>
-                                          <Dropdown.Item href="#/action-1">
-                                            Custome Date Range
-                                          </Dropdown.Item>
-                                        </Dropdown.Menu>
-                                      </Dropdown>
+                                    <Form.Select aria-label="Default select example" className="input-box with-label">
+                                        <option>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </Form.Select>
                                       <p className="label">Slot 1</p>
                                     </div>
                                     <div className="dropdown-input">
@@ -4336,23 +4313,12 @@ const AuthorsDashboard = () => {
                                     </div>
                                     <div className="input-field-item">
                                       <label>Book Language</label>
-                                      <Dropdown className="input-box without-background">
-                                        <Dropdown.Toggle id="dropdown-basic">
-                                          English <FaChevronDown />
-                                        </Dropdown.Toggle>
-
-                                        <Dropdown.Menu>
-                                          <Dropdown.Item href="#/action-1">
-                                            Male
-                                          </Dropdown.Item>
-                                          <Dropdown.Item href="#/action-2">
-                                            Female
-                                          </Dropdown.Item>
-                                          <Dropdown.Item href="#/action-3">
-                                            Other
-                                          </Dropdown.Item>
-                                        </Dropdown.Menu>
-                                      </Dropdown>
+                                      <Form.Select aria-label="Default select example" className="input-box">
+                                        <option>Open this select menu</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                      </Form.Select>
                                     </div>
                                     <div className="input-field-item">
                                       <label>Email</label>
@@ -5006,7 +4972,7 @@ const AuthorsDashboard = () => {
                   <div className="add-here">
                     <div className="left-part">
                       <a href="#">
-                        <img src={addhereactive} alt="add here image"/>
+                        <img src={addhereactive} alt="add here image" />
                         <p className="add-here-text">Your Ad here</p>
                       </a>
                     </div>
@@ -5014,22 +4980,22 @@ const AuthorsDashboard = () => {
                       <ul>
                         <li>
                           <a href="#">
-                          <img src={addhere} alt="add here image"/>
+                            <img src={addhere} alt="add here image" />
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                          <img src={addhere} alt="add here image"/>
+                            <img src={addhere} alt="add here image" />
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                          <img src={addhere} alt="add here image"/>
+                            <img src={addhere} alt="add here image" />
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                          <img src={addhere} alt="add here image"/>
+                            <img src={addhere} alt="add here image" />
                           </a>
                         </li>
                       </ul>
