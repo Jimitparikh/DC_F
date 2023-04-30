@@ -22,13 +22,15 @@ const Books = () => {
             <section className="trending-books-section">
                 <div className="trending-books-content">
                     <div className="Books-listing vertical-align d-flex justify-content-between align-items-center">
-                        {books && 
+                        {books &&
                             <ul className="trending-books-list">
                                 {books.map((book, index) => {
                                     return <li key={index}>
                                         <div className="add-to-cart-book-box d-flex overflow-hidden position-relative">
                                             <div className="add-cart-book-image">
-                                                <img src={book.imageUrl} alt="Book Cover" />
+                                                <Link className='link' to={"/book-detail?id=" + book._id}>
+                                                    <img src={book.imageUrl} alt="Book Cover" />
+                                                </Link>
                                             </div>
                                             <div className="add-cart-book-data">
                                                 <div className="title">
@@ -60,7 +62,7 @@ const Books = () => {
                                 }
                             </ul>
                         }
-                      
+
                     </div>
                 </div>
             </section>

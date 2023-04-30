@@ -15,20 +15,22 @@ import LoginDescription from '../../components/LoginDescription';
 import csc from "country-state-city";
 import { useGoogleLogin, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
-    
+
     const responseGoogle = (response) => {
         console.log(response);
         const socialID = response.clientId;
         const token = response.credential;
-         const userObject = jwt_decode(response.credential);
-         console.log(userObject);
+        const userObject = jwt_decode(response.credential);
+        console.log(userObject);
 
-         dispatch(register({ firstName:userObject.given_name, lastName : userObject.family_name  , email : userObject.email, socialID  , token}))
+        dispatch(register({ firstName: userObject.given_name, lastName: userObject.family_name, email: userObject.email, socialID, token }))
             .unwrap()
             .then(() => {
                 navigate("/");
@@ -36,19 +38,19 @@ const Register = () => {
             .catch(() => {
                 setLoading(false);
             });
-        }
-         //  localStorage.setItem('user', JSON.stringify(userObject));
-        //   const { name, sub, picture } = userObject;
-        //   const doc = {
-        //         _id: sub,
-        //         _type: 'user',
-        //         userName: name,
-        //         image: picture,
-        //       };
-            //   client.createIfNotExists(doc).then(() => {
-            //         navigate('/', { replace: true });
-            //       });
-                 
+    }
+    //  localStorage.setItem('user', JSON.stringify(userObject));
+    //   const { name, sub, picture } = userObject;
+    //   const doc = {
+    //         _id: sub,
+    //         _type: 'user',
+    //         userName: name,
+    //         image: picture,
+    //       };
+    //   client.createIfNotExists(doc).then(() => {
+    //         navigate('/', { replace: true });
+    //       });
+
 
     const initialValues = {
         firstName: "",
@@ -79,18 +81,28 @@ const Register = () => {
     const handleRegister = (formValue) => {
         const { firstName, lastName, email, phone, password } = formValue;
         setLoading(true);
-        dispatch(register({ firstName, lastName, email, phone, password}))
-            .unwrap()
-            .then(() => {
-                navigate("/otp");
+        dispatch(register({ firstName, lastName, email, phone, password }))
+            .then((response) => {
+                if (response.payload.user) {
+                    navigate("/otp");
+                    setLoading(false);
+                }
+                else {
+                    throw ({ error: response.payload.error })
+                }
+
             })
-            .catch(() => {
+            .catch((error) => {
+                toast.error(error.error.errorCode, {
+                    position: toast.POSITION.TOP_CENTER
+                });
                 setLoading(false);
             });
     };
 
     return (
         <>
+            <ToastContainer />
             < div className='login-page-section '>
                 <div className='container-fulid p-0'>
                     <div className='login-page-content-wrapper d-flex justify-content-between'>
@@ -106,7 +118,7 @@ const Register = () => {
                                 <p className='small-desc fs-18 light-grey'>Join us as a reader </p>
                                 <div className='sign-in-option d-flex'>
                                     <div className='btn-wrap me-3'>
-                                    <GoogleLogin
+                                        <GoogleLogin
                                             render={(renderProps) => (
                                                 <button
                                                     type="button"
@@ -189,12 +201,12 @@ const Register = () => {
                                             </div>
                                         </div>
                                         <div className='btn-wrap'>
-                                            <Button type="submit"   className='btn btn-primary'>
+                                            <Button type="submit" className='btn btn-primary'>
                                                 <span> Create account &nbsp;</span>
                                                 {loading && (
                                                     <span className="spinner-border spinner-border-sm"></span>
                                                 )}
-                                                </Button>
+                                            </Button>
                                         </div>
                                     </Form>
                                 </Formik>

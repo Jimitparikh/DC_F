@@ -103,7 +103,7 @@ const AuthorList = () => {
                                                                         </li>
                                                                     </ul>
                                                                     <div className="btn-wrap">
-                                                                        <NavLink to={"/author-detail"}  className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</NavLink>
+                                                                        <NavLink to={"/author-detail?id="+ author._id}  className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</NavLink>
                                                                         {
                                                                             isLoggedIn ?  
                                                                             data.following.includes(author.authorID) ? <button onClick={() => { handelunfollow({id:author.authorID, name: author.authorName}) }} className="btn btn-primary">Following</button> : <button onClick={() => { handelfollow({id:author.authorID, name: author.authorName}) }} className="btn btn-primary">Follow Now</button>

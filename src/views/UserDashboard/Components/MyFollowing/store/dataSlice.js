@@ -29,14 +29,18 @@ const dataSlice = createSlice({
             state.followings = action.payload
         }
     },
-    extraReducers: {
-        [get_Followings.fulfilled]: (state, action) => {
+    extraReducers : (builder) =>{
+        builder.addCase(get_Followings.fulfilled, (state, action) => {
             state.followings = action.payload
             state.loading = false
-        },
-        [get_Followings.pending]: (state) => {
+        })
+        builder.addCase(get_Followings.pending, (state, action) => {
             state.loading = true
-        },
+        })
+        builder.addCase(get_Followings.rejected, (state, action) => {
+            state.loading = false
+            state.followings = []
+        })
     }
 })
 

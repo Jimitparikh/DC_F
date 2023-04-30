@@ -61,7 +61,7 @@ const MyFollowing = () => {
                     {following.length !=0 && following.map((author,i)=>{
                         return <li key={i}>
                         <div className="user-image">
-                            <img src={userprofile} alt="Profile"></img>
+                            <img src={author.imageUrl} style={{borderRadius: '50%',width: '60px',height:'80px'}} alt="Profile"></img>
                         </div>
                         <div className="user-name">
                             <h5>{author.authorName}</h5>

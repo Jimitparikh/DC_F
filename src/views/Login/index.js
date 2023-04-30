@@ -11,6 +11,8 @@ import { login } from "../../slices/auth";
 import LoginDescription from '../../components/LoginDescription';
 import { useGoogleLogin, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -53,16 +55,26 @@ const Login = () => {
         const { email, password } = formValue;
         setLoading(true);
         dispatch(login({ email, password }))
-            .unwrap()
-            .then(() => {
+        .then((response) => {
+            if (response.payload.reader) {
                 navigate("/");
-            })
-            .catch(() => {
                 setLoading(false);
+            }
+            else {
+                throw ({ error: response.payload.error })
+            }
+
+        })
+        .catch((error) => {
+            toast.error(error.error.message, {
+                position: toast.POSITION.TOP_CENTER
             });
-    };
+            setLoading(false);
+        });
+};
     return (
         <>
+          <ToastContainer />
             <div className='login-page-section'>
                 <div className='container-fulid p-0'>
                     <div className='login-page-content-wrapper d-flex justify-content-between'>

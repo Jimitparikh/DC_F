@@ -10,16 +10,10 @@ export const register = createAsyncThunk(
     async (formValue, thunkAPI) => {
         try {
             const { data } = await createReader(formValue);
-            if (!data.success) throw ({ message: data.message })
+            if (!data.success) throw ({ error: data })
             return { user: data.reader };
         } catch (error) {
-            const message =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString();
-            return thunkAPI.rejectWithValue();
+            return thunkAPI.rejectWithValue(error);
         }
     }
 );
@@ -31,17 +25,11 @@ export const login = createAsyncThunk(
             const resp = await loginReader(formValue);
             // console.log(resp.data.reader, "in Slice")
             if (!resp.data.success) {
-                throw ({ message: resp.data.message })
+                throw ({ error: resp.data })
             }
             return { user: resp.data.reader };
         } catch (error) {
-            const message =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString();
-            return thunkAPI.rejectWithValue();
+            return thunkAPI.rejectWithValue(error);
         }
     }
 );
@@ -52,16 +40,10 @@ export const update = createAsyncThunk(
         try {
             const resp = await updateReader(formValue);
             // console.log(resp.data.reader, "in Slice")
-            if (!resp.data.success) throw ({ message: resp.data.message })
+            if (!resp.data.success) throw ({ error: resp.data })
             return { user: resp.data.reader };
         } catch (error) {
-            const message =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString();
-            return thunkAPI.rejectWithValue();
+            return thunkAPI.rejectWithValue(error);
         }
     }
 );
