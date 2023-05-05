@@ -56,7 +56,8 @@ const Login = () => {
         setLoading(true);
         dispatch(login({ email, password }))
         .then((response) => {
-            if (response.payload.reader) {
+            console.log(response);
+            if (response.payload.user) {
                 navigate("/");
                 setLoading(false);
             }

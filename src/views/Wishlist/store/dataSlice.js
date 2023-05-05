@@ -39,7 +39,13 @@ const dataSlice = createSlice({
             state.loading = false
         },
         [get_Wishlist.pending]: (state) => {
-            state.loading = true
+            state.loading = false
+        },
+        [get_Wishlist.rejected]: (state) => {
+            state.loading = false
+            state.wishList = []
+            state.wishlistedBookss = []
+            state.wishlistedBooks = []
         },
     }
 })

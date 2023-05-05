@@ -110,9 +110,9 @@ const Wishlist = () => {
                     }
                   </ul>
                 } 
-                {loading && 
+                {/* {loading && 
                   <Loader />
-                }
+                } */}
 
               </div>
               {books.length === 0 &&
