@@ -62,12 +62,12 @@ const Login = () => {
                 setLoading(false);
             }
             else {
-                throw ({ error: response.payload })
+                throw ({ error: response.payload.error })
             }
 
         })
         .catch((error) => {
-            toast.error(error.message, {
+            toast.error(error.error.message, {
                 position: toast.POSITION.TOP_CENTER
             });
             setLoading(false);
