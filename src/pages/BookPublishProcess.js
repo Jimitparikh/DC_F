@@ -10,6 +10,7 @@ import {
   BsCheck2,
   BsFileEarmarkMusic,
   BsFillCheckCircleFill,
+  BsFillPlayFill,
   BsImage,
   BsPin,
   BsPlayCircle,
@@ -20,6 +21,10 @@ import { MdContentCopy, MdFindReplace } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { ImFileVideo } from "react-icons/im";
 import trendingbookcover from "../images/trending-book-cover.png";
+import bookhomepage from "../images/book-home-page.jpg";
+import audiolistimage from "../images/audio-list.png";
+import ProgressBar from "react-bootstrap/ProgressBar";
+import video from "../images/dummy-video.mp4";
 
 const BookPublishProcess = () => {
   const [BookPublishProcess, setBookPublishProcess] = useState(false);
@@ -42,6 +47,14 @@ const BookPublishProcess = () => {
   const setreplacesentclose = () => setreplacesent(false);
   const setreplacesentshow = () => setreplacesent(true);
 
+  const [audiolist, setaudiolist] = useState(false);
+  const setaudiolistclose = () => setaudiolist(false);
+  const setaudiolistshow = () => setaudiolist(true);
+
+  const [videolist, setvideolist] = useState(false);
+  const setvideolistclose = () => setvideolist(false);
+  const setvideolistshow = () => setvideolist(true);
+
   const renderTooltip = (props) => (
     <Tooltip
       className="text-detail-tooltip-content"
@@ -58,7 +71,8 @@ const BookPublishProcess = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo lorem ipsum it consequat <a href="#">...Read More</a>
+            aliquip ex ea commodo lorem ipsum it consequat{" "}
+            <a href="#">...Read More</a>
           </p>
         </div>
       </div>
@@ -67,7 +81,7 @@ const BookPublishProcess = () => {
 
   return (
     <>
-      <div className="btn-wrap d-flex mt-4 ms-4 container">
+      <div className="btn-wrap d-flex mt-4 ms-4 container flex-wrap">
         <button className="btn" onClick={setBookPublishProcessshow}>
           Step 1
         </button>
@@ -83,6 +97,12 @@ const BookPublishProcess = () => {
         </button>
         <button className="btn ms-2" onClick={setreplacesent}>
           Replace Sentenace
+        </button>
+        <button className="btn ms-2" onClick={setaudiolist}>
+          Audi list
+        </button>
+        <button className="btn ms-2" onClick={setvideolist}>
+          Video list
         </button>
       </div>
       <div className="container mt-4 pt-4 text-detail-popover">
@@ -871,6 +891,153 @@ const BookPublishProcess = () => {
             <button className="btn btn-grey">Replace All</button>
           </div>
         </Modal.Footer>
+      </Modal>
+      <Modal
+        show={audiolist}
+        onHide={setaudiolistclose}
+        className="large-modal"
+      >
+        <Modal.Body>
+          <div className="audio-list-modal">
+            <div className="audio-list">
+              <img src={audiolistimage} class="img-fluid" alt="Audio list" />
+            </div>
+            <div className="audio-player-list">
+              <h2 className="fs-20 mb-4">Chapters</h2>
+              <div className="player-list-detail active">
+                <div className="player-list-image">
+                  <img src={bookhomepage} alt="Book Cover" />
+                </div>
+                <div className="player-list-data">
+                  <div className="title">
+                    <h3>Dream psychology</h3>
+                    <p>Sigmund Fread</p>
+                  </div>
+                  <div className="progress-detail">
+                    <p>40-41/159</p>
+                    <ProgressBar now={40} />
+                  </div>
+                </div>
+              </div>
+              <div className="player-list-detail">
+                <div className="player-list-image">
+                  <img src={bookhomepage} alt="Book Cover" />
+                </div>
+                <div className="player-list-data">
+                  <div className="title">
+                    <h3>Dream psychology</h3>
+                    <p>Sigmund Fread</p>
+                  </div>
+                  <div className="progress-detail">
+                    <p>40-41/159</p>
+                    <ProgressBar now={40} />
+                  </div>
+                </div>
+              </div>
+              <div className="player-list-detail">
+                <div className="player-list-image">
+                  <img src={bookhomepage} alt="Book Cover" />
+                </div>
+                <div className="player-list-data">
+                  <div className="title">
+                    <h3>Dream psychology</h3>
+                    <p>Sigmund Fread</p>
+                  </div>
+                  <div className="progress-detail">
+                    <p>40-41/159</p>
+                    <ProgressBar now={40} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={videolist}
+        onHide={setvideolistclose}
+        className="large-modal"
+      >
+        <Modal.Body>
+          <div className="audio-list-modal video-list-modal">
+            <div className="audio-list">
+            <h2 className="fs-20 mb-2">Chapters</h2>
+            <p className="fs-14 light-grey">Sigmund Freud </p>
+              <div className="video-container">
+                <div className="video">
+                  <video src={video} controls="controls" autoplay="true" />
+                </div>
+                <a class="video-play-button" href="#">
+                  <span>
+                    <BsFillPlayFill />
+                  </span>
+                </a>
+                <span className="left-arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                  <path d="M0.0820312 22V0H2.83203V22H0.0820312ZM23.9154 22L8.05703 11L23.9154 0V22ZM21.1654 16.7292V5.27083L12.8695 11L21.1654 16.7292Z" fill="#666666"/>
+                  </svg>                  
+                </span>
+                <span className="right-arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                  <path d="M21.1654 22V0H23.9154V22H21.1654ZM0.0820312 22V0L15.9404 11L0.0820312 22ZM2.83203 16.7292L11.1279 11L2.83203 5.27083V16.7292Z" fill="#666666"/>
+                  </svg>                  
+                </span>
+              </div>
+              <div className="desc">
+                <h2 className="fs-20 mb-2">Description</h2>
+                <p className="fs-14 light-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodothe action or process.</p>
+              </div>
+            </div>
+            <div className="audio-player-list">
+            <h2 className="fs-20 mb-4">Chapters</h2>
+              <div className="player-list-detail active">
+                <div className="player-list-image">
+                  <img src={bookhomepage} alt="Book Cover" />
+                </div>
+                <div className="player-list-data">
+                  <div className="title">
+                    <h3>Dream psychology</h3>
+                    <p>Sigmund Fread</p>
+                  </div>
+                  <div className="progress-detail">
+                    <p>40-41/159</p>
+                    <ProgressBar now={40} />
+                  </div>
+                </div>
+              </div>
+              <div className="player-list-detail">
+                <div className="player-list-image">
+                  <img src={bookhomepage} alt="Book Cover" />
+                </div>
+                <div className="player-list-data">
+                  <div className="title">
+                    <h3>Dream psychology</h3>
+                    <p>Sigmund Fread</p>
+                  </div>
+                  <div className="progress-detail">
+                    <p>40-41/159</p>
+                    <ProgressBar now={40} />
+                  </div>
+                </div>
+              </div>
+              <div className="player-list-detail">
+                <div className="player-list-image">
+                  <img src={bookhomepage} alt="Book Cover" />
+                </div>
+                <div className="player-list-data">
+                  <div className="title">
+                    <h3>Dream psychology</h3>
+                    <p>Sigmund Fread</p>
+                  </div>
+                  <div className="progress-detail">
+                    <p>40-41/159</p>
+                    <ProgressBar now={40} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
       </Modal>
     </>
   );
