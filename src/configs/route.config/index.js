@@ -23,6 +23,9 @@ import ManageProfile from '../../views/UserDashboard/Components/ManageProfile';
 import MyWallet from '../../views/UserDashboard/Components/MyWallet';
 import ManagePaymentOption from '../../views/UserDashboard/Components/ManagePaymentOption';
 import ReferandEarn from '../../views/UserDashboard/Components/ReferandEarn';
+import FAQ from '../../views/FAQ';
+import Support from '../../views/Support';
+import TermsAndConditions from '../../views/TermsAndCondition';
 
 export const router = createBrowserRouter([
   {
@@ -38,15 +41,18 @@ export const router = createBrowserRouter([
       { path: "/cart", element: <Cart />, },
       { path: "/contact-us", element: <Contactus />, },
       { path: "/about-us", element: <AboutUs />, },
+      { path: "/FAQ", element: <FAQ /> },
+      { path: "/Support", element: <Support /> },
+      { path: "/Terms&Conditions", element: <TermsAndConditions /> },
       {
         path: "/user-dashboard", element: <UserDashboard />,
         children: [
-          {path: "/user-dashboard/", element:<MyBooks/> },
-          {path: "/user-dashboard/MyFollowing", element:<MyFollowing/> },
-          {path: "/user-dashboard/ManageProfile", element:<ManageProfile/> },
-          {path: "/user-dashboard/MyWallet", element:<MyWallet/> },
-          {path: "/user-dashboard/ManagePaymentOption", element:<ManagePaymentOption/> },
-          {path: "/user-dashboard/ReferandEarn", element:<ReferandEarn/> },
+          { path: "/user-dashboard/", element: <MyBooks /> },
+          { path: "/user-dashboard/MyFollowing", element: <MyFollowing /> },
+          { path: "/user-dashboard/ManageProfile", element: <ManageProfile /> },
+          { path: "/user-dashboard/MyWallet", element: <MyWallet /> },
+          { path: "/user-dashboard/ManagePaymentOption", element: <ManagePaymentOption /> },
+          { path: "/user-dashboard/ReferandEarn", element: <ReferandEarn /> },
         ]
       },
     ],

@@ -54,10 +54,10 @@ const Footer = ()=>{
                   <a href="#">Shopping Guide</a>
                 </li>
                 <li>
-                  <a href="#">FAQs</a>
+                  <Link to="/FAQ">FAQs</Link>
                 </li>
                 <li>
-                  <a href="#">Support</a>
+                  <Link to="/Support">Support</Link>
                 </li>
               </ul>
             </div>
@@ -65,10 +65,10 @@ const Footer = ()=>{
               <h4 className="column-title">Opportunities</h4>
               <ul className="link-list">
                 <li>
-                  <a href="#">Publish your book</a>
+                  <a href="http://testauthor.dreamcapcha.com/">Publish your book</a>
                 </li>
                 <li>
-                  <a href="#">Join Affiliate</a>
+                  <a href="http://testaffiliate.dreamcapcha.com/">Join Affiliate</a>
                 </li>
                 <li>
                   <a href="#">Author support</a>
@@ -77,11 +77,11 @@ const Footer = ()=>{
                   <a href="#">Community</a>
                 </li>
                 <li>
-                  <a href="#">Author pannel</a>
+                  <a href="http://testauthor.dreamcapcha.com/">Author pannel</a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#">Download our App</a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="column">
@@ -94,16 +94,16 @@ const Footer = ()=>{
                   <Link to="/bookList">All Books</Link>
                 </li>
                 <li>
-                  <a href="#">All Categories</a>
+                  <Link to="/bookList">All Categories</Link>
                 </li>
                 <li>
-                  <a href="#">Terms & condition</a>
+                  <Link to="Terms&Conditions">Terms & condition</Link>
                 </li>
                 <li>
-                  <a href="#">Privacy Policy</a>
+                  <Link to="Terms&Conditions">Privacy Policy</Link>
                 </li>
                 <li>
-                  <a href="#">option</a>
+                  <Link to="Terms&Conditions">option</Link>
                 </li>
               </ul>
             </div>

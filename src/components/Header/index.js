@@ -35,7 +35,7 @@ const Header = () => {
   };
 
   const GetData = ()=> {
-   if(isLoggedIn){ 
+   if(isLoggedIn && user._id){ 
     dispatch(get_Wishlist({ readerID: user._id }))
     dispatch(get_Followings({readerID : user._id}))}
   }
@@ -65,7 +65,7 @@ const Header = () => {
                 <Link to='/about-us' className="light-grey ms-4">About us</Link>
               </li>
               <li className="ms-3">
-                <a href="#" className="light-grey ms-4">Terms & condition</a>
+                <Link to="/Terms&Conditions" className="light-grey ms-4">Terms & condition</Link>
               </li>
               <li className="ms-3">
                 <Link to='/contact-us' className="light-grey ms-4">Contact us</Link>
@@ -194,7 +194,6 @@ const Header = () => {
                   <div className="dd-menu d-flex">
                     <div className="left-part d-flex flex-wrap">
                       <div className="column">
-                        <h4 className="column-title">Biographies & Memoirs</h4>
                         <ul className="link-list">
                           <li>
                             <a href="#">Arts & Literature</a>
@@ -210,196 +209,66 @@ const Header = () => {
                           </li>
                           <li>
                             <a href="#">Leaders & Notable People</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="column">
+                        <ul className="link-list">
+                          <li>
+                            <a href="#">Arts & Literature</a>
+                          </li>
+                          <li>
+                            <a href="#">Cultural</a>
+                          </li>
+                          <li>
+                            <a href="#">European</a>
+                          </li>
+                          <li>
+                            <a href="#">Historical</a>
+                          </li>
+                          <li>
+                            <a href="#">Leaders & Notable People</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="column">
+                        <ul className="link-list">
+                          <li>
+                            <a href="#">Arts & Literature</a>
+                          </li>
+                          <li>
+                            <a href="#">Cultural</a>
+                          </li>
+                          <li>
+                            <a href="#">European</a>
+                          </li>
+                          <li>
+                            <a href="#">Historical</a>
+                          </li>
+                          <li>
+                            <a href="#">Leaders & Notable People</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="column">
+                        <ul className="link-list">
+                          <li>
+                            <a href="#">Arts & Literature</a>
+                          </li>
+                          <li>
+                            <a href="#">Cultural</a>
+                          </li>
+                          <li>
+                            <a href="#">European</a>
+                          </li>
+                          <li>
+                            <a href="#">Historical</a>
                           </li>
                           <li>
                             <a href="#">View All</a>
                           </li>
                         </ul>
                       </div>
-                      <div className="column">
-                        <h4 className="column-title">Biographies & Memoirs</h4>
-                        <ul className="link-list">
-                          <li>
-                            <a href="#">Arts & Literature</a>
-                          </li>
-                          <li>
-                            <a href="#">Cultural</a>
-                          </li>
-                          <li>
-                            <a href="#">European</a>
-                          </li>
-                          <li>
-                            <a href="#">Historical</a>
-                          </li>
-                          <li>
-                            <a href="#">Leaders & Notable People</a>
-                          </li>
-                          <li>
-                            <a href="#">View All</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="column">
-                        <h4 className="column-title">Biographies & Memoirs</h4>
-                        <ul className="link-list">
-                          <li>
-                            <a href="#">Arts & Literature</a>
-                          </li>
-                          <li>
-                            <a href="#">Cultural</a>
-                          </li>
-                          <li>
-                            <a href="#">European</a>
-                          </li>
-                          <li>
-                            <a href="#">Historical</a>
-                          </li>
-                          <li>
-                            <a href="#">Leaders & Notable People</a>
-                          </li>
-                          <li>
-                            <a href="#">View All</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="column">
-                        <h4 className="column-title">Biographies & Memoirs</h4>
-                        <ul className="link-list">
-                          <li>
-                            <a href="#">Arts & Literature</a>
-                          </li>
-                          <li>
-                            <a href="#">Cultural</a>
-                          </li>
-                          <li>
-                            <a href="#">European</a>
-                          </li>
-                          <li>
-                            <a href="#">Historical</a>
-                          </li>
-                          <li>
-                            <a href="#">Leaders & Notable People</a>
-                          </li>
-                          <li>
-                            <a href="#">View All</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="column">
-                        <h4 className="column-title">Biographies & Memoirs</h4>
-                        <ul className="link-list">
-                          <li>
-                            <a href="#">Arts & Literature</a>
-                          </li>
-                          <li>
-                            <a href="#">Cultural</a>
-                          </li>
-                          <li>
-                            <a href="#">European</a>
-                          </li>
-                          <li>
-                            <a href="#">Historical</a>
-                          </li>
-                          <li>
-                            <a href="#">Leaders & Notable People</a>
-                          </li>
-                          <li>
-                            <a href="#">View All</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="column">
-                        <h4 className="column-title">Biographies & Memoirs</h4>
-                        <ul className="link-list">
-                          <li>
-                            <a href="#">Arts & Literature</a>
-                          </li>
-                          <li>
-                            <a href="#">Cultural</a>
-                          </li>
-                          <li>
-                            <a href="#">European</a>
-                          </li>
-                          <li>
-                            <a href="#">Historical</a>
-                          </li>
-                          <li>
-                            <a href="#">Leaders & Notable People</a>
-                          </li>
-                          <li>
-                            <a href="#">View All</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="column">
-                        <h4 className="column-title">Biographies & Memoirs</h4>
-                        <ul className="link-list">
-                          <li>
-                            <a href="#">Arts & Literature</a>
-                          </li>
-                          <li>
-                            <a href="#">Cultural</a>
-                          </li>
-                          <li>
-                            <a href="#">European</a>
-                          </li>
-                          <li>
-                            <a href="#">Historical</a>
-                          </li>
-                          <li>
-                            <a href="#">Leaders & Notable People</a>
-                          </li>
-                          <li>
-                            <a href="#">View All</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="column">
-                        <h4 className="column-title">Biographies & Memoirs</h4>
-                        <ul className="link-list">
-                          <li>
-                            <a href="#">Arts & Literature</a>
-                          </li>
-                          <li>
-                            <a href="#">Cultural</a>
-                          </li>
-                          <li>
-                            <a href="#">European</a>
-                          </li>
-                          <li>
-                            <a href="#">Historical</a>
-                          </li>
-                          <li>
-                            <a href="#">Leaders & Notable People</a>
-                          </li>
-                          <li>
-                            <a href="#">View All</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="right-part">
-                      <div className="column">
-                        <h4 className="column-title">Sub Categories</h4>
-                        <ul className="link-list">
-                          <li>
-                            <a href="#">Arts & Literature</a>
-                          </li>
-                          <li>
-                            <a href="#">Cultural</a>
-                          </li>
-                          <li>
-                            <a href="#">European</a>
-                          </li>
-                          <li>
-                            <a href="#">Historical</a>
-                          </li>
-                          <li>
-                            <a href="#">Leaders & Notable People</a>
-                          </li>
-                        </ul>
-                      </div>
-
                     </div>
                   </div>
                 </div>

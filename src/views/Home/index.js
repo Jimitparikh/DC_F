@@ -1,4 +1,4 @@
-import React , {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,12 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import homebook from '../../images/Home-Book.png';
 import astronut from '../../images/astronut.png';
 import bookhomepage from '../../images/book-home-page.jpg';
-import trendingbookcover from '../../images/trending-book-cover.png';
 import newtrendingbook from '../../images/new-trending-book.png';
-import authorprofile from '../../images/author-profile.png';
 import offerbooks from '../../images/offer-books.png';
 import publishbookauthor from '../../images/publish-book-author.png';
-import quetos from '../../images/quetos.png';
 import booksdownload from '../../images/books-download.png';
 import sliderbook from '../../images/slider-book.png';
 import { BsFillStarFill, BsCart3, BsStarHalf, BsStopwatch, BsChevronDown } from "react-icons/bs";
@@ -21,6 +18,9 @@ import bookofferbanner2 from "../../images/book-offer-image-2.webp";
 import { useSelector, useDispatch } from "react-redux";
 import { get_Followings } from '../UserDashboard/Components/MyFollowing/store/dataSlice';
 import { get_Wishlist } from '../Wishlist/store/dataSlice';
+import TestimonealCard from '../../components/TestimonealCard';
+import AuthorCard from '../../components/AuthorCard';
+import BookCard from '../../components/BookCard';
 const Home = () => {
 
   const dispatch = useDispatch();
@@ -31,16 +31,17 @@ const Home = () => {
     });
   }
 
-  const GetData = ()=> {
-    if(isLoggedIn){ 
-     dispatch(get_Wishlist({ readerID: user._id }))
-     dispatch(get_Followings({readerID : user._id}))}
-   }
+  const GetData = () => {
+    if (isLoggedIn) {
+      dispatch(get_Wishlist({ readerID: user._id }))
+      dispatch(get_Followings({ readerID: user._id }))
+    }
+  }
 
-   useEffect(() => {
+  useEffect(() => {
     GetData()
-  }, [ ])
- 
+  }, [])
+
   return (
     <>
       <section className="main-section">
@@ -263,136 +264,7 @@ const Home = () => {
             <div className="Books-listing vertical-align d-flex justify-content-between align-items-center">
               <ul className="trending-books-list">
                 <li>
-                  <div className="add-to-cart-book-box d-flex overflow-hidden position-relative">
-                    <div className="add-cart-book-image">
-                      <img src={trendingbookcover} alt="Book Cover" />
-                    </div>
-                    <div className="add-cart-book-data">
-                      <div className="title">
-                        <h3>Dream psychology</h3>
-                        <p>Sigmund Fread</p>
-                      </div>
-                      <div className="price d-flex justify-content-between align-items-center">
-                        <p className="price-number">$18.04 <span>$25.04</span></p>
-                        <p className="rating">
-                          <BsFillStarFill />
-                          4.6
-                        </p>
-                      </div>
-                      <div className="btn-wrap">
-                        <button className="btn btn-add-to-cart">
-                          <BsCart3 />
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                    <div className="corner-ribbon">No 1</div>
-                  </div>
-                </li>
-                <li>
-                  <div className="add-to-cart-book-box d-flex position-relative">
-                    <div className="add-cart-book-image">
-                      <img src={trendingbookcover} alt="Book Cover" />
-                    </div>
-                    <div className="add-cart-book-data">
-                      <div className="title">
-                        <h3>Dream psychology</h3>
-                        <p>Sigmund Fread</p>
-                      </div>
-                      <div className="price d-flex justify-content-between align-items-center">
-                        <p className="price-number green-color">Free Book</p>
-                        <p className="rating">
-                          <BsFillStarFill />
-                          4.6
-                        </p>
-                      </div>
-                      <div className="btn-wrap">
-                        <button className="btn btn-green btn-add-to-cart">
-                          <BsCart3 />
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                    <div className="trending-corner-label">Trending on #4</div>
-                  </div>
-                </li>
-                <li>
-                  <div className="add-to-cart-book-box d-flex">
-                    <div className="add-cart-book-image">
-                      <img src={trendingbookcover} alt="Book Cover" />
-                    </div>
-                    <div className="add-cart-book-data">
-                      <div className="title">
-                        <h3>Dream psychology</h3>
-                        <p>Sigmund Fread</p>
-                      </div>
-                      <div className="price d-flex justify-content-between align-items-center">
-                        <p className="price-number">$18.04 <span>$25.04</span></p>
-                        <p className="rating">
-                          <BsFillStarFill />
-                          4.6
-                        </p>
-                      </div>
-                      <div className="btn-wrap">
-                        <button className="btn btn-add-to-cart">
-                          <BsCart3 />
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div className="add-to-cart-book-box d-flex">
-                    <div className="add-cart-book-image">
-                      <img src={trendingbookcover} alt="Book Cover" />
-                    </div>
-                    <div className="add-cart-book-data">
-                      <div className="title">
-                        <h3>Dream psychology</h3>
-                        <p>Sigmund Fread</p>
-                      </div>
-                      <div className="price d-flex justify-content-between align-items-center">
-                        <p className="price-number">$18.04 <span>$25.04</span></p>
-                        <p className="rating">
-                          <BsFillStarFill />
-                          4.6
-                        </p>
-                      </div>
-                      <div className="btn-wrap">
-                        <button className="btn btn-add-to-cart">
-                          <BsCart3 />
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div className="add-to-cart-book-box d-flex">
-                    <div className="add-cart-book-image">
-                      <img src={trendingbookcover} alt="Book Cover" />
-                    </div>
-                    <div className="add-cart-book-data">
-                      <div className="title">
-                        <h3>Dream psychology</h3>
-                        <p>Sigmund Fread</p>
-                      </div>
-                      <div className="price d-flex justify-content-between align-items-center">
-                        <p className="price-number">$18.04 <span>$25.04</span></p>
-                        <p className="rating">
-                          <BsFillStarFill />
-                          4.6
-                        </p>
-                      </div>
-                      <div className="btn-wrap">
-                        <button className="btn btn-add-to-cart">
-                          <BsCart3 />
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <BookCard/>
                 </li>
               </ul>
             </div>
@@ -593,108 +465,7 @@ const Home = () => {
             </div>
             <ul className="authors-list d-flex flex-wrap">
               <li>
-                <div className="background-box"></div>
-                <div className="author-detail">
-                  <img src={authorprofile} alt="Author Profile" />
-                  <h4 className="title">Albert Flores</h4>
-                  <p className="light-grey">Comic & Horror Book Writer</p>
-                  <ul className="social-network">
-                    <li>
-                      <h5 className="heading">200</h5>
-                      <span>Followers</span>
-                    </li>
-                    <li>
-                      <h5 className="heading">4.5</h5>
-                      <span>Rating</span>
-                    </li>
-                    <li>
-                      <h5 className="heading">20+</h5>
-                      <span>Book Published</span>
-                    </li>
-                  </ul>
-                  <div className="btn-wrap">
-                    <button className="btn btn-primary">Write a book</button>
-                    <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="background-box"></div>
-                <div className="author-detail">
-                  <img src={authorprofile} alt="Author Profile" />
-                  <h4 className="title">Albert Flores</h4>
-                  <p className="light-grey">Comic & Horror Book Writer</p>
-                  <ul className="social-network">
-                    <li>
-                      <h5 className="heading">200</h5>
-                      <span>Followers</span>
-                    </li>
-                    <li>
-                      <h5 className="heading">4.5</h5>
-                      <span>Rating</span>
-                    </li>
-                    <li>
-                      <h5 className="heading">20+</h5>
-                      <span>Book Published</span>
-                    </li>
-                  </ul>
-                  <div className="btn-wrap">
-                    <button className="btn btn-primary">Write a book</button>
-                    <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="background-box"></div>
-                <div className="author-detail">
-                  <img src={authorprofile} alt="Author Profile" />
-                  <h4 className="title">Albert Flores</h4>
-                  <p className="light-grey">Comic & Horror Book Writer</p>
-                  <ul className="social-network">
-                    <li>
-                      <h5 className="heading">200</h5>
-                      <span>Followers</span>
-                    </li>
-                    <li>
-                      <h5 className="heading">4.5</h5>
-                      <span>Rating</span>
-                    </li>
-                    <li>
-                      <h5 className="heading">20+</h5>
-                      <span>Book Published</span>
-                    </li>
-                  </ul>
-                  <div className="btn-wrap">
-                    <button className="btn btn-primary">Write a book</button>
-                    <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="background-box"></div>
-                <div className="author-detail">
-                  <img src={authorprofile} alt="Author Profile" />
-                  <h4 className="title">Albert Flores</h4>
-                  <p className="light-grey">Comic & Horror Book Writer</p>
-                  <ul className="social-network">
-                    <li>
-                      <h5 className="heading">200</h5>
-                      <span>Followers</span>
-                    </li>
-                    <li>
-                      <h5 className="heading">4.5</h5>
-                      <span>Rating</span>
-                    </li>
-                    <li>
-                      <h5 className="heading">20+</h5>
-                      <span>Book Published</span>
-                    </li>
-                  </ul>
-                  <div className="btn-wrap">
-                    <button className="btn btn-primary">Write a book</button>
-                    <a href="#" className="primary-color fw-semibold" title="View Profile" alt="View Profile">View Profile</a>
-                  </div>
-                </div>
+                  <AuthorCard author />
               </li>
             </ul>
           </div>
@@ -725,160 +496,7 @@ const Home = () => {
             </div>
             <ul className="client-review-list d-flex justify-content-between flex-wrap">
               <li>
-                <div className="d-flex justify-content-between align-items-center">
-                  <img src={quetos} alt="Quetos" />
-                  <ul className="d-flex review">
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsStarHalf />
-                    </li>
-                  </ul>
-                </div>
-                <div className="review-comment">
-                  <h2>Sigmud Freud -<span> CEO of Xyz company</span></h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ipsum</p>
-                </div>
-              </li>
-              <li>
-                <div className="d-flex justify-content-between align-items-center">
-                  <img src={quetos} alt="Quetos" />
-                  <ul className="d-flex review">
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsStarHalf />
-                    </li>
-                  </ul>
-                </div>
-                <div className="review-comment">
-                  <h2>Sigmud Freud -<span> CEO of Xyz company</span></h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ipsum</p>
-                </div>
-              </li>
-              <li>
-                <div className="d-flex justify-content-between align-items-center">
-                  <img src={quetos} alt="Quetos" />
-                  <ul className="d-flex review">
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsStarHalf />
-                    </li>
-                  </ul>
-                </div>
-                <div className="review-comment">
-                  <h2>Sigmud Freud -<span> CEO of Xyz company</span></h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ipsum</p>
-                </div>
-              </li>
-              <li>
-                <div className="d-flex justify-content-between align-items-center">
-                  <img src={quetos} alt="Quetos" />
-                  <ul className="d-flex review">
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsStarHalf />
-                    </li>
-                  </ul>
-                </div>
-                <div className="review-comment">
-                  <h2>Sigmud Freud -<span> CEO of Xyz company</span></h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ipsum</p>
-                </div>
-              </li>
-              <li>
-                <div className="d-flex justify-content-between align-items-center">
-                  <img src={quetos} alt="Quetos" />
-                  <ul className="d-flex review">
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsStarHalf />
-                    </li>
-                  </ul>
-                </div>
-                <div className="review-comment">
-                  <h2>Sigmud Freud -<span> CEO of Xyz company</span></h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ipsum</p>
-                </div>
-              </li>
-              <li>
-                <div className="d-flex justify-content-between align-items-center">
-                  <img src={quetos} alt="Quetos" />
-                  <ul className="d-flex review">
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsFillStarFill />
-                    </li>
-                    <li>
-                      <BsStarHalf />
-                    </li>
-                  </ul>
-                </div>
-                <div className="review-comment">
-                  <h2>Sigmud Freud -<span> CEO of Xyz company</span></h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ipsum</p>
-                </div>
+                <TestimonealCard />
               </li>
             </ul>
           </div>
@@ -946,7 +564,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="book-download-section">
+      {/* <section className="book-download-section">
         <div className="container">
           <div className="book-download-content d-flex justify-content-between align-items-center">
             <div className="left-part">
@@ -993,7 +611,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

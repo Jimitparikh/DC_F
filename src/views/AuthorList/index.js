@@ -15,6 +15,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../../components/Loader';
 import { NavLink } from 'react-router-dom';
+import AuthorCard from '../../components/AuthorCard';
 injectReducer('authorlist', reducer)
 
 const AuthorList = () => {
@@ -83,7 +84,7 @@ const AuthorList = () => {
                                                     <ul className="authors-list d-flex flex-wrap">
                                                         {authors.map((author, index) => {
                                                             return <li key={index}>
-                                                                <div className="background-box"></div>
+                                                                {/* <div className="background-box"></div>
                                                                 <div className="author-detail">
                                                                     <img width="100" height="150" src={author.imageUrl} alt="Author Profile" />
                                                                     <h4 className="title">{author.authorName}</h4>
@@ -110,7 +111,8 @@ const AuthorList = () => {
                                                                             : <></>
                                                                         }
                                                                     </div>
-                                                                </div>
+                                                                </div> */}
+                                                                <AuthorCard author={author}/>
                                                             </li>
                                                         })
                                                         }
