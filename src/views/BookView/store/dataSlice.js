@@ -70,6 +70,7 @@ const dataSlice = createSlice({
     name: 'bookData',
     initialState: {
         loading: false,
+        Pageloading: false,
         BookDetail: [],
         Chapters: [],
         // Pages: [],
@@ -81,6 +82,12 @@ const dataSlice = createSlice({
     reducers: {
         setBook: (state, action) => {
             state.BookDetail = action.payload.book
+        },
+        setPageLoading: (state, action) => {
+            state.Pageloadingloading = action.payload.book
+        },
+        setLoading: (state, action) => {
+            state.loading = action.payload.book
         },
         setCurrentPage: (state, action) => {
             state.CurrentPage = action.payload
@@ -155,6 +162,8 @@ const dataSlice = createSlice({
 
 export const {
     setBook,
+    setPageLoading,
+    setLoading,
     setCurrentPage,
     setCurrentPageNumber
 } = dataSlice.actions

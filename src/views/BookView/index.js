@@ -3,7 +3,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import readbook from "../../images/read-book.png";
 import Chapter from "./components/Chapter";
 import { useDispatch, useSelector } from "react-redux";
-import { get_Book, get_Chapters, get_Pages, load_Book, setCurrentPage, setCurrentPageNumber } from "./store/dataSlice";
+import { get_Book, get_Chapters, get_Pages, load_Book, setCurrentPage, setCurrentPageNumber, setLoading } from "./store/dataSlice";
 import { useSearchParams } from "react-router-dom";
 import { injectReducer } from '../../store/index'
 import 'react-quill/dist/quill.snow.css';
@@ -23,19 +23,19 @@ const ReadBook = () => {
   
 
   useEffect(() => {
+    dispatch(setLoading(true))
     dispatch(get_Book({ bookID: id }))
     DisplayinitalData()
     if(BookData?.pageData?.length > 0){
       dispatch(setCurrentPageNumber((BookData?.pageData?.findIndex((page) => page._id == CurrentPage?._id) + 1)))
     }
-
+    dispatch(setLoading(false))
   }, [])
 
   const DisplayinitalData = () => {
     if(data.isBookChapterWise){
       dispatch(get_Chapters({ bookID : id}))
-      dispatch(load_Book({ bookID : id})).then((response) => {
-      })
+      dispatch(load_Book({ bookID : id}))
     }
   }
   

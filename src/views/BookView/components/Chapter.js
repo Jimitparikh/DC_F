@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { load_Chapter, setCurrentPage } from '../store/dataSlice'
+import { load_Chapter, setCurrentPage, setLoading } from '../store/dataSlice'
 import "../css/Chapter.css"
 
 
@@ -8,7 +8,10 @@ const Chapter = ({id}) => {
 
     const dispatch = useDispatch()
     const ChangeChapter = (data) => {
-        dispatch(load_Chapter({bookID : id, chapterID : data}))
+        dispatch(setLoading(true))
+        dispatch(load_Chapter({bookID : id, chapterID : data})).then(()=>{
+            dispatch(setLoading(false))
+        })
     }
 
     const chapters = useSelector((state) => state.bookData.data.Chapters)

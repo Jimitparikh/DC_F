@@ -7,9 +7,10 @@ import 'react-quill/dist/quill.snow.css';
 import { GrNext, GrPrevious } from "react-icons/gr";
 import ReactQuill, { Quill, editor } from 'react-quill';
 import "../css/Page.css"
+import Loader from "../../../components/Loader";
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Container, Row } from 'react-bootstrap';
-import { setCurrentPage, setCurrentPageNumber } from '../store/dataSlice';
+import { setCurrentPage, setCurrentPageNumber, setPageLoading } from '../store/dataSlice';
 
 const renderTooltip = (props) => (
   <Tooltip
@@ -37,22 +38,27 @@ const renderTooltip = (props) => (
 
 const Page = () => {
   const dispatch = useDispatch()
-  const { CurrentPage, BookData, CurrentPageNumber } = useSelector((state) => state.bookData.data)
+  const { CurrentPage, BookData, CurrentPageNumber, Pageloading } = useSelector((state) => state.bookData.data)
   const currentPageIndex = BookData?.pageData?.findIndex((page) => page._id == CurrentPage?._id)
 
   const isDisableNext = currentPageIndex == BookData?.pageData?.length - 1
   const isDisablePrevious = !currentPageIndex || currentPageIndex <= 0
   console.log(BookData?.pageData?.length);
   const Nextpage = () => {
+    dispatch(setPageLoading(true))
     const nextPageIndex = (currentPageIndex + 1)
     dispatch(setCurrentPageNumber(CurrentPageNumber + 1))
     dispatch(setCurrentPage(BookData?.pageData?.[nextPageIndex]))
+    dispatch(setPageLoading(false))
   }
 
   const Previouspage = () => {
+    dispatch(setPageLoading(true))
     const previousPageIndex = (currentPageIndex - 1)
     dispatch(setCurrentPageNumber(CurrentPageNumber - 1))
     dispatch(setCurrentPage(BookData?.pageData?.[previousPageIndex]))
+    dispatch(setPageLoading(false))
+
   }
 
   const options = {
@@ -79,15 +85,19 @@ const Page = () => {
           </Col>
           <Col>
             <div className='page'>
-              <div className='content'> {CurrentPage?.pageContent && parse(CurrentPage?.pageContent, options)}</div>
-              {/* <div className='content'>
+              { !Pageloading && <div className='content'> {CurrentPage?.pageContent && parse(CurrentPage?.pageContent, options)}</div>
+              /* <div className='content'>
                 <ReactQuill
                   value={CurrentPage?.pageContent}
                   readOnly={true}
                   theme={"bubble"}
                 />
-              </div> */}
-            </div>
+              </div> */
+              } 
+              { 
+                Pageloading &&  <Loader/>
+                }
+            </div> 
           </Col>
           <Col >
             <GrNext

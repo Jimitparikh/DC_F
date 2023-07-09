@@ -26,11 +26,11 @@ const Books = () => {
                         {books &&
                             <ul className="trending-books-list">
                                 {books.map((book, index) => {
-                                    return <li key={index}>
+                                    return book.isApproved ? (<li key={index}>
                                         <div className="add-to-cart-book-box d-flex overflow-hidden position-relative">
                                             <div className="add-cart-book-image">
                                                 <Link className='link' to={"/book-detail?id=" + book._id}>
-                                                    <img src={BaseFileURL + book.imageUrl} alt="Book Cover" />
+                                                    <img height={"200px"} src={BaseFileURL + book.imageUrl} alt="Book Cover" />
                                                 </Link>
                                             </div>
                                             <div className="add-cart-book-data">
@@ -60,7 +60,7 @@ const Books = () => {
                                             </div>
                                             {/* <div className="corner-ribbon">No 1</div> */}
                                         </div>
-                                    </li>
+                                    </li>) : <></>
                                 })
                                 }
                             </ul>
