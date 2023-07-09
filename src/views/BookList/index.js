@@ -21,7 +21,7 @@ const BookList = () => {
               <div className="books-listing-header">
                 <h2>All Books</h2>
                 <p className="fa-18 light-grey">Over 2000+ Books available here. find it now!</p>
-                <ul className="filter-label-list d-flex flex-wrap">
+                {/* <ul className="filter-label-list d-flex flex-wrap">
                   <li className="filter-label">
                     <span>Free Books</span>
                     <a href="#">
@@ -34,7 +34,7 @@ const BookList = () => {
                       <BsXLg />
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
              <Books/>
             </div>

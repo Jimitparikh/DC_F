@@ -1,5 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom'
-
 import Layout from "../../components/Layout";
 import Home from '../../views/Home'
 import Login from '../../views/Login';
@@ -26,6 +25,7 @@ import ReferandEarn from '../../views/UserDashboard/Components/ReferandEarn';
 import FAQ from '../../views/FAQ';
 import Support from '../../views/Support';
 import TermsAndConditions from '../../views/TermsAndCondition';
+import ReadBook from '../../views/BookView';
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +64,7 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login />, },
       { path: "/register", element: <Register />, },
       { path: "/readerOnboardScreen", element: <ReaderOnboardScreen />, },
+      { path: "/ReadBook", element: <ReadBook /> },
       { path: "/otp", element: <ForgotPassword />, },
       { path: "/terms", element: <Tearms />, },
       { path: "/*", element: <Error />, },

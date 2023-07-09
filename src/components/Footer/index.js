@@ -3,11 +3,23 @@ import logo from '../../images/logo.svg';
 import paymentvisa from '../../images/payment-visa.png'
 import { BsFacebook, BsTwitter, BsLinkedin } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = ()=>{
+
+  const { isLoggedIn, user } = useSelector((state) => state.auth);
+
+  const LoginTost = ()=> {
+    toast.error("Need to Login !!!", {
+      position: toast.POSITION.TOP_CENTER
+    });
+  }
   return (
     <>
          <footer>
+          <ToastContainer/>
         <div className="container">
           <div className="footer-content d-flex justify-content-between flex-wrap">
             <div className="column">
@@ -42,16 +54,15 @@ const Footer = ()=>{
               <h4 className="column-title">Account</h4>
               <ul className="link-list">
                 <li>
-                  <Link to="/user-dashboard">My Account</Link>
+                {isLoggedIn &&  user ?<Link to="/user-dashboard">My Account</Link>
+                   :<Link onClick={LoginTost}>My Account</Link>}
                 </li>
                 <li>
                   <Link to="/cart">My Cart</Link>
                 </li>
                 <li>
-                  <Link to="/wishlist">My Wishlist</Link>
-                </li>
-                <li>
-                  <a href="#">Shopping Guide</a>
+                  {isLoggedIn &&  user ? <Link to="/wishlist">My Wishlist</Link>
+                   :<Link onClick={LoginTost}>My Wishlist</Link>}
                 </li>
                 <li>
                   <Link to="/FAQ">FAQs</Link>
@@ -101,9 +112,6 @@ const Footer = ()=>{
                 </li>
                 <li>
                   <Link to="Terms&Conditions">Privacy Policy</Link>
-                </li>
-                <li>
-                  <Link to="Terms&Conditions">option</Link>
                 </li>
               </ul>
             </div>

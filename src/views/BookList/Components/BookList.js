@@ -6,6 +6,7 @@ import trendingbookcover from '../../../images/trending-book-cover.png';
 import { get_Books } from '../store/dataSlice';
 import Loader from '../../../components/Loader';
 import { get_Wishlist } from '../../Wishlist/store/dataSlice';
+import { BaseFileURL } from '../../../configs/app.config';
 
 const Books = () => {
     const dispatch = useDispatch()
@@ -29,7 +30,7 @@ const Books = () => {
                                         <div className="add-to-cart-book-box d-flex overflow-hidden position-relative">
                                             <div className="add-cart-book-image">
                                                 <Link className='link' to={"/book-detail?id=" + book._id}>
-                                                    <img src={book.imageUrl} alt="Book Cover" />
+                                                    <img src={BaseFileURL + book.imageUrl} alt="Book Cover" />
                                                 </Link>
                                             </div>
                                             <div className="add-cart-book-data">
@@ -42,7 +43,9 @@ const Books = () => {
                                                     <p>{book.authorName}</p>
                                                 </div>
                                                 <div className="price d-flex justify-content-between align-items-center">
-                                                    <p className="price-number">{book.price} <span>$25.04</span></p>
+                                                    {book.price > 0 ?  <p className="price-number">{book.price}
+                                                        {/* <span>$25.04</span> */}
+                                                    </p> : <p className="price-number green-color">Free Book</p>}
                                                     <p className="rating">
                                                         <BsFillStarFill />
                                                         {book.averageRating}
@@ -52,10 +55,10 @@ const Books = () => {
                                                     <button className="btn btn-add-to-cart">
                                                         <BsCart3 />
                                                         Add to cart
-                                                    </button>
+                                                    </button> 
                                                 </div>
                                             </div>
-                                            <div className="corner-ribbon">No 1</div>
+                                            {/* <div className="corner-ribbon">No 1</div> */}
                                         </div>
                                     </li>
                                 })
@@ -66,7 +69,7 @@ const Books = () => {
                     </div>
                 </div>
             </section>
-            <div className="pagination-wrapper">
+            {/* <div className="pagination-wrapper">
                 <div className="pagination-content d-flex align-items-center justify-content-between flex-wrap">
                     <div className="pagination-number">
                         <p>Showing 1 to 5 of 20 entries</p>
@@ -90,7 +93,7 @@ const Books = () => {
                         <button className="btn btn-next">Next</button>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

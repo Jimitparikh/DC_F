@@ -57,7 +57,7 @@ const AuthorDetailPage = () => {
     }
 
     useEffect(() => {
-        dispatch(get_AuthorDetail({ authorID }))
+        dispatch(get_AuthorDetail({ authorID : authorID }))
     }, [])
 
     return (
@@ -71,7 +71,7 @@ const AuthorDetailPage = () => {
                         <div className='author-background'>
                         </div>
                         <div className='author-details-info d-flex justify-content-betweeen'>
-                            <div className='left-part'>
+                          { author &&  <div className='left-part'>
                                 <div className="top-autors-content">
                                     <ul className="authors-list d-flex flex-wrap">
                                         <li>
@@ -129,7 +129,7 @@ const AuthorDetailPage = () => {
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>}
                             <div className='right-part'>
                                 <div className='author-detail-page-tabbing'>
                                     <Tabs

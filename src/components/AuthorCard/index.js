@@ -48,7 +48,7 @@ const AuthorCard = (props) => {
             <ToastContainer />
             <div className="background-box"></div>
             <div className="author-detail">
-                <img src={authorprofile} alt="Author Profile" />
+                <img src="https://dreamcaptcha.s3.amazonaws.com/author_profiles/643c2d020b2ee2912ee73d467yCU.jpg" alt="Author Profile" />
                 <h4 className="title">{authorName}</h4>
                 <p className="light-grey">Comic & Horror Book Writer</p>
                 <ul className="social-network">

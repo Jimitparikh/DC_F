@@ -36,8 +36,8 @@ const Header = () => {
 
   const GetData = ()=> {
    if(isLoggedIn && user._id){ 
-    dispatch(get_Wishlist({ readerID: user._id }))
-    dispatch(get_Followings({readerID : user._id}))}
+    dispatch(get_Wishlist({ readerID: user?._id }))
+    dispatch(get_Followings({readerID : user?._id}))}
   }
 
   const logouthandler = () => {

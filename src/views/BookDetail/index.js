@@ -25,6 +25,7 @@ import {
   BsCameraVideo,
   BsFileText,
 } from "react-icons/bs";
+import { BaseFileURL } from "../../configs/app.config";
 import { FaChevronDown, FaRegFileAudio } from "react-icons/fa";
 import Loader from "../../components/Loader";
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
@@ -86,9 +87,11 @@ const BookDetailPage = () => {
           <div className="container">
             <div className="book-detail-content d-flex">
               <div className="book-detail-left">
-                <img width="300" height="200" src={bookDetail.imageUrl} alt="trendingbookcover"></img>
+                <img width="300" height="200" src={BaseFileURL + bookDetail.imageUrl} alt="trendingbookcover"></img>
                 <div className="btn-wrap">
+                  <Link to={"/ReadBook?id=" + bookDetail._id}>
                   <button className="btn btn-secondary">Read Sample</button>
+                  </Link>
                 </div>
               </div>
               <div className="book-detail-right">
@@ -159,7 +162,7 @@ const BookDetailPage = () => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <p>eBook/ Audio/ Video</p>
+                      <p>{bookDetail?.isEBook ? "eBook" : ""} { bookDetail?.isAudio ? "/ Audio/" :""} {bookDetail?.isVideo ?  " Video" : ""}</p>
                     </div>
                     <div className="icon">
                       <svg
@@ -210,10 +213,10 @@ const BookDetailPage = () => {
                       autoClose="outside"
                       align="end"
                     >
-                      <Button>${bookDetail.price} Purchase</Button>
-                      <Dropdown.Toggle split id="dropdown-split-basic">
+                      <Button> {bookDetail.price > 0 ? <p>${bookDetail.price} Purchase</p> : <p>Free Book</p>}</Button>
+                      {bookDetail.price > 0 && <Dropdown.Toggle split id="dropdown-split-basic">
                         <BsChevronDown />
-                      </Dropdown.Toggle>
+                      </Dropdown.Toggle>}
                       <Dropdown.Menu>
                         <Dropdown.Item href="#/action-1">
                           <div className="form-check">
@@ -265,7 +268,7 @@ const BookDetailPage = () => {
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-                    <Dropdown as={ButtonGroup} className="secondary" align="end">
+                    {/* <Dropdown as={ButtonGroup} className="secondary" align="end">
                       <Button>Rent at ${bookDetail.rentalPrice}/day</Button>
                       <Dropdown.Toggle split id="dropdown-split-basic">
                         <FaChevronDown />
@@ -281,7 +284,7 @@ const BookDetailPage = () => {
                           Have Account? Login
                         </Dropdown.Item>
                       </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown> */}
                   </div>
                 </div>
               </div>

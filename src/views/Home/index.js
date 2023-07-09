@@ -33,8 +33,8 @@ const Home = () => {
 
   const GetData = () => {
     if (isLoggedIn) {
-      dispatch(get_Wishlist({ readerID: user._id }))
-      dispatch(get_Followings({ readerID: user._id }))
+      dispatch(get_Wishlist({ readerID: user?._id }))
+      dispatch(get_Followings({ readerID: user?._id }))
     }
   }
 
