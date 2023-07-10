@@ -36,3 +36,10 @@ export async function getPages (data) {
         data
     })
 }
+
+export async function getUpinsBookWise (data) {
+    return ApiBookService.fetchData({
+        url: 'book/getUpinsBookWise'+ serialize(data),
+        method: 'get',
+    })
+}

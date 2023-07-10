@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import readbook from "../../images/read-book.png";
 import Chapter from "./components/Chapter";
 import { useDispatch, useSelector } from "react-redux";
-import { get_Book, get_Chapters, get_Pages, load_Book, setCurrentPage, setCurrentPageNumber, setLoading } from "./store/dataSlice";
+import { get_Book, get_Chapters, get_Pages, get_Upins, load_Book, setCurrentPage, setCurrentPageNumber, setLoading } from "./store/dataSlice";
 import { useSearchParams } from "react-router-dom";
 import { injectReducer } from '../../store/index'
 import 'react-quill/dist/quill.snow.css';
@@ -18,30 +17,31 @@ const ReadBook = () => {
   const id = searchParams.get("id");
   const dispatch = useDispatch()
   const data = useSelector((state) => state.bookData.data.BookDetail)
-  const {CurrentPage , BookData , CurrentPageNumber, loading } = useSelector((state) => state.bookData.data)
+  const { CurrentPage, BookData, CurrentPageNumber, Bloading } = useSelector((state) => state.bookData.data)
   const percentage = CurrentPageNumber / BookData?.pageData?.length * 100
-  
+
 
   useEffect(() => {
     dispatch(setLoading(true))
     dispatch(get_Book({ bookID: id }))
     DisplayinitalData()
-    if(BookData?.pageData?.length > 0){
+    if (BookData?.pageData?.length > 0) {
       dispatch(setCurrentPageNumber((BookData?.pageData?.findIndex((page) => page._id == CurrentPage?._id) + 1)))
     }
     dispatch(setLoading(false))
   }, [])
 
   const DisplayinitalData = () => {
-    if(data.isBookChapterWise){
-      dispatch(get_Chapters({ bookID : id}))
-      dispatch(load_Book({ bookID : id}))
+    if (data.isBookChapterWise) {
+      dispatch(get_Upins({ bookID: id }))
+      dispatch(get_Chapters({ bookID: id }))
+      dispatch(load_Book({ bookID: id }))
     }
   }
-  
+
   return (
     <>
-     { !loading && <section className="read-book-section">
+      {!Bloading && <section className="read-book-section">
         <div className="read-book-header">
           <div className="header-left">
             <div className="d-flex align-items-center">
@@ -118,18 +118,19 @@ const ReadBook = () => {
           </div> */}
         </div>
         <div className="read-book-body">
-        <div className="view ql-editor book-chapter-box">
-         {data.isBookChapterWise ? <Chapter id={id} /> : <></> }
-         </div>
+          <div className="view ql-editor book-chapter-box">
+            {data.isBookChapterWise ? <Chapter id={id} /> : <></>}
+          </div>
+          <br/>
           <div className="book-chapter-text">
-            <Page/>
+            <Page />
           </div>
         </div>
         <div className="read-book-footer">
           <div className="progress-detail">
             <p>page {CurrentPageNumber}/{BookData?.pageData?.length}</p>
             <ProgressBar now={percentage} />
-            <p>Percentage { percentage > 0 ? percentage.toFixed(0) : "0" }%</p>
+            <p>Percentage {percentage > 0 ? percentage.toFixed(0) : "0"}%</p>
           </div>
         </div>
         {/* <div className="display-text-setting-sidebar">
@@ -422,8 +423,8 @@ const ReadBook = () => {
           </div>
         </div> */}
       </section>}
-      {loading  &&
-      <Loader/>
+      {Bloading &&
+        <Loader />
       }
     </>
   );

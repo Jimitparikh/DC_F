@@ -1,49 +1,76 @@
-import React from 'react'
+import React, { useState } from 'react'
 import parse from "html-react-parser";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import trendingbookcover from "../../../images/trending-book-cover.png";
 import 'react-quill/dist/quill.snow.css';
 import { GrNext, GrPrevious } from "react-icons/gr";
-import ReactQuill, { Quill, editor } from 'react-quill';
 import "../css/Page.css"
+import "../css/ql.scss"
 import Loader from "../../../components/Loader";
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Container, Row } from 'react-bootstrap';
 import { setCurrentPage, setCurrentPageNumber, setPageLoading } from '../store/dataSlice';
+import { BaseFileURL } from '../../../configs/app.config';
 
-const renderTooltip = (props) => (
-  <Tooltip
-    className="text-detail-tooltip-content"
-    id="button-tooltip"
-    {...props}
-  >
-    <div className="tooltip-body">
-      <div className="image">
-        <img src={trendingbookcover} alt="Image" />
-      </div>
-      <div className="body-details">
-        <h4>This is title place</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo lorem ipsum it consequat{" "}
-          <a href="#">...Read More</a>
-        </p>
-      </div>
-    </div>
-  </Tooltip>
-);
 
 const Page = () => {
   const dispatch = useDispatch()
-  const { CurrentPage, BookData, CurrentPageNumber, Pageloading } = useSelector((state) => state.bookData.data)
+  const { CurrentPage, BookData, CurrentPageNumber, Pageloading, Upins } = useSelector((state) => state.bookData.data)
   const currentPageIndex = BookData?.pageData?.findIndex((page) => page._id == CurrentPage?._id)
-
+  const [upin , setupin] = useState("")
   const isDisableNext = currentPageIndex == BookData?.pageData?.length - 1
   const isDisablePrevious = !currentPageIndex || currentPageIndex <= 0
   console.log(BookData?.pageData?.length);
+  
+  const renderTooltip = (props) => (
+    <Tooltip
+      className="text-detail-tooltip-content"
+      id="button-tooltip"
+      {...props}
+    >
+      <div className="tooltip-body">
+      <div className="image">
+         {upin?.img ? <img  src={BaseFileURL + upin.img} alt="Image" /> : null}
+        </div>
+        <div className='image'>
+        {upin?.video ? (
+          <video width="100%" controls>
+          <source src={BaseFileURL + upin.video} />
+          Your browser does not support HTML video.
+        </video>
+        ) : null}
+        </div>
+        <div className='image'>
+        {upin?.uvideo ? (
+          <iframe
+            title="video"
+            width="100%"
+            height="200"
+            src={upin?.uvideo}
+            allowFullScreen
+          />
+        ) : null}
+        </div>
+        <div className='image'>
+        {upin?.audio ? (
+         <div className="d-flex justify-content-center">
+         <audio controls controlsList="noplaybackrate nodownload">
+           <source src={BaseFileURL + upin.audio} />
+           Your browser does not support the audio element.
+         </audio>
+       </div>
+        ) : null}
+        </div>
+        <div className="body-details">
+          <h4>{upin?.title}</h4>
+          <p>
+            {upin?.description}
+          </p>
+        </div>
+      </div>
+    </Tooltip>
+  );
+
   const Nextpage = () => {
     dispatch(setPageLoading(true))
     const nextPageIndex = (currentPageIndex + 1)
@@ -61,14 +88,21 @@ const Page = () => {
 
   }
 
+  const setUpin = (upinId) => {
+    console.log(Upins);
+    let upinData = Upins?.find((upin) => {
+      return  upin._id == upinId
+    })
+    setupin(upinData)
+    console.log(upin);
+  }
+
   const options = {
     replace: (domNode) => {
       if (domNode.attribs && domNode.attribs.class === "ql-upin") {
-        delete domNode.attribs.onclick;
-        return <OverlayTrigger placement="right" trigger="click" delayShow={500} delayHide={150} overlay={renderTooltip} rootClose>
-          <span {...domNode.attribs} style={{color : "blue"}}> upin</span>
+        return <OverlayTrigger placement="right" trigger="click" delayShow={700} delayHide={150} overlay={renderTooltip} rootClose>
+          <span {...domNode.attribs}  onClick={() => { setUpin(domNode.attribs.id)  }} style={{cursor : "pointer"}}> {domNode?.children?.[0].data}</span>
         </OverlayTrigger>
-        // return <span  {...domNode.attribs} onClick={() => { Upin(domNode.attribs.id)  }}> 1 </span>;
       }
     }
   };
@@ -85,19 +119,21 @@ const Page = () => {
           </Col>
           <Col>
             <div className='page'>
-              { !Pageloading && <div className='content'> {CurrentPage?.pageContent && parse(CurrentPage?.pageContent, options)}</div>
-              /* <div className='content'>
-                <ReactQuill
-                  value={CurrentPage?.pageContent}
-                  readOnly={true}
-                  theme={"bubble"}
-                />
-              </div> */
-              } 
-              { 
-                Pageloading &&  <Loader/>
-                }
-            </div> 
+              {!Pageloading &&
+                <div className='content'> {CurrentPage?.pageContent && parse(CurrentPage?.pageContent, options)}</div>
+                // <div className='content' dangerouslySetInnerHTML={{__html: CurrentPage?.pageContent}} ></div>
+                //  <div className='content'>
+                //   <ReactQuill
+                //     value={CurrentPage?.pageContent}
+                //     readOnly={true}
+                //     theme={"bubble"}
+                //   />
+                // </div> 
+              }
+              {
+                Pageloading && <Loader />
+              }
+            </div>
           </Col>
           <Col >
             <GrNext

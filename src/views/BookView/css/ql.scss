@@ -1,0 +1,224 @@
+.quill-container {
+    overflow: auto;
+    padding: 1rem;
+  }
+  .quill-container .ql-editor {
+    width: 8.5in;
+    max-height: 1056px;
+    min-height: 900px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    background-color: white;
+  }
+  .quill-container .ql-container.ql-snow {
+    border: none;
+    display: flex;
+    justify-content: center;
+  }
+  .toolbar .ql-toolbar.ql-snow {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    border: none;
+    width: 100%;
+    margin: auto;
+  }
+  .search-container {
+    border: 1px solid grey;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    right: 4%;
+    top: 28%;
+    gap: 10px;
+  }
+  .search-btn-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .highlight-1 {
+    background-color: #f8ff00;
+    display: inline;
+  }
+  .ql-upin {
+    color: blueviolet;
+    display: inline;
+    text-decoration: underline;
+  }
+  .ql-snow .ql-picker.ql-lineheight {
+    width: 58px;
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="1.0"]::before {
+    content: "1.0";
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-label[data-value="1.0"]::before {
+    content: "1.0" !important;
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="1.2"]::before {
+    content: "1.2";
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-label[data-value="1.2"]::before {
+    content: "1.2" !important;
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="1.4"]::before {
+    content: "1.4";
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-label[data-value="1.4"]::before {
+    content: "1.4" !important;
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="1.6"]::before {
+    content: "1.6";
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-label[data-value="1.6"]::before {
+    content: "1.6" !important;
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="1.8"]::before {
+    content: "1.8";
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-label[data-value="1.8"]::before {
+    content: "1.8" !important;
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-item[data-value="2.0"]::before {
+    content: "2.0";
+  }
+  .ql-snow .ql-picker.ql-lineheight .ql-picker-label[data-value="2.0"]::before {
+    content: "2.0" !important;
+  }
+  .ql-lineheight-1 {
+    line-height: 1rem !important;
+  }
+  .ql-lineheight-2 {
+    line-height: 1.2rem !important;
+  }
+  .ql-lineheight-3 {
+    line-height: 1.4rem !important;
+  }
+  .ql-lineheight-4 {
+    line-height: 1.6rem !important;
+  }
+  .ql-lineheight-5 {
+    line-height: 1.8rem !important;
+  }
+  .ql-lineheight-6 {
+    line-height: 2rem !important;
+  }
+  .ql-font span[data-label="Arial"]::before {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .ql-font span[data-label="Comic Sans"]::before {
+    font-family: "Comic Sans MS";
+  }
+  
+  .ql-font span[data-label="Courier New"]::before {
+    font-family: "Courier New", Courier, monospace;
+  }
+  .ql-font span[data-label="Georgia"]::before {
+    font-family: Georgia;
+  }
+  .ql-font span[data-label="Helvetica"]::before {
+    font-family: "Helvetica";
+  }
+  .ql-font span[data-label="Lucida"]::before {
+    font-family: Lucida;
+  }
+  .ql-picker-options {
+    z-index: 9 !important;
+  }
+  .ql-font-arial {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .ql-font-comic-sans {
+    font-family: "Comic Sans MS";
+  }
+  .ql-font-courier-new {
+    font-family: "Courier New", Courier, monospace;
+  }
+  .ql-font-georgia {
+    font-family: Georgia;
+  }
+  .ql-font-helvetica {
+    font-family: "Helvetica";
+  }
+  .ql-font-lucida {
+    font-family: Lucida;
+  }
+  .ql-font span[data-label="Verdana"]::before,
+  .ql-font-verdana {
+    font-family: Verdana;
+  }
+  
+  .ql-font span[data-label="Tahoma"]::before,
+  .ql-font-tahoma {
+    font-family: Tahoma;
+  }
+  .ql-font span[data-label="Roboto"]::before,
+  .ql-font-roboto {
+    font-family: "Roboto", sans-serif;
+  }
+  .ql-font span[data-label="Poppins"]::before,
+  .ql-font-poppins {
+    font-family: "Poppins", sans-serif;
+  }
+  .ql-font span[data-label="Raleway"]::before,
+  .ql-font-raleway {
+    font-family: "Raleway", sans-serif;
+  }
+  .ql-font span[data-label="Oswald"]::before,
+  .ql-font-oswald {
+    font-family: "Oswald", sans-serif;
+  }
+  
+  .ql-font span[data-label="Nunito"]::before,
+  .ql-font-nunito {
+    font-family: "Nunito", sans-serif;
+  }
+  .ql-font span[data-label="Playfair Display"]::before,
+  .ql-font-playfair-display {
+    font-family: "Playfair Display", serif;
+  }
+  .ql-font span[data-label="Lato"]::before,
+  .ql-font-lato {
+    font-family: "Lato", sans-serif;
+  }
+  
+  .ql-font span[data-label="Merriweather"]::before,
+  .ql-font-merriweather {
+    font-family: "Merriweather", serif;
+  }
+  .ql-font span[data-label="Ubuntu"]::before,
+  .ql-font-ubuntu {
+    font-family: "Ubuntu", sans-serif;
+  }
+  .ql-font span[data-label="Lobster"]::before,
+  .ql-font-lobster {
+    font-family: "Lobster", cursive;
+  }
+  .ql-font span[data-label="Dosis"]::before,
+  .ql-font-dosis {
+    font-family: "Dosis", sans-serif;
+  }
+  
+  .ql-snow {
+    .ql-picker {
+      &.ql-size {
+        .ql-picker-label,
+        .ql-picker-item {
+          &::before {
+            content: attr(data-value) !important;
+          }
+        }
+      }
+    }
+  }
+  .ql-picker-options {
+    max-height: 181px;
+    overflow-y: auto;
+    min-width: 100%;
+  }
+  

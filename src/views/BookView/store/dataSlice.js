@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getBookDetail, getChapters, getPages } from "../../../services/BookService"
+import { getBookDetail, getChapters, getPages , getUpinsBookWise } from "../../../services/BookService"
 
 export const get_Book = createAsyncThunk('BookData/getBookDetail', async (data) => {
     const response = await getBookDetail(data)
@@ -12,17 +12,10 @@ export const get_Chapters = createAsyncThunk('BookData/getChapters', async (data
     return response.data
 })
 
-// export const get_Pages = createAsyncThunk('BookData/getPages', async (data) => {
-//     const response = await getPages({
-//         bookID
-//             :
-//             "64a3083caba6256f5646b06f",
-//         chapterID
-//             :
-//             "64a30898aba6256f5646b07d"
-//     })
-//     return response.data
-// })
+export const get_Upins = createAsyncThunk('BookData/getUpins', async (data) => {
+    const response = await getUpinsBookWise(data)
+    return response.data
+})
 
 export const load_Book = createAsyncThunk('BookData/loadBook', async (data) => {
     const bookData = await getBookDetail(data)
@@ -58,6 +51,7 @@ export const load_Chapter = createAsyncThunk('BookData/loadChapter', async (ids)
     // if (cdata?.[0]?._id) pageGetData.chapterID = cdata[0]?._id;
     const page = await getPages(ids)
     const pageData = page?.data?.bookContent?.bookPages || [];
+    
     return {
         bookDetails: bookData?.data?.book,
         chapterData : cdata,
@@ -70,24 +64,30 @@ const dataSlice = createSlice({
     name: 'bookData',
     initialState: {
         loading: false,
+        Bloading: false,
         Pageloading: false,
         BookDetail: [],
         Chapters: [],
         // Pages: [],
+        Upins:[],
         CurrentPageNumber : "",
         BookData: [],
         CurrentPage: [],
-        CurrentChapter: ""
+        CurrentChapter: "",
+        Upin:[]
     },
     reducers: {
         setBook: (state, action) => {
             state.BookDetail = action.payload.book
         },
+        setUpin: (state, action) => {
+            state.Upin = action.payload
+        },
         setPageLoading: (state, action) => {
-            state.Pageloadingloading = action.payload.book
+            state.Pageloading = action.payload.book
         },
         setLoading: (state, action) => {
-            state.loading = action.payload.book
+            state.loading = action.payload
         },
         setCurrentPage: (state, action) => {
             state.CurrentPage = action.payload
@@ -114,13 +114,13 @@ const dataSlice = createSlice({
         [load_Book.fulfilled]: (state, action) => {
             state.BookData = action.payload
             state.CurrentPage = action.payload.pageData?.[0]
-            state.loading = false
+            state.Bloading = false
         },
         [load_Book.pending]: (state) => {
-            state.loading = true
+            state.Bloading = true
         },
         [load_Book.rejected]: (state) => {
-            state.loading = false
+            state.Bloading = false
             state.BookData = [];
         },
         [load_Chapter.fulfilled]: (state, action) => {
@@ -145,6 +145,14 @@ const dataSlice = createSlice({
         [get_Chapters.rejected]: (state) => {
             state.loading = false
             state.Chapters = [];
+        },
+        [get_Upins.fulfilled]: (state, action) => {
+            state.Upins = action.payload.upins
+        },
+        [get_Upins.pending]: (state) => {
+        },
+        [get_Upins.rejected]: (state) => {
+            state.Upins = [];
         },
         // [get_Pages.fulfilled]: (state, action) => {
         //     state.Pages = action.payload
