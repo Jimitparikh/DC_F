@@ -46,14 +46,14 @@ const Home = () => {
     <>
       <section className="main-section">
         <div className="main-section-content">
-          <h1>Once you peak inside our books, <span className="primary-color">you won't want to leave</span></h1>
+          <h1>Once you peak inside our stories, <span className="primary-color">you won't want to leave</span></h1>
           <div className="btn-wrap">
-            <button className="btn btn-primary">Write a book</button>
+            <button className="btn btn-primary">Write a story</button>
             <button className="btn btn-secondary">Start Reading...</button>
           </div>
           <div className="book-pages-info container">
-            <p>Reader Reading Book Creative</p>
-            <p>Author Writing Book Creative</p>
+            <p>Reader Reading Story Creative</p>
+            <p>Author Writing Story Creative</p>
           </div>
           <div className="image">
             <img src={homebook} alt="Home Book" className="mx-auto" />
@@ -104,7 +104,7 @@ const Home = () => {
                 <div className="label-chip mb-2">
                   <p>By Dream Capch</p>
                 </div>
-                <h4 className="fw-bold">Featured Books</h4>
+                <h4 className="fw-bold">Featured Stories</h4>
               </div>
               <div className="left-content">
                 <a href="#" className="white-color">View All</a>
@@ -255,7 +255,7 @@ const Home = () => {
                 <div className="label-chip mb-2">
                   <p>Most recommended</p>
                 </div>
-                <h4 className="fw-bold">Trending Books</h4>
+                <h4 className="fw-bold">Trending Stories</h4>
               </div>
               <div className="left-content">
                 <a href="#" className="dark-blue ms-3 fw-500">View All</a>
@@ -275,7 +275,7 @@ const Home = () => {
         <div className="container">
           <div className="new-trending-book-content d-flex justify-content-between align-items-center">
             <div className="left-part">
-              <h6>Our Monsoon Offer Available New Trending Books </h6>
+              <h6>Our Monsoon Offer Available New Trending Stories </h6>
               <div className="btn-wrap">
                 <button className="btn btn-white">Explore Now</button>
               </div>
@@ -332,7 +332,7 @@ const Home = () => {
                   <div className="label-chip mb-2">
                     <p>By Dream Capch</p>
                   </div>
-                  <h4 className="fw-bold white-color">Top Selling Books</h4>
+                  <h4 className="fw-bold white-color">Top Selling Stories</h4>
                 </div>
                 <div className="left-content">
                   <a href="#" className="white-color">View All</a>
@@ -475,7 +475,7 @@ const Home = () => {
         <div className="container">
           <div className="publish-book-content d-flex justify-content-between align-items-center">
             <div className="left-part">
-              <h6>Now Publish Your Book Hassle Free Signup as Author Today.</h6>
+              <h6>Now Publish Your Story Hassle Free Signup as Author Today.</h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
               <div className="btn-wrap">
                 <button className="btn btn-white green-color">Sign up as a Author</button>

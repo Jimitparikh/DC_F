@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import {
   Link,
+  NavLink,
   useSearchParams
 } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
@@ -66,7 +67,7 @@ const BookDetailPage = () => {
     dispatch(remove_Wishlist({ bookID: data.id, readerID: user._id })).then((response) => {
       console.log(response)
       if (response.payload.success == true) {
-        toast.success(data.name+" Removed from Wishlist!", {
+        toast.success(data.name + " Removed from Wishlist!", {
           position: toast.POSITION.TOP_CENTER
         });
         dispatch(get_Wishlist({ readerID: user._id }))
@@ -74,12 +75,24 @@ const BookDetailPage = () => {
     })
   }
 
+  const LoginTost = () => (
+    <div>
+       Please <Link to="/login">Login</Link> OR <Link to="/register">Create New Account</Link> to Read Story.. !!
+    </div>
+  );
+
+  const loginPopup = () => {
+    toast.error(LoginTost, {
+      position: toast.POSITION.TOP_CENTER
+    });
+  }
+
   useEffect(() => {
     dispatch(get_Book({ bookID: id }))
   }, [])
   return (
     <>
-      <Breadcrums path="Book Details" />
+      <Breadcrums path="Story Details" />
       <ToastContainer
         autoClose={5000} />
       <section className="book-detail-section">
@@ -89,9 +102,9 @@ const BookDetailPage = () => {
               <div className="book-detail-left">
                 <img width="300" height="200" src={BaseFileURL + bookDetail.imageUrl} alt="trendingbookcover"></img>
                 <div className="btn-wrap">
-                  <Link to={"/ReadBook?id=" + bookDetail._id}>
+                  {/* <Link to={"/ReadBook?id=" + bookDetail._id}>
                   <button className="btn btn-secondary">Read Sample</button>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
               <div className="book-detail-right">
@@ -103,15 +116,15 @@ const BookDetailPage = () => {
                     <div className="icon d-flex">
                       {
                         isLoggedIn ?
-                          wishlistIDs.includes(bookDetail._id)
-                          ?
-                          <div onClick={() => { handelremovewishlist({id:bookDetail._id,name: bookDetail.bookName}) }} className="icon-border me-3">
-                            <BsHeartFill color="red"  />
-                          </div>
-                          :
-                          <div onClick={() => { handeladdwishlist({id:bookDetail._id,name: bookDetail.bookName}) }} className="icon-border me-3">
-                            <BsHeart  />
-                          </div>
+                          wishlistIDs?.includes(bookDetail._id)
+                            ?
+                            <div onClick={() => { handelremovewishlist({ id: bookDetail._id, name: bookDetail.bookName }) }} className="icon-border me-3">
+                              <BsHeartFill color="red" />
+                            </div>
+                            :
+                            <div onClick={() => { handeladdwishlist({ id: bookDetail._id, name: bookDetail.bookName }) }} className="icon-border me-3">
+                              <BsHeart />
+                            </div>
                           : <></>
                       }
                       <div className="icon-border">
@@ -162,7 +175,7 @@ const BookDetailPage = () => {
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <p>{bookDetail?.isEBook ? "eBook" : ""} { bookDetail?.isAudio ? "/ Audio/" :""} {bookDetail?.isVideo ?  " Video" : ""}</p>
+                      <p>{bookDetail?.isEBook ? "E-Story" : ""} {bookDetail?.isAudio ? "/ Audio/" : ""} {bookDetail?.isVideo ? " Video" : ""}</p>
                     </div>
                     <div className="icon">
                       <svg
@@ -213,7 +226,10 @@ const BookDetailPage = () => {
                       autoClose="outside"
                       align="end"
                     >
-                      <Button> {bookDetail.price > 0 ? <p>${bookDetail.price} Purchase</p> : <p>Free Book</p>}</Button>
+                     { isLoggedIn && <NavLink to={"/ReadBook?id=" + bookDetail._id}>
+                        <Button> {bookDetail.price > 0 ? <p>${bookDetail.price} Purchase</p> : <p>Read Free Story</p>}</Button>
+                      </NavLink>}
+                      { !isLoggedIn && <Button onClick={loginPopup}> {bookDetail.price > 0 ? <p>${bookDetail.price} Purchase</p> : <p>Read Free Story</p>}</Button>}
                       {bookDetail.price > 0 && <Dropdown.Toggle split id="dropdown-split-basic">
                         <BsChevronDown />
                       </Dropdown.Toggle>}
@@ -292,7 +308,7 @@ const BookDetailPage = () => {
             <div className="about-book-details d-flex justify-content-between align-items-start">
               <div className="left-part">
                 <div className="header d-flex justify-content-between align-items-center">
-                  <h4>About this Book</h4>
+                  <h4>About this Story</h4>
                   <a href="#">
                     <span>More info</span>
                     <BsInfoCircle />
@@ -366,7 +382,7 @@ const BookDetailPage = () => {
                   </div>
                 </div>
                 <div className="rate-book-details">
-                  <h6>Rate this book</h6>
+                  <h6>Rate this Story</h6>
                   <ul className="rating-list d-flex">
                     <li>
                       {" "}
@@ -398,7 +414,7 @@ const BookDetailPage = () => {
                         id="defaultCheck1"
                       ></input>
                       <label className="form-check-label" for="defaultCheck1">
-                        E-book
+                        E-story
                       </label>
                     </div>
                     <div className="form-check me-4 pe-1 mb-0">
@@ -597,7 +613,7 @@ const BookDetailPage = () => {
                                       </div>
                                       <div className="price d-flex justify-content-between align-items-center">
                                         <p className="price-number green-color">
-                                          Free Book
+                                          Free Story
                                         </p>
                                         <p className="rating">
                                           <BsFillStarFill />
@@ -713,8 +729,8 @@ const BookDetailPage = () => {
                       </div>
                     </Tab>
                     <Tab
-                      eventKey="Smilar category books"
-                      title="Smilar category books"
+                      eventKey="Smilar category stories"
+                      title="Smilar category stories"
                     >
                       <div className="tab-content-data position-relative">
                         <Loader />

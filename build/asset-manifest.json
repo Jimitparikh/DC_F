@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.f8ab224d.css",
-    "main.js": "/static/js/main.bce5d610.js",
+    "main.css": "/static/css/main.42f9de89.css",
+    "main.js": "/static/js/main.1543a275.js",
     "static/media/dummy-video.mp4": "/static/media/dummy-video.6a518edcaf4c6383cdf7.mp4",
     "static/media/vide-background.jpg": "/static/media/vide-background.60bd570d5a9793c1b463.jpg",
     "static/media/trending-book-cover.png": "/static/media/trending-book-cover.14a4ca6a4f8746b6ef45.png",
@@ -34,11 +34,11 @@
     "static/media/horror.png": "/static/media/horror.0968e5c5f2ea28477b58.png",
     "static/media/404.svg": "/static/media/404.07fefdc4f29686041eecf9b48e1728c8.svg",
     "index.html": "/index.html",
-    "main.f8ab224d.css.map": "/static/css/main.f8ab224d.css.map",
-    "main.bce5d610.js.map": "/static/js/main.bce5d610.js.map"
+    "main.42f9de89.css.map": "/static/css/main.42f9de89.css.map",
+    "main.1543a275.js.map": "/static/js/main.1543a275.js.map"
   },
   "entrypoints": [
-    "static/css/main.f8ab224d.css",
-    "static/js/main.bce5d610.js"
+    "static/css/main.42f9de89.css",
+    "static/js/main.1543a275.js"
   ]
 }

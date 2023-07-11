@@ -25,7 +25,7 @@ const Filter = () => {
                 className="category-page-accordian"
             >
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header>Book Type</Accordion.Header>
+                    <Accordion.Header>Story Type</Accordion.Header>
                     <Accordion.Body>
                         <div className="checkbox-group">
                             <div className="form-check">
@@ -36,7 +36,7 @@ const Filter = () => {
                                     id="defaultCheck1"
                                 ></input>
                                 <label className="form-check-label" htmlFor="defaultCheck1">
-                                    Free Book
+                                    Free Story
                                 </label>
                             </div>
                             <div className="form-check">
@@ -47,7 +47,7 @@ const Filter = () => {
                                     id="defaultCheck2"
                                 ></input>
                                 <label className="form-check-label" htmlFor="defaultCheck2">
-                                    Paid Book
+                                    Paid Story
                                 </label>
                             </div>
                             <div className="form-check">
@@ -58,7 +58,7 @@ const Filter = () => {
                                     id="defaultCheck3"
                                 ></input>
                                 <label className="form-check-label" htmlFor="defaultCheck3">
-                                    Rental Books
+                                    Rental Story
                                 </label>
                             </div>
                         </div>
@@ -105,7 +105,7 @@ const Filter = () => {
                                     id="defaultCheck6"
                                 ></input>
                                 <label className="form-check-label" htmlFor="defaultCheck6">
-                                    Audio Books
+                                    Audio Stories
                                 </label>
                             </div>
                             <div className="form-check">
@@ -116,7 +116,7 @@ const Filter = () => {
                                     id="defaultCheck7"
                                 ></input>
                                 <label className="form-check-label" htmlFor="defaultCheck7">
-                                    Video Books
+                                    Video Stories
                                 </label>
                             </div>
                             <div className="form-check">
@@ -127,7 +127,7 @@ const Filter = () => {
                                     id="defaultCheck8"
                                 ></input>
                                 <label className="form-check-label" htmlFor="defaultCheck8">
-                                    eBooks
+                                    E Stories
                                 </label>
                             </div>
                         </div>

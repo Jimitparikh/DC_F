@@ -76,7 +76,7 @@ const Footer = ()=>{
               <h4 className="column-title">Opportunities</h4>
               <ul className="link-list">
                 <li>
-                  <a href="http://testauthor.dreamcapcha.com/">Publish your book</a>
+                  <a href="http://testauthor.dreamcapcha.com/">Publish your story</a>
                 </li>
                 <li>
                   <a href="http://testaffiliate.dreamcapcha.com/">Join Affiliate</a>
@@ -102,7 +102,7 @@ const Footer = ()=>{
                   <Link to="/about-us">About us</Link>
                 </li>
                 <li>
-                  <Link to="/bookList">All Books</Link>
+                  <Link to="/bookList">All Stories</Link>
                 </li>
                 <li>
                   <Link to="/bookList">All Categories</Link>

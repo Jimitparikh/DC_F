@@ -35,7 +35,7 @@ const Header = () => {
   };
 
   const GetData = ()=> {
-   if(isLoggedIn && user._id){ 
+   if(isLoggedIn && user?._id){ 
     dispatch(get_Wishlist({ readerID: user?._id }))
     dispatch(get_Followings({readerID : user?._id}))}
   }
@@ -84,7 +84,7 @@ const Header = () => {
             </div>
             <div className="column">
               <div className="header-search">
-                <input className="input-box" placeholder="Search Books, Category, Author"></input>
+                <input className="input-box" placeholder="Search Stories, Category, Author"></input>
                 <button className="btn btn-primary">
                   <BsSearch />
                 </button>
@@ -98,7 +98,7 @@ const Header = () => {
                 <div className="icon">
                   <Link to="/user-dashboard/" className='link'>
                   <IoBookOutline />
-                  <span>My Books</span>
+                  <span>My Stories</span>
                   </Link>
                 </div>
               }
@@ -131,8 +131,8 @@ const Header = () => {
                     <FaRegUser />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Register as Author</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Register as Affliate</Dropdown.Item>
+                    <Dropdown.Item href="http://testauthor.dreamcapcha.com/">Register as Author</Dropdown.Item>
+                    <Dropdown.Item href="http://testaffiliate.dreamcapcha.com/">Register as Affliate</Dropdown.Item>
                     <Dropdown.Item ><Link to="/login">Have Account? Login</Link></Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -186,7 +186,7 @@ const Header = () => {
                 <BsXLg />
               </div>
               <li>
-                <Link to="/BookList" className="white-color">All Books</Link>
+                <Link to="/BookList" className="white-color">All Stories</Link>
               </li>
               <li className="dd-menu-wrapper">
                 <a  className="white-color dropdown-arrow" onClick={toggleCatDropdown}>Category <BsChevronDown /></a>
@@ -283,10 +283,10 @@ const Header = () => {
                 <a href="#" className="white-color">New Release</a>
               </li>
               <li>
-                <a href="#" className="white-color">Audio Books</a>
+                <a href="#" className="white-color">Audio Stories</a>
               </li>
               <li>
-                <a href="#" className="white-color">Video Books</a>
+                <a href="#" className="white-color">Video Stories</a>
               </li>
             </ul>
           </div>

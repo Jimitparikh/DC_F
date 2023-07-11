@@ -134,11 +134,11 @@ const Register = () => {
                                             cookiePolicy="single_host_origin"
                                         />
                                     </div>
-                                    <div className='btn-wrap'>
+                                    {/* <div className='btn-wrap'>
                                         <a href='#'>
                                             <BsApple /> Sign in with Apple
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className='separator'>
                                     <span>Or</span>
@@ -215,9 +215,11 @@ const Register = () => {
                         <div className='right-part'>
                             <div className='right-part-content'>
                                 <div className='btn-wrap d-flex'>
-                                    <button className='btn btn-secondary me-2'>
-                                        Become Author
-                                    </button>
+                                    <a href="http://testauthor.dreamcapcha.com/">
+                                        <button className='btn btn-secondary me-2'>
+                                            Become Author
+                                        </button>
+                                    </a>
                                     <Link to='/login'>
                                         <button className='btn btn-secondary'>
                                             Already user? Login

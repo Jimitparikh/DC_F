@@ -35,13 +35,13 @@ const Cart = () => {
                       <p className="light-grey">Sigmund Freud </p>
                       <div className="book-label">
                         <div className="label-item">
-                          <BsFileText className="body-color" /> ebook
+                          <BsFileText className="body-color" /> E-Story
                         </div>
                         <div className="label-item">
-                          <FaRegFileAudio className="body-color"/> Audio Book
+                          <FaRegFileAudio className="body-color"/> Audio Story
                         </div>
                         <div className="label-item">
-                          <BsCameraVideo className="body-color"/> Video Book
+                          <BsCameraVideo className="body-color"/> Video Story
                         </div>
                       </div>
                     </div>
@@ -77,13 +77,13 @@ const Cart = () => {
                   </div>
                   <div className="book-label">
                     <div className="label-item">
-                      <BsFileText className="body-color" /> ebook: 4
+                      <BsFileText className="body-color" /> E-Story: 4
                     </div>
                     <div className="label-item">
-                      <FaRegFileAudio className="body-color" /> Audio Book: 3
+                      <FaRegFileAudio className="body-color" /> Audio Story: 3
                     </div>
                     <div className="label-item">
-                      <BsCameraVideo className="body-color"/> Video Book: 2
+                      <BsCameraVideo className="body-color"/> Video Story: 2
                     </div>
                   </div>
                   <div className="d-flex justify-content-between align-items-center mb-3 pb-3">

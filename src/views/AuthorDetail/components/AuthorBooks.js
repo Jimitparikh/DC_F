@@ -13,14 +13,14 @@ export const AuthorBooks = () => {
         <div className='tab-content-data'>
             <div className='search-bar d-flex justify-content-between align-items-center'>
                 <div className="header-search">
-                    <input className="input-box" placeholder="Search Books, Category, Author"></input>
+                    <input className="input-box" placeholder="Search Stories, Category, Author"></input>
                     <button className="btn btn-primary">
                         <BsSearch />
                     </button>
                 </div>
                 <Dropdown className='without-background'>
                     <Dropdown.Toggle id="dropdown-basic">
-                        All Books <FaChevronDown />
+                        All Stories <FaChevronDown />
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>

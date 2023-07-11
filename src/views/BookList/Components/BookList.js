@@ -26,7 +26,7 @@ const Books = () => {
                         {books &&
                             <ul className="trending-books-list">
                                 {books.map((book, index) => {
-                                    return book.isApproved ? (<li key={index}>
+                                    return book.isApproved && book.isPublished && book.isDeleted ?  (<li key={index}>
                                         <div className="add-to-cart-book-box d-flex overflow-hidden position-relative">
                                             <div className="add-cart-book-image">
                                                 <Link className='link' to={"/book-detail?id=" + book._id}>
@@ -45,7 +45,7 @@ const Books = () => {
                                                 <div className="price d-flex justify-content-between align-items-center">
                                                     {book.price > 0 ?  <p className="price-number">{book.price}
                                                         {/* <span>$25.04</span> */}
-                                                    </p> : <p className="price-number green-color">Free Book</p>}
+                                                    </p> : <p className="price-number green-color">Free Story</p>}
                                                     <p className="rating">
                                                         <BsFillStarFill />
                                                         {book.averageRating}

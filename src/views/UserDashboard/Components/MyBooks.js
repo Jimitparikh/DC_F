@@ -16,7 +16,7 @@ import Button from "react-bootstrap/Button";
 const MyBooks = () => {
     return (
         <div className="my-book-tab-content">
-            <h5 className="tab-title">My Books</h5>
+            <h5 className="tab-title">My Stories</h5>
             <div className="my-books-content">
                 <div className="book-feature">
                     <div className="heading d-flex justify-content-between align-items-center">
@@ -129,7 +129,7 @@ const MyBooks = () => {
                         <h6>
                             {" "}
                             <FaRegFileAudio />
-                            Audio Books
+                            Audio Stories
                         </h6>
                         <a href="#">View all</a>
                     </div>
@@ -224,7 +224,7 @@ const MyBooks = () => {
                         <h6>
                             {" "}
                             <BsCameraVideo />
-                            Video Books
+                            Video Stories
                         </h6>
                         <a href="#">View all</a>
                     </div>

@@ -94,7 +94,7 @@ const AboutUs = () => {
                     />
                   </svg>
                   <h2>
-                    <span>2000+ </span>Books
+                    <span>2000+ </span>Stories
                   </h2>
                   <p>
                     Lorem Ipsum is simply dummy text of the printing and
@@ -184,7 +184,7 @@ const AboutUs = () => {
             </ul>
             <div className="books-info">
               <h5>
-                Over 1000+ Books Available on Dreamcapcha
+                Over 1000+ Stories Available on Dreamcapcha
               </h5>
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
@@ -220,7 +220,7 @@ const AboutUs = () => {
               <img src={booksdownload} alt="Books" />
             </div>
             <div className="right-part">
-            <h6>Now read your favoruit Books Offline </h6>
+            <h6>Now read your favoruit Stories Offline </h6>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
               <div className="btn-wrap">
                 <button className="btn btn-white primary-color">

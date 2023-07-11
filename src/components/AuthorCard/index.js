@@ -62,7 +62,7 @@ const AuthorCard = (props) => {
                     </li>
                     <li>
                         <h5 className="heading">{noOfBooksPublished}</h5>
-                        <span>Book Published</span>
+                        <span>Stories Published</span>
                     </li>
                 </ul>
                 <div className="btn-wrap">

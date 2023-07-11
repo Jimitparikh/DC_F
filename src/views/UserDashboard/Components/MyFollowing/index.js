@@ -68,7 +68,7 @@ const MyFollowing = () => {
                             <p>Comic & Horror Book Writer</p>
                             <div className="action">
                                 <Link to="/author-detail">View Profile</Link>
-                                <a href="#">View all Books</a>
+                                <a href="#">View all Stories</a>
                             </div>
                         </div>
                     </li>

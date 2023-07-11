@@ -12,15 +12,15 @@ const BookList = () => {
  
   return (
     <>
-      <Breadcrums path="All Books" />
+      <Breadcrums path="All Stories" />
       <section className="book-category-section">
         <div className="container">
           <div className="book-category-content d-flex justify-content-between flex-wrap">
            <Filter/>
             <div className="books-listing">
               <div className="books-listing-header">
-                <h2>All Books</h2>
-                <p className="fa-18 light-grey">Over 2000+ Books available here. find it now!</p>
+                <h2>All Stories</h2>
+                <p className="fa-18 light-grey">Over 2000+ Stories available here. find it now!</p>
                 {/* <ul className="filter-label-list d-flex flex-wrap">
                   <li className="filter-label">
                     <span>Free Books</span>

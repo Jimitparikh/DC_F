@@ -158,7 +158,7 @@ const UserDashboard = () => {
                           <NavLink to="/user-dashboard"
                             className={({ isActive }) =>
                               isActive ? "nav-link active" : "nav-link"} end>
-                            <p><AiOutlineBook />My Books</p>
+                            <p><AiOutlineBook />My Stories</p>
                           </NavLink>
                         </Nav.Item>
                         <Nav.Item>

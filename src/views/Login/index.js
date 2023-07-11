@@ -108,11 +108,11 @@ const Login = () => {
                                             cookiePolicy="single_host_origin"
                                         />
                                     </div>
-                                    <div className='btn-wrap'>
+                                    {/* <div className='btn-wrap'>
                                         <a href='#'>
                                             <BsApple /> Sign in with Apple
                                         </a>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className='separator'>
                                     <span>Or</span>
